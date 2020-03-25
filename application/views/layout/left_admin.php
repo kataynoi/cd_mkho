@@ -24,8 +24,8 @@
                                 class="fa fa-angle-double-right  "></i> หน่วยบริการ </a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('admin_employee_type') ?>"><i class="fa fa-angle-double-right  "></i>
-                            ประเภทพนักงาน</a>
+                        <a href="<?php echo site_url('admin_risk_type') ?>"><i class="fa fa-angle-double-right  "></i>
+                            ประเภทกลุ่มเสี่ยง</a>
                     </li>
 
                 </ul>

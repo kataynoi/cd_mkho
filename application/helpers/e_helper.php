@@ -237,7 +237,7 @@ if(!function_exists('to_mysql_date'))
         {
             $new_date = explode('/', $thai_date);
 
-            $new_y = (int)$new_date[2] - 543;
+            $new_y = $new_date[2];
             $new_m = $new_date[1];
             $new_d = $new_date[0];
 
@@ -503,9 +503,9 @@ if(!function_exists('get_address'))
         $chw_name = $ci->basic->get_province_name($chw);
         $amp_name = $ci->basic->get_ampur_name($chw, $amp);
         $tmb_name = $ci->basic->get_tmb_name($chw, $amp, $tmb);
-        $moo_name = $ci->basic->get_moo_name($chw, $amp, $tmb, $moo);
+        //$moo_name = $ci->basic->get_moo_name($chw, $amp, $tmb, $moo);
 
-        $address = 'หมู่ ' . $moo . ' '. $moo_name . ' ต.' . $tmb_name . ' อ.' . $amp_name . ' จ.' . $chw_name;
+        $address = 'หมู่ ' . $moo . ' ต.' . $tmb_name . ' อ.' . $amp_name . ' จ.' . $chw_name;
 
         return $address;
     }
@@ -698,6 +698,116 @@ if(!function_exists('DateFormatDiff'))
             $text.= $re [$i - 1];
         }
         return $text;
+    }
+}
+
+if ( ! function_exists('get_prename'))
+{
+    function get_prename($id)
+    {
+        $CI = get_instance();
+        $CI->load->model('Basic_model');
+        $prename=$CI->Basic_model->get_prename($id);
+
+        return $prename;
+
+    }
+
+}
+if(!function_exists('get_address'))
+{
+    /**
+     * @param $addr_code    Address code in ccaattmm
+     *
+     * @return string
+     */
+    function get_address($addr_code)
+    {
+        $ci =& get_instance();
+        $ci->load->model('Basic_model', 'basic');
+
+        $chw = substr($addr_code, 0, 2);
+        $amp = substr($addr_code, 2, 2);
+        $tmb = substr($addr_code, 4, 2);
+        $moo = substr($addr_code, 6, 2);
+
+        $chw_name = $ci->basic->get_province_name($chw);
+        $amp_name = $ci->basic->get_ampur_name($chw, $amp);
+        $tmb_name = $ci->basic->get_tmb_name($chw, $amp, $tmb);
+        //$moo_name = $ci->basic->get_moo_name($chw, $amp, $tmb, $moo);
+
+        $address = 'หมู่ ' . $moo . ' ' . ' ต.' . $tmb_name . ' อ.' . $amp_name . ' จ.' . $chw_name;
+
+        return $address;
+    }
+}
+if(!function_exists('get_sex'))
+{
+    function get_sex($id)
+    {
+        if(!empty($id))
+        {
+            if($id == '1') return 'ชาย';
+            else if($id == '2') return 'หญิง';
+            else return 'ไม่ระบุ';
+        }
+        else
+        {
+            return '-';
+        }
+    }
+}
+if(!function_exists('get_occupation'))
+{
+    function get_occupation($code)
+    {
+        $ci =& get_instance();
+        $rs = $ci->db
+            ->where('id_occupation_new', $code)
+            ->get('coccupation_new')
+            ->row();
+        return $rs ? $rs->occupation_new : '-';
+    }
+
+}
+
+if(!function_exists('get_education'))
+{
+    function get_education($code)
+    {
+        $ci =& get_instance();
+        $rs = $ci->db
+            ->where('educationcode', $code)
+            ->get('ceducation')
+            ->row();
+        return $rs ? $rs->educationname : '-';
+    }
+
+}
+if(!function_exists('get_typearea'))
+{
+    function get_typearea($code)
+    {
+        $ci =& get_instance();
+        $rs = $ci->db
+            ->where('typeareacode', $code)
+            ->get('ctypearea')
+            ->row();
+        return $rs ? $rs->typeareacode." : ".$rs->typeareaname : '-';
+    }
+
+}
+
+if(!function_exists('get_nation'))
+{
+    function get_nation($code)
+    {
+        $ci =& get_instance();
+        $rs = $ci->db
+            ->where(array('nationcode' => $code))
+            ->get('cnation')
+            ->row();
+        return $rs ? $rs->nationname : '-';
     }
 }
 

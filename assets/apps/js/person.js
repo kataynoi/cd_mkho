@@ -315,3 +315,9 @@ $(document).on('click', 'button[data-btn="btn_import_person"]', function(e) {
     crud.import_person(cid);
     //$(this).parent().parent().hide();
 });
+
+$(document).on('click', 'button[data-btn="btn_symptom"]', function(e) {
+    e.preventDefault();
+    var cid = $(this).data('id');
+    window.open(site_url+'/symptom/symptom_aday/'+cid);
+});

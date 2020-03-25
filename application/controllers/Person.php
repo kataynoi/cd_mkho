@@ -74,6 +74,7 @@ class Person extends CI_Controller
             //$sub_array[] = $row->TELEPHONE;
             //$sub_array[] = $row->MOBILE;
             $sub_array[] = '<div class="btn-group pull-right" role="group" >
+                <button class="btn btn-outline btn-warning" data-btn="btn_symptom" data-id="' . $row->CID . '"><i class="fa fa-save"></i>บันทึกอาการ</button>
                 <button class="btn btn-outline btn-warning" data-btn="btn_add_risk" data-id="' . $row->CID . '"><i class="fa fa-save"></i>บันทึกข้อมูลเพิ่มเติม</button>
                 <button class="btn btn-outline btn-warning" data-btn="btn_edit" data-id="' . $row->CID . '"><i class="fa fa-edit"></i></button>
                 <button class="btn btn-outline btn-danger" data-btn="btn_del" data-id="' . $row->CID . '"><i class="fa fa-trash"></i></button></div>';
