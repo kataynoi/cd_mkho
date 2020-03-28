@@ -169,6 +169,8 @@ crud.set_update = function (data, row_id) {
     $("#agenow").val(data.rows["agenow"]);
     $("#datestamp").val(data.rows["datestamp"]);
     $("#tel").val(data.rows["tel"]);
+    $("#form").val(data.rows["form"]);
+    $("#to").val(data.rows["to"]);
     $("#temp_check").val(data.rows["temp_check"]);
     $("#temp_result").val(data.rows["temp_result"]);
     $("#symtom1").val(data.rows["symtom1"]);
