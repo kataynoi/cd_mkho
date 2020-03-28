@@ -28,11 +28,12 @@ class Person_bypass extends CI_Controller
     {
         $fetch_data = $this->crud->make_datatables($this->check_point);
         $data = array();
+        $n=0;
         foreach ($fetch_data as $row) {
 
-
+            $n ++;
             $sub_array = array();
-            $sub_array[] = $row->id;
+            $sub_array[] = $n;
             $sub_array[] = $row->cid;
             //$sub_array[] = $row->trpre;
             $sub_array[] = $row->tname;
@@ -55,6 +56,7 @@ class Person_bypass extends CI_Controller
                 <button class="btn btn-outline btn-warning" data-btn="btn_edit" data-id="' . $row->id . '"><i class="fa fa-edit"></i></button>
                 <button class="btn btn-outline btn-danger" data-btn="btn_del" data-id="' . $row->id . '"><i class="fa fa-trash"></i></button></div>';
             $data[] = $sub_array;
+
         }
         $output = array(
             "draw" => intval($_POST["draw"]),

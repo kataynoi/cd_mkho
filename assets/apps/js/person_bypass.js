@@ -22,6 +22,9 @@ $(document).ready(function () {
             },
         ],
     });
+    $('#frmModal').on('shown.bs.modal', function () {
+        $('#cid').focus();
+    })
 
 });
 $("#cid").focus();
