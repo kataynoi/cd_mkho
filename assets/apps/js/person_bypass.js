@@ -10,7 +10,7 @@ $(document).ready(function () {
         "serverSide": true,
         "order": [],
 
-        "pageLength": 50,
+        "pageLength": 20,
         "ajax": {
             url: site_url + '/person_bypass/fetch_person_bypass',
             data: {
@@ -20,7 +20,7 @@ $(document).ready(function () {
         },
         "columnDefs": [
             {
-                "targets": [1, 2],
+                "targets": [0,1,2,3,4,5,6,7,8,9,10],
                 "orderable": false,
             },
         ],
