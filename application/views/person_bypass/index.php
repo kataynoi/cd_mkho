@@ -189,7 +189,7 @@
                     <div class="form-group col-md-3">
                         <label for="check_point">จุดตรวจ</label>
                         <input type="hidden" class="form-control" id="check_point" placeholder="จุดตรวจ" value="">
-                    <input type="text" class="form-control" id="check_point2" placeholder="จุดตรวจ" value="" disabled></div>
+                    <input type="text" class="form-control" id="check_point2" placeholder="จุดตรวจ" value="" disabled ></div>
                 </div>
 
                 <div class="form-row col-md-12 text-center">

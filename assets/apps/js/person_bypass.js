@@ -28,7 +28,7 @@ $(document).ready(function () {
     $('#frmModal').on('shown.bs.modal', function () {
         $('#cid').focus();
     })
-
+    $("check_point2").disabled = true;
     //$('#to').select2();
 });
 

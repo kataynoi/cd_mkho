@@ -47,7 +47,7 @@ class Person_bypass extends CI_Controller
             $sub_array[] = $row->addrap;
             $sub_array[] = $row->addrcw;
             $sub_array[] = $row->agenow;
-            $sub_array[] = $row->datestamp;
+            $sub_array[] = to_thai_date_time($row->d_update);
             //$sub_array[] = $row->temp_check;
             //$sub_array[] = $row->temp_result;
             //$sub_array[] = $row->symtom1;
