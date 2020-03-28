@@ -19,7 +19,7 @@ class Person_bypass extends CI_Controller
     public function index()
     {
         $data[] = '';
-
+        $data["cchangwat"] = $this->crud->get_cchangwat();
         $this->layout->view('person_bypass/index', $data);
     }
 
@@ -29,6 +29,7 @@ class Person_bypass extends CI_Controller
         $fetch_data = $this->crud->make_datatables($this->check_point);
         $data = array();
         $n=0;
+        $all = count($fetch_data);
         foreach ($fetch_data as $row) {
 
             $n ++;

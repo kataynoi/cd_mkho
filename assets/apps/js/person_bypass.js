@@ -2,7 +2,10 @@ $(document).ready(function () {
     var dataTable = $('#table_data').DataTable({
         'createdRow': function (row, data, dataIndex) {
             $(row).attr('name', 'row' + dataIndex);
-        },
+        }, dom: 'Bfrtip',
+        buttons: [
+            'excel'
+        ],
         "processing": true,
         "serverSide": true,
         "order": [],
@@ -26,8 +29,9 @@ $(document).ready(function () {
         $('#cid').focus();
     })
 
+    //$('#to').select2();
 });
-$("#cid").focus();
+
 var crud = {};
 
 crud.ajax = {
@@ -286,3 +290,8 @@ function validate(items) {
     }
 
 }
+$(document).on('click', 'button[data-btn="add_data"]', function (e) {
+    //$('.form').select2();
+    $('#cid').focus();
+    $('#frmModal').modal('show')
+});

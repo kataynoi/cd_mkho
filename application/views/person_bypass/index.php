@@ -1,6 +1,16 @@
 ﻿<script src="<?php echo base_url() ?>assets/vendor/js/jquery.dataTables.min.js" charset="utf-8"></script>
 <script src="<?php echo base_url() ?>assets/vendor/js/dataTables.bootstrap4.min.js" charset="utf-8"></script>
 <link href="<?php echo base_url() ?>assets/vendor/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" charset="utf-8"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js" charset="utf-8"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" charset="utf-8"></script>
+
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js" charset="utf-8"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js" charset="utf-8"></script>
+<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 <script>
     $('#left_menu').hide();
 </script>
@@ -137,12 +147,22 @@
                     </div>
 
                     <div class="form-group col-md-3">
-                        <label for="temp_check">มาจาก</label>
-                        <input type="text" class="form-control" id="form" placeholder="จังหวัด" value="">
+                        <label for="from_province">มาจากจังหวัด</label>
+                        <select class="form-control formx" id="form">
+                            <?php
+                            foreach ($cchangwat as $r) {
+                                echo "<option value='".$r->changwatname."' > ".$r->changwatname ."</option>";
+                            } ?>
+                        </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="temp_check">เดินทางไป</label>
-                        <input type="text" class="form-control" id="to" placeholder="จังหวัด" value="">
+                        <select class="form-control formx" id="to">
+                            <?php
+                            foreach ($cchangwat as $r) {
+                                echo "<option value='".$r->changwatname."' > ".$r->changwatname ."</option>";
+                            } ?>
+                        </select>
                     </div>
                 </div>
 

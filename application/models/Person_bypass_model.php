@@ -68,7 +68,13 @@ class Person_bypass_model extends CI_Model
         return $rs;
     }
 
-
+    public function get_cchangwat()
+    {
+        $rs = $this->db
+            ->get("cchangwat")
+            ->result();
+        return $rs;
+    }
     public function save_person_bypass($data)
     {
 
