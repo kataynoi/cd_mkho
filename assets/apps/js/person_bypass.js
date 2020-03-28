@@ -271,42 +271,12 @@ $(document).on('click', 'button[data-btn="btn_view"]', function (e) {
 
 function validate(items) {
 
-    if (!items.trpre) {
-        swal("กรุณาระบุคำนำหน้า");
-        $("#trpre").focus();
-    } else if (!items.tname) {
+     if (!items.tname) {
         swal("กรุณาระบุชื่อ");
         $("#tname").focus();
     } else if (!items.tlast) {
         swal("กรุณาระบุสกุล");
         $("#tlast").focus();
-    } else if (!items.birth) {
-        swal("กรุณาระบุวันเกิด");
-        $("#birth").focus();
-    } else if (!items.sex) {
-        swal("กรุณาระบุเพศ");
-        $("#sex").focus();
-    } else if (!items.addrno) {
-        swal("กรุณาระบุบ้านเลขที่");
-        $("#addrno").focus();
-    } else if (!items.addrmu) {
-        swal("กรุณาระบุหมู่");
-        $("#addrmu").focus();
-    } else if (!items.addrtb) {
-        swal("กรุณาระบุตำบล");
-        $("#addrtb").focus();
-    } else if (!items.addrap) {
-        swal("กรุณาระบุอำเภอ");
-        $("#addrap").focus();
-    } else if (!items.addrcw) {
-        swal("กรุณาระบุจังหวัด");
-        $("#addrcw").focus();
-    } else if (!items.agenow) {
-        swal("กรุณาระบุอายุ");
-        $("#agenow").focus();
-    } else if (!items.datestamp) {
-        swal("กรุณาระบุวันที่บันทึก");
-        $("#datestamp").focus();
     }
     else {
         return true;
