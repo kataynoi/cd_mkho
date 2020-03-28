@@ -107,6 +107,9 @@
                     <label for="datestamp">วันที่บันทึก</label>
                     <input type="text" class="form-control" id="datestamp" placeholder="วันที่บันทึก" value=""></div>
                 <div class="form-group">
+                    <label for="datestamp">โทร</label>
+                    <input type="text" class="form-control" id="tel" placeholder="เบอร์โทร" value=""></div>
+                <div class="form-group">
                     <label for="temp_check">มาจาก</label>
                     <input type="text" class="form-control" id="form" placeholder="จังหวัด" value=""></div>
                 <div class="form-group">
