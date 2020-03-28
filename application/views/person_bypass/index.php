@@ -186,10 +186,7 @@
                             <option value="ไม่ปกติ"> ไม่ปกติ</option>
                         </select>
                     </div>
-                </div>
-
-                <div class="form-row col-md-4">
-                    <div class="form-group">
+                    <div class="form-group col-md-3">
                         <label for="check_point">จุดตรวจ</label>
                         <input type="hidden" class="form-control" id="check_point" placeholder="จุดตรวจ" value="">
                     <input type="text" class="form-control" id="check_point2" placeholder="จุดตรวจ" value="" disabled></div>
