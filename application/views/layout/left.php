@@ -8,6 +8,7 @@
                     </li>
                     <li>
                         <a href="<?php echo site_url('person') ?>"><i class="fas fa-chart-line"></i> กลุ่มเป้าหมาย</a></li>
+                        <a href="<?php echo site_url('person_bypass') ?>"><i class="fas fa-chart-line"></i> บันทึกข้อมูลการคัดกรองจากด่านตรวจ</a></li>
                     <li>
                         <a href="<?php echo site_url('admin') ?>"><i class="far fa-calendar-check">
                                 Administrator</i></a>

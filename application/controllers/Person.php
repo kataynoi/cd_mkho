@@ -39,7 +39,7 @@ class Person extends CI_Controller
             $sub_array[] = $row->NAME;
             $sub_array[] = $row->LNAME;
             //$sub_array[] = $row->HN;
-            $sub_array[] = $row->SEX;
+            $sub_array[] = get_sex($row->SEX);
             $sub_array[] = to_thai_date_short($row->BIRTH);
             /*$sub_array[] = $row->MSTATUS;
             $sub_array[] = $row->OCCUPATION_OLD;
@@ -65,7 +65,7 @@ class Person extends CI_Controller
             $sub_array[] = $row->check_hosp;
             $sub_array[] = $row->check_typearea;
             $sub_array[] = $row->vhid;*/
-            $sub_array[] = $row->check_vhid;
+            $sub_array[] = get_address($row->check_vhid);
             //$sub_array[] = $row->maininscl;
            // $sub_array[] = $row->inscl;
             $sub_array[] = $row->age_y;

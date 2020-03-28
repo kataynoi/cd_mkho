@@ -10,7 +10,7 @@
             format: 'dd/mm/yyyy',
             todayBtn: true,
             //language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
-           // thaiyear: true              //Set เป็นปี พ.ศ.
+            // thaiyear: true              //Set เป็นปี พ.ศ.
         }).datepicker("setDate", "0");  //กำหนดเป็นวันปัจุบัน
     });
 </script>
@@ -127,37 +127,50 @@
 
                 <div class="form-group">
 
-                    <input type="text" class="form-control" id="id" placeholder="ID" value=""></div>
+                    <input type="hidden" class="form-control" id="id" placeholder="ID" value=""></div>
                 <div class="form-group">
-                    <input type="hidden" class="form-control" id="cid" placeholder="บัตรประชาชน" value="<?php echo $cid;?>"></div>
+                    <input type="hidden" class="form-control" id="cid" placeholder="บัตรประชาชน"
+                           value="<?php echo $cid; ?>"></div>
                 <div class="form-group">
                     <label for="s_date">วันที่ตรวจ</label>
-                    <input type="text"  id="s_date" placeholder="วันที่ตรวจ" value=""  data-type="date" class="form-control datepicker" data-date-language="th"
+                    <input type="text" id="s_date" placeholder="วันที่ตรวจ" value="" data-type="date"
+                           class="form-control datepicker" data-date-language="th"
                            data-rel="tooltip" data-date-format="mm/dd/yyyy"></div>
+                <div class="radio">
+                    <label class="radio-inline"><input type="radio" name="optradio" checked>Option 1</label>
+                    <label class="radio-inline"><input type="radio" name="optradio">Option 2</label>
+                </div>
                 <div class="form-group">
                     <label for="temperature">อุณหภูมิ</label>
-                    <input type="text" class="form-control" id="temperature" placeholder="อุณหภูมิ" value=""></div>
-                <div class="form-group">
-                    <label for="cough">ไอ</label>
-                    <input type="checkbox" class="form-control" id="cough" name="cough" placeholder="ไอ" value="1"></div>
+                    <input type="text" class="form-control" id="temperature" placeholder="อุณหภูมิ" value="">
+                </div>
+                <div class="checkbox">
+                    <label for="cough">
+                        <input type="checkbox" id="cough" name="cough" placeholder="ไอ" value="1">ไอ</label></div>
                 <div class="form-group">
                     <label for="throat">เจ็บคอ</label>
-                    <input type="checkbox" class="form-control" id="throat" name="throat" placeholder="เจ็บคอ" value="1"></div>
+                    <input type="checkbox" class="form-control" id="throat" name="throat" placeholder="เจ็บคอ"
+                           value="1"></div>
                 <div class="form-group">
                     <label for="muscle">ปวดกล้ามเนื้อ</label>
-                    <input type="checkbox" class="form-control" id="muscle" name="muscle" placeholder="ปวดกล้ามเนื้อ" value="1"></div>
+                    <input type="checkbox" class="form-control" id="muscle" name="muscle" placeholder="ปวดกล้ามเนื้อ"
+                           value="1"></div>
                 <div class="form-group">
                     <label for="snot">น้ำมูกไหล</label>
-                    <input type="checkbox" class="form-control" id="snot" name="snot" placeholder="น้ำมูกไหล" value="1"></div>
+                    <input type="checkbox" class="form-control" id="snot" name="snot" placeholder="น้ำมูกไหล" value="1">
+                </div>
                 <div class="form-group">
                     <label for="mucus">มีเสมหะ</label>
-                    <input type="checkbox" class="form-control" id="mucus" name="mucus" placeholder="มีเสมหะ" value="1"></div>
+                    <input type="checkbox" class="form-control" id="mucus" name="mucus" placeholder="มีเสมหะ" value="1">
+                </div>
                 <div class="form-group">
                     <label for="gasp">หอบเหนื้อย</label>
-                    <input type="checkbox" class="form-control" id="gasp" name="gasp" placeholder="หอบเหนื้อย" value="1"></div>
+                    <input type="checkbox" class="form-control" id="gasp" name="gasp" placeholder="หอบเหนื้อย"
+                           value="1"></div>
                 <div class="form-group">
                     <label for="headache">ปวดศีรษะ</label>
-                    <input type="checkbox" class="form-control" id="headache" name="headache" placeholder="ปวดศีรษะ" value="1"></div>
+                    <input type="checkbox" class="form-control" id="headache" name="headache" placeholder="ปวดศีรษะ"
+                           value="1"></div>
             </div>
 
             <!-- Modal footer -->
