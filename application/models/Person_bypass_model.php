@@ -93,7 +93,7 @@ class Person_bypass_model extends CI_Model
             ->set("to", $data["to"])
             ->set("temp_result", $data["temp_result"])
             ->set("symtom1", $data["symtom1"])
-            ->set("check_point", $data["check_point"])
+            ->set("d_update", date("Y-m-d H:i:s"))
             ->insert('person_bypass');
 
         return $this->db->insert_id();
