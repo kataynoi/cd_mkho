@@ -73,7 +73,26 @@ class Person_bypass_model extends CI_Model
     {
 
         $rs = $this->db
-            ->set("id", $data["id"])->set("cid", $data["cid"])->set("trpre", $data["trpre"])->set("tname", $data["tname"])->set("tlast", $data["tlast"])->set("birth", $data["birth"])->set("sex", $data["sex"])->set("addrno", $data["addrno"])->set("addrmu", $data["addrmu"])->set("addrtb", $data["addrtb"])->set("addrap", $data["addrap"])->set("addrcw", $data["addrcw"])->set("agenow", $data["agenow"])->set("datestamp", $data["datestamp"])->set("temp_check", $data["temp_check"])->set("temp_result", $data["temp_result"])->set("symtom1", $data["symtom1"])->set("check_point", $data["check_point"])
+            ->set("id", $data["id"])
+            ->set("cid", str_replace(" ","",$data["cid"]))
+            ->set("trpre", $data["trpre"])
+            ->set("tname", $data["tname"])
+            ->set("tlast", $data["tlast"])
+            ->set("birth", $data["birth"])
+            ->set("sex", $data["sex"])
+            ->set("addrno", $data["addrno"])
+            ->set("addrmu", $data["addrmu"])
+            ->set("addrtb", $data["addrtb"])
+            ->set("addrap", $data["addrap"])
+            ->set("addrcw", $data["addrcw"])
+            ->set("agenow", $data["agenow"])
+            ->set("datestamp", $data["datestamp"])
+            ->set("temp_check", $data["temp_check"])
+            ->set("form", $data["form"])
+            ->set("to", $data["to"])
+            ->set("temp_result", $data["temp_result"])
+            ->set("symtom1", $data["symtom1"])
+            ->set("check_point", $data["check_point"])
             ->insert('person_bypass');
 
         return $this->db->insert_id();
@@ -83,7 +102,27 @@ class Person_bypass_model extends CI_Model
     public function update_person_bypass($data)
     {
         $rs = $this->db
-            ->set("id", $data["id"])->set("cid", $data["cid"])->set("trpre", $data["trpre"])->set("tname", $data["tname"])->set("tlast", $data["tlast"])->set("birth", $data["birth"])->set("sex", $data["sex"])->set("addrno", $data["addrno"])->set("addrmu", $data["addrmu"])->set("addrtb", $data["addrtb"])->set("addrap", $data["addrap"])->set("addrcw", $data["addrcw"])->set("agenow", $data["agenow"])->set("datestamp", $data["datestamp"])->set("temp_check", $data["temp_check"])->set("temp_result", $data["temp_result"])->set("symtom1", $data["symtom1"])->set("check_point", $data["check_point"])->where("id", $data["id"])
+            ->set("id", $data["id"])
+            ->set("cid", str_replace(" ","",$data["cid"]))
+            ->set("trpre", $data["trpre"])
+            ->set("tname", $data["tname"])
+            ->set("tlast", $data["tlast"])
+            ->set("birth", $data["birth"])
+            ->set("sex", $data["sex"])
+            ->set("addrno", $data["addrno"])
+            ->set("addrmu", $data["addrmu"])
+            ->set("addrtb", $data["addrtb"])
+            ->set("addrap", $data["addrap"])
+            ->set("addrcw", $data["addrcw"])
+            ->set("agenow", $data["agenow"])
+            ->set("datestamp", $data["datestamp"])
+            ->set("form", $data["form"])
+            ->set("to", $data["to"])
+            ->set("temp_check", $data["temp_check"])
+            ->set("temp_result", $data["temp_result"])
+            ->set("symtom1", $data["symtom1"])
+            ->set("check_point", $data["check_point"])
+            ->where("id", $data["id"])
             ->update('person_bypass');
 
         return $rs;

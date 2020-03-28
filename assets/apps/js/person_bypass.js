@@ -86,6 +86,8 @@ crud.save = function (items, row_id) {
             }
             $('#frmModal').modal('toggle');
             swal('บันทึกข้อมูลเรียบร้อยแล้ว ');
+            location.reload();
+
         }
     });
 
@@ -186,6 +188,8 @@ $('#btn_save').on('click', function (e) {
     items.addrcw = $("#addrcw").val();
     items.agenow = $("#agenow").val();
     items.datestamp = $("#datestamp").val();
+    items.form = $("#form").val();
+    items.to = $("#to").val();
     items.temp_check = $("#temp_check").val();
     items.temp_result = $("#temp_result").val();
     items.symtom1 = $("#symtom1").val();
@@ -234,6 +238,7 @@ $(document).on('click', 'button[data-btn="btn_edit"]', function (e) {
     e.preventDefault();
     var id = $(this).data('id');
     $('#action').val('update');
+    $("#cid").focus();
     $('#id').val(id);
     var row_id = $(this).parent().parent().parent().attr('name');
     $("#frmModal input").prop('disabled', false);
