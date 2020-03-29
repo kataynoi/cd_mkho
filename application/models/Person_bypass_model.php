@@ -71,6 +71,7 @@ class Person_bypass_model extends CI_Model
     public function get_cchangwat()
     {
         $rs = $this->db
+            ->order_by('changwatname')
             ->get("cchangwat")
             ->result();
         return $rs;
