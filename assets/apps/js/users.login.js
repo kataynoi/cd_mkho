@@ -42,6 +42,8 @@ $(document).ready(function(){
             users.do_auth(username,password);
     });
 
+
+
     $('#password').bind('keypress', function(e) {
         var username = $('#username').val();
         var password = $('#password').val();
@@ -211,4 +213,15 @@ $('#btn_back').on('click',function(){
          });
      }
  });
+});
+
+$('#btn_login_mobile').on('click',function(e){
+    e.preventDefault();
+    console.log('click');
+    var tel = $('#tel').val();
+    if(!tel || tel.length !=10){
+        swal('ระบุ เบอร์โทร ให้ครบถ้วน');
+        return false;
+    }
+    users.do_auth(tel);
 });

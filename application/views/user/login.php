@@ -115,7 +115,10 @@
                 </div>
             </section>
         </div>
-<div class="col-md-1 "></div>
+<div class="col-md-1 ">
+
+
+</div>
         <div class="col-md-7">
             <section class="login-form">
             <div class="panel w3-theme">
@@ -133,6 +136,8 @@
                         <li><a target="_blank" href="http://www.ratchakitcha.soc.go.th/DATA/PDF/2560/A/010/24.PDF">พรบ.ว่าด้วยความผิดเกี่ยวกับคอมพิวเตอร์ </a></li>
                         <li><a target="_blank" href="http://www.ratchakitcha.soc.go.th/DATA/PDF/2561/E/124/1.PDF">ว่าด้วยการคุ้มครองและจัดการข้อมูลด้านสุขภาพของบุคคลพ.ศ.  ๒๕๖๑</a></li>
                     </ul>
+                    4. กรณีอ่านข้อมูล ด้วย SmartCard Reader ให้ติดตั้งโปรแกรม <a href="http://203.157.185.18/download/SiamID23_Setup.zip" target="_blank">SiamID</a>
+                    และดาวน์โหลดไฟลล์ <a href="http://203.157.185.18/download/SIAMID.ini" target="_blank"> SIAMID.ini </a> เพื่อไปทับไฟลล์เดิมที่ C:\Program Files\SIAM-ID ก่อนการใช้งาน
                 </div>
             </div>
         </div>
