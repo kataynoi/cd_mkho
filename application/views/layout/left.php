@@ -8,10 +8,17 @@
                     </li>
                     <li>
                         <a href="<?php echo site_url('person') ?>"><i class="fas fa-chart-line"></i> กลุ่มเป้าหมาย</a></li>
-                        <a href="<?php echo site_url('person_bypass') ?>"><i class="fas fa-chart-line"></i> บันทึกข้อมูลการคัดกรองจากด่านตรวจ</a></li>
                     <li>
-                        <a href="<?php echo site_url('admin') ?>"><i class="far fa-calendar-check">
-                                Administrator</i></a>
+                        <a href="<?php echo site_url('person_bypass') ?>"><i class="fas fa-chart-line"></i> บันทึกข้อมูลด่านตรวจ</a></li>
+                    <li>
+                    <li>
+                        <a href="<?php echo site_url('person_bypass') ?>"><i class="fas fa-chart-line"></i> รายงาน<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="<?php echo site_url('reports/person_bypass_last7day')?>"> จำนวนผู้ผ่านด่านตรวจ</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin') ?>"><i class="far fa-calendar-check"></i></a>
                     </li>
                 </ul>
             </div>

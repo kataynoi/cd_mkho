@@ -51,16 +51,16 @@
 
             </li>
             <li>
-                <a href="<?php echo site_url('outsite') ?>"><i class="fa fa-bus fa-fw"></i> ITA<span
+                <a href="<?php echo site_url('outsite') ?>"><i class="fa fa-bus fa-fw"></i> Report<span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="<?php echo site_url('admin_ita_index') ?>"><i
-                                class="fa fa-angle-double-right  "></i> หมวดหมู่ ITA</a>
+                        <a href="<?php echo site_url('admin_report_group') ?>"><i
+                                class="fa fa-angle-double-right  "></i> หมวดหมู่ Report</a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('admin_ita_ebit') ?>"><i
-                                class="fa fa-angle-double-right  "></i> EBIT</a>
+                        <a href="<?php echo site_url('admin_report_items') ?>"><i
+                                class="fa fa-angle-double-right  "></i> Report_items</a>
                     </li>
                     <li>
                         <a href="<?php echo site_url('admin_ita_ebit_items') ?>"><i class="fa fa-angle-double-right  "></i>
