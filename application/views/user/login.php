@@ -110,9 +110,11 @@
                     <input type="hidden" name="csrf_token" value="<?php echo $this->security->get_csrf_hash() ?>">
                 </form method="post">
                 <button name="go" class=" btn btn-lg  btn-block w3-theme-d1" id="btn_login">Sign in</button>
-                <div>
+                 <div>
                     <!--<a href="#">Create account</a> or <a href="#">reset password</a>-->
                 </div>
+                <a href="<?php echo site_url('person_survey/login')?>" class=" btn-outline">Login ด้วยมือถือ กรณีลงทะเบียนคนเข้า จังหวัด</a>
+
             </section>
         </div>
 <div class="col-md-1 ">

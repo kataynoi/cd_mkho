@@ -119,4 +119,22 @@ class Basic_model extends CI_Model
         return count($rs) > 0 ? $rs->tambonname : '-';
     }
 
+    public function get_tambon_list($amp)
+    {
+        $rs = $this->db
+            ->where('ampurcode', $amp)
+            ->get('ctambon')
+            ->result();
+        return $rs;
+    }
+
+    public function get_moo_list($moo)
+    {
+        $rs = $this->db
+            ->where('tamboncode', $moo)
+            ->get('cvillage')
+            ->result();
+        return $rs;
+    }
+
 }

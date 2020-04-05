@@ -25,11 +25,17 @@ $(document).ready(function () {
             },
         ],
     });
-    $('#frmModal').on('shown.bs.modal', function () {
+    $('#frmModal').on('show.bs.modal', function() {
         $('#cid').focus();
+        $('#form').select2();
+        $('#to').select2();
     })
-    $("check_point2").disabled = true;
-    //$('#to').select2();
+
+    $('#frmModal').on('hidden.bs.modal', function() {
+        $('#form').select2('destroy');
+        $('#to').select2('destroy');
+    })
+
 });
 
 var crud = {};

@@ -10,6 +10,7 @@
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js" charset="utf-8"></script>
 <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 <script>
     $('#left_menu').hide();
@@ -60,7 +61,7 @@
 </div>
 
 
-<div class="modal fade" id="frmModal">
+<div class="modal fade" id="frmModal" style="overflow:hidden;">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -149,7 +150,7 @@
 
                     <div class="form-group col-md-3">
                         <label for="from_province">มาจากจังหวัด</label>
-                        <select class="form-control formx" id="form">
+                        <select class="form-control" id="form" style="width: 100%">
                             <?php
                             foreach ($cchangwat as $r) {
                                 echo "<option value='".$r->changwatname."' > ".$r->changwatname ."</option>";
@@ -158,7 +159,7 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label for="temp_check">เดินทางไป</label>
-                        <select class="form-control formx" id="to">
+                        <select class="form-control" id="to" style="width: 100%">
                             <?php
                             foreach ($cchangwat as $r) {
                                 echo "<option value='".$r->changwatname."' > ".$r->changwatname ."</option>";

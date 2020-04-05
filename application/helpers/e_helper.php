@@ -241,7 +241,7 @@ if(!function_exists('to_mysql_date'))
             $new_m = $new_date[1];
             $new_d = $new_date[0];
 
-            $mysql_date = $new_y . '-' . $new_m . '-' . $new_d;
+            $mysql_date = ($new_y-543) . '-' . $new_m . '-' . $new_d;
 
             return $mysql_date;
         }

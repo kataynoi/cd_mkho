@@ -12,6 +12,25 @@ $(document).ready(function(){
             app.ajax(url, params, function (err,data) {
                 err ? cb(err) : cb(null, data);
             });
+        },do_auth_mobile: function (tel, cb) {
+            var url = '/user/do_auth_mobile',
+                params = {
+                    tel: tel,
+
+                }
+            app.ajax(url, params, function (err,data) {
+                err ? cb(err) : cb(null, data);
+            });
+        },regis_auth_mobile: function (tel,name, cb) {
+            var url = '/user/regis_auth_mobile',
+                params = {
+                    tel: tel,
+                    name: name,
+
+                }
+            app.ajax(url, params, function (err,data) {
+                err ? cb(err) : cb(null, data);
+            });
         }
 
     };
@@ -20,11 +39,42 @@ $(document).ready(function(){
         users.ajax.do_auth(username,password, function (err, data) {
             if (err) {
                 swal(err)
+
             }
             else {
                 if(data.success){
                     swal('Login Success');
                    window.location= base_url;
+                }
+            }
+        });
+    }
+
+    users.do_auth_mobile = function(tel){
+        users.ajax.do_auth_mobile(tel, function (err, data) {
+            if (err) {
+                swal('เบอร์โทรไม่ถูกต้อง หรือหาก ยังไม่เคยลงทะเบียยน กรุณาลงทะเบียน');
+                $('#frm_login').hide();
+                $('#frm_register').show();
+            }
+            else {
+                if(data.success){
+                    swal('Login Success');
+                   window.location= site_url+'/person_survey';
+                }
+            }
+        });
+    }
+
+    users.regis_auth_mobile = function(tel,name){
+        users.ajax.regis_auth_mobile(tel,name, function (err, data) {
+            if (err) {
+                swal(err)
+            }
+            else {
+                if(data.success){
+                    swal('ลงทะเบียนสำเร็จ');
+                   window.location= site_url+'/person_survey';
                 }
             }
         });
@@ -42,7 +92,33 @@ $(document).ready(function(){
             users.do_auth(username,password);
     });
 
+    $('#btn_login_mobile').on('click',function(e){
+        e.preventDefault();
+        console.log('click');
+        var tel = $('#tel').val();
+        if(!tel || tel.length !=10){
+            swal('ระบุ เบอร์โทร ให้ครบถ้วน');
+            return false;
+        }
+        users.do_auth_mobile(tel);
+    });
+    //regis_login_mobile
 
+    $('#regis_login_mobile').on('click',function(e){
+        e.preventDefault();
+
+        var tel = $('#tel_reg').val();
+        if(!tel || tel.length !=10){
+            swal('ระบุ เบอร์โทร ให้ครบถ้วน');
+            return false;
+        }
+        var name = $('#name').val();
+        users.regis_auth_mobile(tel,name);
+    });
+    $('#btn_show_reg').on('click',function(e){
+        $('#frm_login').hide();
+        $('#frm_register').show();
+    });
 
     $('#password').bind('keypress', function(e) {
         var username = $('#username').val();
@@ -215,13 +291,3 @@ $('#btn_back').on('click',function(){
  });
 });
 
-$('#btn_login_mobile').on('click',function(e){
-    e.preventDefault();
-    console.log('click');
-    var tel = $('#tel').val();
-    if(!tel || tel.length !=10){
-        swal('ระบุ เบอร์โทร ให้ครบถ้วน');
-        return false;
-    }
-    users.do_auth(tel);
-});

@@ -33,6 +33,16 @@ class User_model extends CI_Model
         //echo $this->db->last_query();
         return $rs;
     }
+    function do_auth_mobile($tel)
+    {
+        $rs = $this->db
+            ->select('id,name,email,user_type')
+            ->where('tel', $tel)
+            ->get('users')
+            ->row_array();
+        //echo $this->db->last_query();
+        return $rs;
+    }
     public function get_userprofile($id){
         $rs = $this->db
             ->where('id',$id)
@@ -54,6 +64,14 @@ class User_model extends CI_Model
             ->set('position', $data['position'])
             ->set('user_mobile', $data['user_mobile'])
             ->insert('mas_users');
+        return $rs;
+    }
+    public function regis_auth_mobile($tel,$name)
+    {
+        $rs = $this->db
+            ->set('tel', $tel)
+            ->set('name', $name)
+            ->insert('users');
         return $rs;
     }
     public function update_user($data)

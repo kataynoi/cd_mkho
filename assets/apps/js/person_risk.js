@@ -138,7 +138,16 @@ $('#btn_save').on('click', function (e) {
     var row_id = $("#row_id").val();
     items.action = $('#action').val();
     // items.brand_name = $("#brand option:selected").text();
-    items.id=$("#id").val();items.cid=$("#cid").val();items.risk_type=$("#risk_type").val();items.risk_group=$("#risk_group").val();items.risk_place=$("#risk_place").val();items.risk_event=$("#risk_event").val();items.from_country=$("#from_country").val();items.tel=$("#tel").val();items.province=$("#province").val();items.ampur=$("#ampur").val();items.tambon=$("#tambon").val();items.moo=$("#moo").val();items.no=$("#no").val();items.date_throatswab=$("#date_throatswab").val();items.throatswab_sesult=$("#throatswab_sesult").val();items.hq_province=$("#hq_province").val();items.hq_ampur=$("#hq_ampur").val();items.hq_tambon=$("#hq_tambon").val();items.hq_moo=$("#hq_moo").val();items.hq_no=$("#hq_no").val();items.hq_startdate=$("#hq_startdate").val();items.hq_enddate=$("#hq_enddate").val();items.hq_status=$("#hq_status").val();
+    items.id=$("#id").val();items.cid=$("#cid").val();
+    items.risk_type=$("#risk_type").val();
+    items.risk_group=$("#risk_group").val();
+    items.risk_place=$("#risk_place").val();
+    items.risk_event=$("#risk_event").val();
+    items.from_country=$("#from_country").val();
+    items.tel=$("#tel").val();items.province=$("#province").val();
+    items.ampur=$("#ampur").val();items.tambon=$("#tambon").val();
+    items.moo=$("#moo").val();items.no=$("#no").val();
+    items.date_throatswab=$("#date_throatswab").val();items.throatswab_sesult=$("#throatswab_sesult").val();items.hq_province=$("#hq_province").val();items.hq_ampur=$("#hq_ampur").val();items.hq_tambon=$("#hq_tambon").val();items.hq_moo=$("#hq_moo").val();items.hq_no=$("#hq_no").val();items.hq_startdate=$("#hq_startdate").val();items.hq_enddate=$("#hq_enddate").val();items.hq_status=$("#hq_status").val();
 
           if(validate(items)){
                 crud.save(items,row_id);
