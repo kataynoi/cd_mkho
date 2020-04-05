@@ -7,14 +7,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
 
  */
+
 class Person_survey_model extends CI_Model
 {
-    var $table = "person_survey";
+    var $table = "person_survey a ";
     var $order_column = Array('id', 'd_update', 'cid', 'name', 'tel', 'from_conutry', 'from_province', 'date_in', 'no', 'moo', 'tambon', 'ampur', 'province', 'in_family', 'risk1', 'risk2', 'risk3', 'reporter', 'risk4',);
 
-    function make_query()
+    function make_query($userid)
     {
-        $this->db->from($this->table);
+        $this->db
+            ->select('a.id,a.d_update, a.cid, a.name, a.tel, a.from_conutry, a.from_province, a.date_in, a.no, a.moo, c.tambonname as tambon, b.ampurname as ampur, a.province, a.in_family, a.risk1, a.risk2, a.risk3, a.reporter, a.risk4')
+            ->where('reporter',$userid)
+            ->join('campur b','a.ampur = b.ampurcodefull')
+            ->join('(select * from ctambon where changwatcode="44") c','a.tambon = c.tamboncodefull',false)
+            ->from($this->table);
         if (isset($_POST["search"]["value"])) {
             $this->db->group_start();
             $this->db->like("cid", $_POST["search"]["value"]);
@@ -30,9 +36,9 @@ class Person_survey_model extends CI_Model
         }
     }
 
-    function make_datatables()
+    function make_datatables($userid)
     {
-        $this->make_query();
+        $this->make_query($userid);
         if ($_POST["length"] != -1) {
             $this->db->limit($_POST['length'], $_POST['start']);
         }
@@ -40,9 +46,9 @@ class Person_survey_model extends CI_Model
         return $query->result();
     }
 
-    function get_filtered_data()
+    function get_filtered_data($userid)
     {
-        $this->make_query();
+        $this->make_query($userid);
         $query = $this->db->get();
         return $query->num_rows();
     }

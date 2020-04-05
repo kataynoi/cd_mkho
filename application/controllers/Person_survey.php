@@ -11,6 +11,7 @@ class Person_survey extends CI_Controller
 
 
         $this->load->model('Person_survey_model', 'crud');
+        $this->user_id = $this->session->userdata('id');
     }
 
     public function index()
@@ -47,7 +48,7 @@ class Person_survey extends CI_Controller
 
     function fetch_person_survey()
     {
-        $fetch_data = $this->crud->make_datatables();
+        $fetch_data = $this->crud->make_datatables($this->user_id);
         $data = array();
         $no = 0;
         foreach ($fetch_data as $row) {
@@ -55,12 +56,11 @@ class Person_survey extends CI_Controller
             $no++;
             $sub_array = array();
             $sub_array[] = $no;
-            $sub_array[] = $row->d_update;
+            $sub_array[] = to_thai_date_time($row->d_update);
             $sub_array[] = $row->cid;
             $sub_array[] = $row->name;
-            $sub_array[] = $row->date_in;
-
-            $sub_array[] = $row->from_province;
+            $sub_array[] = to_thai_date_short($row->date_in);
+            $sub_array[] = get_province_name($row->from_province);
             $sub_array[] = $row->moo;
             $sub_array[] = $row->tambon;
             $sub_array[] = $row->ampur;
@@ -72,8 +72,8 @@ class Person_survey extends CI_Controller
         }
         $output = array(
             "draw" => intval($_POST["draw"]),
-            "recordsTotal" => $this->crud->get_all_data(),
-            "recordsFiltered" => $this->crud->get_filtered_data(),
+            "recordsTotal" => $this->crud->get_all_data($this->user_id),
+            "recordsFiltered" => $this->crud->get_filtered_data($this->user_id),
             "data" => $data
         );
         echo json_encode($output);

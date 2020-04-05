@@ -104,6 +104,18 @@ if ( ! function_exists('get_provname'))
 
     }
 }
+if ( ! function_exists('get_prov_name'))
+{
+    function get_province_name($id)
+    {
+        $CI = get_instance();
+        $CI->load->model('Basic_model');
+        $provname=$CI->Basic_model->get_province_name($id);
+
+        return $provname;
+
+    }
+}
 
 if(!function_exists('to_thai_date'))
 {
