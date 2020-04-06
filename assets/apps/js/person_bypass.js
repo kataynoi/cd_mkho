@@ -25,19 +25,17 @@ $(document).ready(function () {
             },
         ],
     });
-    $('#frmModal').on('show.bs.modal', function() {
-        $('#cid').focus();
-        $('#form').select2();
-        $('#to').select2();
-    })
-
-    $('#frmModal').on('hidden.bs.modal', function() {
-        $('#form').select2('destroy');
-        $('#to').select2('destroy');
-    })
 
 });
-
+$('#frmModal').on('shown.bs.modal', function () {
+    $('#cid').focus();
+    $('#form').select2();
+    $('#to').select2();
+});
+$('#frmModal').on('hidden.bs.modal', function() {
+    $('#form').select2('destroy');
+    $('#to').select2('destroy');
+});
 var crud = {};
 
 crud.ajax = {
@@ -227,6 +225,7 @@ $('#add_data').on('click', function (e) {
     app.clear_form();
     $('#check_point').val(user_id);
     $('#check_point2').val(user_name);
+    $('#cid').focus();
 });
 
 $(document).on('click', 'button[data-btn="btn_del"]', function (e) {

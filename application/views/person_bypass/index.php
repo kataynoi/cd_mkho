@@ -79,7 +79,7 @@
                         <input type="hidden" class="form-control" id="id" placeholder="ID" value="">
                     <div class="form-group col-md-3">
                         <label for="cid">เลขบัตรประชาชน</label>
-                        <input type="text" class="form-control" id="cid" placeholder="เลขบัตรประชาชน" value="">
+                        <input type="text" class="form-control" id="cid" placeholder="เลขบัตรประชาชน" value="" script="$('#cid').focus();">
                     </div>
                 </div>
 
