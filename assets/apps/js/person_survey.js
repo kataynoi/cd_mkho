@@ -356,7 +356,7 @@ crud.get_moo_list = function (code) {
         if (!err) {
             $('#moo').append('<option value="">-*-</option>');
             _.each(data.rows, function (v) {
-                $('#moo').append('<option value="' + v.villagecodefull + '">' + v.villagename + '</option>');
+                $('#moo').append('<option value="' + v.villagename + '">' + v.villagename + '</option>');
             });
         }
     });

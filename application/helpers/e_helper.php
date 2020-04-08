@@ -259,6 +259,26 @@ if(!function_exists('to_mysql_date'))
         }
     }
 }
+if(!function_exists('thai_short_to_mysql_date'))
+{
+    function thai_short_to_mysql_date($thai_date)
+    {
+        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย","ธ.ค.");
+
+        $new_date = explode(' ', $thai_date);
+
+            $new_y = str_replace(' ','',$new_date[2]);
+            $new_m = str_replace(' ','',$new_date[1]);
+            $new_d = str_replace(' ','',$new_date[0]);
+            $new_m = array_search($new_m, $strMonthCut);
+            $mysql_date = ($new_y-543) . '-' . $new_m . '-' . $new_d;
+
+            return $mysql_date;
+
+    }
+}
+
+
 if(!function_exists('to_mysql_date_without'))
 {
     function to_mysql_date_without($thai_date)
@@ -823,5 +843,64 @@ if(!function_exists('get_nation'))
     }
 }
 
+if ( ! function_exists('get_prov_id'))
+{
+    function get_province_id($name)
+    {
+        $ci = get_instance();
+
+        $rs = $ci->db
+            ->where('changwatname',$name)
+            ->get('cchangwat')
+            ->row();
+        return $rs ? $rs->changwatcode : '-';
+
+    }
+}
+
+if ( ! function_exists('get_ampur_id'))
+{
+    function get_ampur_id($name,$changcode)
+    {
+        $ci = get_instance();
+        $rs = $ci->db
+            ->where('ampurname',$name)
+            ->where('changwatcode',$changcode)
+            ->get('campur')
+            ->row();
+        return $rs ? $rs->ampurcodefull : '-';
+
+    }
+}
+if ( ! function_exists('get_tambon_id'))
+{
+    function get_tambon_id($name,$ampurcode)
+    {
+        $ci = get_instance();
+
+        $rs = $ci->db
+            ->where('tambonname',$name)
+            ->where('ampurcode',$ampurcode)
+            ->get('ctambon')
+            ->row();
+        return $rs ? $rs->tamboncodefull : '-';
+
+    }
+}
+
+if ( ! function_exists('get_conutry_id'))
+{
+    function get_conutry_id($name)
+    {
+        $ci = get_instance();
+
+        $rs = $ci->db
+            ->where('name',$name)
+            ->get('cnation')
+            ->row();
+        return $rs ? $rs->id : '';
+
+    }
+}
 /* End of file epidem_helper.php */
 /* Location: ./application/helpers/epidem_helper.php */

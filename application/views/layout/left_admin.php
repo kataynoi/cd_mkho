@@ -34,6 +34,14 @@
             </li>
 
             <li>
+                <a href="<?php echo site_url('excel_import') ?>"><i class="fa fa-bus fa-fw"></i>นำเข้าข้อมูล<span
+                        class="fa arrow"></span>
+                </a>
+                <!-- /.nav-second-level -->
+
+            </li>
+
+            <li>
                 <a href="<?php echo site_url('outsite') ?>"><i class="fa fa-bus fa-fw"></i> ข่าวประชาสัมพพันธ์ News<span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">

@@ -6,6 +6,35 @@
 
 <html>
 <body>
+
+<script>
+
+    //var permit_end_date = '<?php echo $outsite['permit_end_date']?>';
+
+
+    $(document).ready(function () {
+        var id = $('#id').val();
+        console.log(id);
+        if (!id) {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                todayBtn: false,
+                language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
+                thaiyear: true,             //Set เป็นปี พ.ศ.
+                autoclose: true
+            }).datepicker("setDate", "0");
+
+        } else {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                todayBtn: false,
+                language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
+                thaiyear: true,              //Set เป็นปี พ.ศ.
+                autoclose: true
+            });
+        }
+    });
+</script>
 <script>
     $('#left_menu').hide();
 </script>
@@ -110,7 +139,9 @@
                         <label for="date_in">วันเดินทางเข้า</label>
                         <input type="text" class="form-control" id="date_in" data-type="date" class="form-control"
                                placeholder="01/04/2563" title="ระบุวันที่" data-rel="tooltip">
-                    </div>
+
+                        <!--<input type="text"  id="date_in"  class="form-control datepicker"data-provide="datepicker" data-date-language="th">
+                   --> </div>
                     <div class="form-group col-md-3">
                         <label for="no">บ้านเลขที่</label>
                         <input type="text" class="form-control" id="no" placeholder="บ้านเลขที่" value=""></div>
