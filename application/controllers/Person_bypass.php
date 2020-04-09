@@ -10,8 +10,10 @@ class Person_bypass extends CI_Controller
     {
         parent::__construct();
 
-        if (!$this->session->userdata("login"))
-            redirect(site_url("user/login"));
+        if ($this->session->userdata("checkpoint")!=1){
+            redirect(site_url("/"));
+        }
+
         $this->load->model('Person_bypass_model', 'crud');
         $this->check_point = $this->session->userdata('id');
     }
