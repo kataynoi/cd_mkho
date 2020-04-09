@@ -18,6 +18,7 @@
                         <a href="<?php echo site_url('person_bypass') ?>"><i class="fas fa-chart-line"></i> รายงาน<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="<?php echo site_url('report/person_bypass_last7day')?>"> จำนวนผู้ผ่านด่านตรวจ</a></li>
+                            <li><a href="<?php echo site_url('report/person_survey')?>"> จำนวนประชากรเดินทางเข้า </a></li>
                         </ul>
                     </li>
                     <li>

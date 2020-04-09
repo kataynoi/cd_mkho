@@ -112,6 +112,7 @@ class User extends CI_Controller
             $rs['login'] = true;
             $rs['fullname'] = $rs['name'];
             $rs['user_type'] = $rs['user_type'];
+            $rs['ampurcode'] = $rs['ampurcode'];
             $this->session->set_userdata($rs);
             $json = '{"success": true, "msg":"" }';
         } else {
@@ -131,6 +132,7 @@ class User extends CI_Controller
             $rs['login_mobile'] = true;
             $rs['fullname'] = $rs['name'];
             $rs['user_type'] = $rs['user_type'];
+            $this->session->set_userdata($rs);
             $this->session->set_userdata($rs);
             $json = '{"success": true, "msg":"" }';
         } else {

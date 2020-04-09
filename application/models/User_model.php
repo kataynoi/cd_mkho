@@ -25,7 +25,7 @@ class User_model extends CI_Model
      function do_auth($username, $password)
     {
         $rs = $this->db
-            ->select('id,name,email,user_type')
+            ->select('id,name,email,user_type,ampurcode')
             ->where('username', $username)
             ->where('password', "PASSWORD('$password')", false)
             ->get('users')

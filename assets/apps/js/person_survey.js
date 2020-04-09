@@ -362,3 +362,31 @@ crud.get_moo_list = function (code) {
     });
 
 };
+
+crud.get_person_by_cid = function (cid) {
+
+    crud.ajax.get_person_by_cid(cid, function (err, data) {
+        if (err) {
+                alert('')
+        }else if(data.success){
+
+            $("#name").val(data.rows["name"]);
+            $("#tel").val(data.rows["tel"]);
+            $("#no").val(data.rows["no"]);
+            $("#moo").val(data.rows["moo"]);
+            $("#tambon").val(data.rows["tambon"]);
+            $("#ampur").val(data.rows["ampur"]);
+            $("#province").val(data.rows["province"]);
+        }else{
+            swal('มีการบันทึกบุคคลนี้ในระบบแล้ว');
+        }
+    });
+
+};
+
+
+
+$("#cidxxx").on('change',function(){
+    var cid = $('#cid').val();
+    crud.get_person_by_cid(cid);
+});

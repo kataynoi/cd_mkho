@@ -23,6 +23,11 @@ class Report extends CI_Controller
         $data['report']= $this->crud->person_bypass_last7day();
         $this->layout->view('reports/person_bypass_last7day', $data);
     }
+    public function  person_survey()
+    {
+        $data['report']= $this->crud->person_survey();
+        $this->layout->view('reports/person_survey', $data);
+    }
 
 
 }
