@@ -12,13 +12,13 @@ class Report extends CI_Controller
         $this->load->model('Reports_model', 'crud');
     }
 
-    public function index()
+        public function index()
     {
         $data[] = '';
         $this->layout->view('reports/index', $data);
     }
 
-    public function  person_bypass_last7day()
+        public function  person_bypass_last7day()
     {
         $data['report']= $this->crud->person_bypass_last7day();
         $this->layout->view('reports/person_bypass_last7day', $data);

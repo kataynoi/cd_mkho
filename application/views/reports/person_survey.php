@@ -17,7 +17,7 @@
     <div class="panel-body">
 
         <span class="pull-right">
-                <a href="<?php echo base_url('excel_export/person_survey_excel/');?>" class="btn btn-outline btn-success"> ส่งออกรายชื่อ Excel (เฉพาะอำเภอของท่าน) </a>
+                <a href="<?php echo site_url('excel_export/person_survey_excel/');?>" class="btn btn-outline btn-success"> ส่งออกรายชื่อ Excel (เฉพาะอำเภอของท่าน) </a>
 
         </span>
 <table class="table table-striped">
