@@ -25,7 +25,7 @@ class Reports_model extends CI_Model
                 ,SUM(IF(DATE_FORMAT(a.d_update,'%Y-%m-%d') = '$day_now',1,0)) daynow
                 ,SUM(IF((a.form in ('กรุงเทพมหานคร' ,'นนทบุรี','ฉะเชิงเทรา','ปทุมธานี','สมุทรปราการ','สมุทรสาคร','นครปฐม') AND a.to ='มหาสารคาม'),1,0)) as Bkk
                 FROM person_bypass a
-                LEFT JOIN users b ON a.check_point = b.id
+                JOIN users b ON a.check_point = b.id
                 GROUP BY a.check_point";
         $rs = $this->db->query($sql)->result();
         //echo $this->db->last_query();
