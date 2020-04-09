@@ -53,7 +53,7 @@
 
         function load_data() {
             $.ajax({
-                url: "<?php echo site_url(); ?>excel_import/fetch",
+                url: "<?php echo site_url(); ?>/excel_import/fetch",
                 method: "POST",
                 success: function (data) {
                     $('#customer_data').html(data);
@@ -64,7 +64,7 @@
         $('#import_form_r7').on('submit', function (event) {
             event.preventDefault();
             $.ajax({
-                url: "<?php echo site_url(); ?>excel_import/import_r7",
+                url: "<?php echo site_url(); ?>/excel_import/import_r7",
                 method: "POST",
                 data: new FormData(this),
                 contentType: false,
@@ -82,7 +82,7 @@
         $('#import_form_thaiqm').on('submit', function (event) {
             event.preventDefault();
             $.ajax({
-                url: "<?php echo site_url(); ?>excel_import/import_thaiqm",
+                url: "<?php echo site_url(); ?>/excel_import/import_thaiqm",
                 method: "POST",
                 data: new FormData(this),
                 contentType: false,
