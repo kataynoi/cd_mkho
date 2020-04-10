@@ -45,6 +45,25 @@ class Person_survey extends CI_Controller
         $this->layout->view('person_survey/add_person_survey', $data);
     }
 
+    public function get_person_by_cid()
+    {
+        $cid = $this->input->post('cid');
+        if($this->crud->check_person_cid($cid) >=1){
+            $json = '{"success": true,"check":true}';
+        }else{
+            $rs = $this->crud->get_person_cid($cid);
+            if($rs){
+                $rows = json_encode($rs);
+                $json = '{"success": true, "rows": ' . $rows . '}';
+            }else{
+                $json = '{"success": true, "check": false}';
+            }
+
+        }
+
+        render_json($json);
+    }
+
 
     function fetch_person_survey()
     {

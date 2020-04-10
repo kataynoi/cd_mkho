@@ -881,6 +881,7 @@ if ( ! function_exists('get_tambon_id'))
         $rs = $ci->db
             ->where('tambonname',$name)
             ->where('ampurcode',$ampurcode)
+            ->where('changwatcode','44')
             ->get('ctambon')
             ->row();
         return $rs ? $rs->tamboncodefull : '-';

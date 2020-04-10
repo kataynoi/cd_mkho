@@ -380,29 +380,31 @@ crud.get_moo_list = function (code) {
 crud.get_person_by_cid = function (cid) {
 
     crud.ajax.get_person_by_cid(cid, function (err, data) {
-        if (err) {
-            alert('')
-        } else if (data.success) {
-
-            $("#name").val(data.rows["name"]);
-            $("#tel").val(data.rows["tel"]);
-            $("#no").val(data.rows["no"]);
-            $("#moo").val(data.rows["moo"]);
-            $("#tambon").val(data.rows["tambon"]);
-            $("#ampur").val(data.rows["ampur"]);
-            $("#province").val(data.rows["province"]);
-        } else {
-            swal('มีการบันทึกบุคคลนี้ในระบบแล้ว');
+        if (!err) {
+            if(data.check){
+                swal('มีบุคคลนี้ในระบบแล้ว');
+                app.clear_form();
+            }else if(data.rows){
+                $("#cid").val(data.rows["CID"]);
+                $("#name").val(data.rows["NAME"]+' '+data.rows["LNAME"]);
+                $("#no").val(data.rows["addr"]);
+                $("#ampur").val(data.rows["vhid"].substring(0,4));
+                if(crud.get_tambon_list(data.rows["vhid"].substring(0,4))){
+                    $("#tambon").val(data.rows["vhid"].substring(0,6));
+                }
+            }else{
+                $('#name').focus();
+            }
         }
     });
 
 };
 
 
-$("#cidx").on('keyup', function () {
+$("#cid").on('keyup', function () {
     var cid = $('#cid').val();
     if (cid.length == 13) {
-        alert(cid);
+       // alert(cid);
         crud.get_person_by_cid(cid);
     }
 

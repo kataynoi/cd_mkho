@@ -215,4 +215,22 @@ class Person_survey_model extends CI_Model
             ->row();
         return $rs;
     }
+
+    public function check_person_cid($cid)
+    {
+        $rs = $this->db
+            ->from("person_survey")
+            ->where('cid', $cid)
+            ->count_all_results();
+        return $rs;
+    }
+    public function get_person_cid($cid)
+    {
+        $rs = $this->db
+            ->where('cid', $cid)
+            ->limit(1)
+            ->get("t_person_cid")
+            ->row();
+        return $rs;
+    }
 }
