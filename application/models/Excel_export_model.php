@@ -13,7 +13,7 @@ class Excel_export_model extends CI_Model
                 LEFT JOIN cchangwat e ON a.from_province = e.changwatcode
                 LEFT JOIN cnation f ON a.from_conutry = f.id
                 LEFT JOIN users g ON a.reporter = g.id
-                WHERE a.ampur =$ampurcode
+                WHERE a.ampur ='$ampurcode'
                 GROUP BY a.cid";
         $rs = $this->db->query($sql)->result();
         //echo $this->db->last_query();
