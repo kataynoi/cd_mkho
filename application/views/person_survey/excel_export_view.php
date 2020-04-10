@@ -1,10 +1,10 @@
 ﻿<html>
 <?php
-/*header("Content-Type:   application/vnd.ms-excel; charset=utf-8");
+header("Content-Type:   application/vnd.ms-excel; charset=utf-8");
 header("Content-Disposition: attachment; filename=".$this->session->userdata('ampurcode')."_".date('Ymd')."_person_survey.xls");  //File name extension was wrong
 header("Expires: 0");
 header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-header("Cache-Control: private",false);*/
+header("Cache-Control: private",false);
 ?>
 
 <body>
