@@ -23,12 +23,12 @@ $(document).ready(function () {
         ],
     });
 
-    $('#frmModal').on('show.bs.modal', function() {
+    $('#frmModal').on('show.bs.modal', function () {
         $('#from_conutry').select2();
         $('#from_province').select2();
     })
 
-    $('#frmModal').on('hidden.bs.modal', function() {
+    $('#frmModal').on('hidden.bs.modal', function () {
         $('#from_conutry').select2('destroy');
         $('#from_province').select2('destroy');
     })
@@ -65,7 +65,7 @@ crud.ajax = {
         app.ajax(url, params, function (err, data) {
             err ? cb(err) : cb(null, data);
         });
-    },get_tambon_list: function (amp, cb) {
+    }, get_tambon_list: function (amp, cb) {
         var url = '/basic/get_tambon_list',
             params = {
                 amp: amp
@@ -74,17 +74,28 @@ crud.ajax = {
         app.ajax(url, params, function (err, data) {
             err ? cb(err) : cb(null, data);
         });
-    },get_moo_list: function (code, cb) {
-    var url = '/basic/get_moo_list',
-        params = {
-            code: code
-        }
+    }, get_moo_list: function (code, cb) {
+        var url = '/basic/get_moo_list',
+            params = {
+                code: code
+            }
 
-    app.ajax(url, params, function (err, data) {
-        err ? cb(err) : cb(null, data);
-    });
-}
+        app.ajax(url, params, function (err, data) {
+            err ? cb(err) : cb(null, data);
+        });
+    }, get_person_by_cid: function (cid, cb) {
+        var url = '/person_survey/get_person_by_cid',
+            params = {
+                cid: cid
+            }
 
+        app.ajax(url, params, function (err, data) {
+            err ? cb(err) : cb(null, data);
+        });
+    }
+
+
+    //
 };
 crud.del_data = function (id) {
 
@@ -213,10 +224,10 @@ $('#btn_save').on('click', function (e) {
     items.ampur = $("#ampur").val();
     items.province = $("#province").val();
     items.in_family = $("#in_family").val();
-    items.risk1 = $("input[name='risk1']:checked"). val();
-    items.risk2 = $("input[name='risk2']:checked"). val();
-    items.risk3 = $("input[name='risk3']:checked"). val();
-    items.risk4 = $("input[name='risk4']:checked"). val();
+    items.risk1 = $("input[name='risk1']:checked").val();
+    items.risk2 = $("input[name='risk2']:checked").val();
+    items.risk3 = $("input[name='risk3']:checked").val();
+    items.risk4 = $("input[name='risk4']:checked").val();
 
     items.reporter = $("#reporter").val();
 
@@ -297,13 +308,15 @@ function validate(items) {
     } else if (!items.name) {
         swal("กรุณาระบุชื่อ สกุล");
         $("#name").focus();
-    }if (!items.from_province) {
+    }
+    if (!items.from_province) {
         swal("กรุณาระบุมาจากจังหวัด");
         $("#from_province").focus();
     } else if (!items.date_in) {
         swal("กรุณาระบุวันเดินทางเข้า");
         $("#date_in").focus();
-    }  if (!items.moo) {
+    }
+    if (!items.moo) {
         swal("กรุณาระบุหมู่บ้าน");
         $("#moo").focus();
     } else if (!items.tambon) {
@@ -312,7 +325,8 @@ function validate(items) {
     } else if (!items.ampur) {
         swal("กรุณาระบุอำเภอ");
         $("#ampur").focus();
-    }  if (!items.in_family) {
+    }
+    if (!items.in_family) {
         swal("กรุณาระบุคนในครอบครัว");
         $("#in_family").focus();
     } else {
@@ -334,7 +348,7 @@ crud.get_tambon_list = function (ampcode) {
         if (!err) {
             $('#tambon').append('<option value="">-*-</option>');
             _.each(data.rows, function (v) {
-           $('#tambon').append('<option value="' + v.tamboncodefull + '">' + v.tambonname + '</option>');
+                $('#tambon').append('<option value="' + v.tamboncodefull + '">' + v.tambonname + '</option>');
             });
         }
     });
@@ -367,8 +381,8 @@ crud.get_person_by_cid = function (cid) {
 
     crud.ajax.get_person_by_cid(cid, function (err, data) {
         if (err) {
-                alert('')
-        }else if(data.success){
+            alert('')
+        } else if (data.success) {
 
             $("#name").val(data.rows["name"]);
             $("#tel").val(data.rows["tel"]);
@@ -377,7 +391,7 @@ crud.get_person_by_cid = function (cid) {
             $("#tambon").val(data.rows["tambon"]);
             $("#ampur").val(data.rows["ampur"]);
             $("#province").val(data.rows["province"]);
-        }else{
+        } else {
             swal('มีการบันทึกบุคคลนี้ในระบบแล้ว');
         }
     });
@@ -385,8 +399,12 @@ crud.get_person_by_cid = function (cid) {
 };
 
 
-
-$("#cidxxx").on('change',function(){
+$("#cidx").on('keyup', function () {
     var cid = $('#cid').val();
-    crud.get_person_by_cid(cid);
+    if (cid.length == 13) {
+        alert(cid);
+        crud.get_person_by_cid(cid);
+    }
+
+    //
 });

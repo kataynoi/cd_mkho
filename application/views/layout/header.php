@@ -5,8 +5,14 @@
 <!-- /.navbar-header -->
 <ul class="nav navbar-top-links navbar-right w3-theme">
     <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-envelope fa-fw"></i> Home <i class="fa fa-caret-down"></i>
+        <a  href="<?php echo base_url('/'); ?>" >
+            <i class="fa fa-envelope fa-fw"></i> Home
+        </a>
+    </li>
+
+    <li class="dropdown">
+        <a  href="<?php echo site_url('person_bypass'); ?>" >
+            <i class="fa fa-envelope fa-fw"></i> บันทึกข้อมูลด่านตรวจ
         </a>
     </li>
 <!--

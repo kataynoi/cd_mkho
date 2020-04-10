@@ -33,11 +33,17 @@ header("Cache-Control: private",false);
                 <th>วันที่บันทึกข้อมูล</th>
                 <th>เลขบัตรประชาชน</th>
                 <th>ชื่อ สกุล</th>
+                <th>tel</th>
+                <th>มาจากประเทศ</th>
+                <th>มาจากจังหวัด</th>
                 <th>วันเดินทางเข้า</th>
                 <th>มาจาก</th>
                 <th>หมู่บ้าน</th>
                 <th>ตำบล</th>
                 <th>อำเภอ</th>
+                <th>จำนวนคนในครอบครัว</th>
+                <th>ผู้รายงาน</th>
+
 
             </tr>
             </thead>
@@ -48,11 +54,16 @@ header("Cache-Control: private",false);
                 echo "<td>".$r->d_update."</td>";
                 echo "<td>".$r->cid."</td>";
                 echo "<td>".$r->name."</td>";
-                echo "<td>".$r->date_in."</td>";
+                echo "<td>".$r->tel."</td>";
+                echo "<td>".$r->from_conutry."</td>";
                 echo "<td>".$r->from_province."</td>";
+                echo "<td>".$r->date_in."</td>";
+                echo "<td>".$r->no."</td>";
                 echo "<td>".$r->moo."</td>";
-                echo "<td>".$r->tambon."</td>";
-                echo "<td>".$r->ampur."</td>";
+                echo "<td>".$r->tambonname."</td>";
+                echo "<td>".$r->ampurname."</td>";
+                echo "<td>".$r->in_family."</td>";
+                echo "<td>".$r->reporter."</td>";
                 echo "</tr>";
 
             }
