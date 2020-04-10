@@ -121,7 +121,7 @@ crud.save = function (items, row_id) {
 
             $('#frmModal').modal('toggle');
             swal('บันทึกข้อมูลเรียบร้อยแล้ว ');
-            //location.reload();
+            location.reload();
         }
     });
 
