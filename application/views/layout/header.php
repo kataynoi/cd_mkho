@@ -6,61 +6,24 @@
 <ul class="nav navbar-top-links navbar-right w3-theme">
     <li class="dropdown">
         <a  href="<?php echo base_url('/'); ?>" >
-            <i class="fa fa-envelope fa-fw"></i> Home
+            <i class="fa fa-home fa-fw"></i> Home
         </a>
     </li>
 
     <li class="dropdown">
-        <a  href="<?php echo site_url('person_bypass'); ?>" >
-            <i class="fa fa-envelope fa-fw"></i> บันทึกข้อมูลด่านตรวจ
-        </a>
-    </li>
-<!--
-    <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+            <i class="fa fa-save fa-fw"></i> บันทึกข้อมูล <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-messages">
             <li>
-                <a href="#">
-                    <div>
-                        <strong>John Smith</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                    </div>
-                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                <a href="<?php echo site_url('person_bypass'); ?>">
+                    <div>  <i class="fa fa-save fa-fw"></i> บันทึกข้อมูลด่านตรวจวัดอุณหภูมิ </div>
                 </a>
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#">
-                    <div>
-                        <strong>John Smith</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                    </div>
-                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <strong>John Smith</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                    </div>
-                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a class="text-center" href="#">
-                    <strong>Read All Messages</strong>
-                    <i class="fa fa-angle-right"></i>
+                <a href="<?php echo site_url('person_survey'); ?>">
+                    <div>  <i class="fa fa-save fa-fw"> </i>บันทึกข้อมูลประชาชนที่เดินทางกลับภูมิลำเนา</div>
                 </a>
             </li>
         </ul>
@@ -69,151 +32,24 @@
 
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+            <i class="fa fa-save fa-fw"></i> รายงาน <i class="fa fa-caret-down"></i>
         </a>
-        <ul class="dropdown-menu dropdown-tasks">
+        <ul class="dropdown-menu dropdown-messages">
             <li>
-                <a href="#">
-                    <div>
-                        <p>
-                            <strong>Task 1</strong>
-                            <span class="pull-right text-muted">40% Complete</span>
-                        </p>
-
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                <span class="sr-only">40% Complete (success)</span>
-                            </div>
-                        </div>
-                    </div>
+                <a href="<?php echo site_url('report/person_bypass_last7day')?>">
+                    <div>  <i class="fa fa-save fa-fw"></i> จำนวนผู้ผ่านด่านตรวจ </div>
                 </a>
             </li>
             <li class="divider"></li>
             <li>
-                <a href="#">
-                    <div>
-                        <p>
-                            <strong>Task 2</strong>
-                            <span class="pull-right text-muted">20% Complete</span>
-                        </p>
-
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                <span class="sr-only">20% Complete</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <p>
-                            <strong>Task 3</strong>
-                            <span class="pull-right text-muted">60% Complete</span>
-                        </p>
-
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                <span class="sr-only">60% Complete (warning)</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <p>
-                            <strong>Task 4</strong>
-                            <span class="pull-right text-muted">80% Complete</span>
-                        </p>
-
-                        <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                <span class="sr-only">80% Complete (danger)</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a class="text-center" href="#">
-                    <strong>See All Tasks</strong>
-                    <i class="fa fa-angle-right"></i>
+                <a href="<?php echo site_url('report/person_survey')?>">
+                    <div>  <i class="fa fa-save fa-fw"> </i> จำนวนประชาชนเดินทางกลับภูมิลำเนา จ.มหาสารคาม</div>
                 </a>
             </li>
         </ul>
 
     </li>
 
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-        </a>
-        <ul class="dropdown-menu dropdown-alerts">
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-comment fa-fw"></i> New Comment
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                        <span class="pull-right text-muted small">12 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-envelope fa-fw"></i> Message Sent
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-tasks fa-fw"></i> New Task
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a class="text-center" href="#">
-                    <strong>See All Alerts</strong>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
-        </ul>
-
-    </li>
--->
     <li class="dropdown">
 
         <?php

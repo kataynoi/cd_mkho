@@ -129,16 +129,11 @@ var app = {
             $.ajax({
                 url: url,
                 type: 'POST',
-                dataType: 'jsonp',
+                dataType: 'json',
                 data: params,
                     success: function (data) {
-                        if (data.success) {
-                                cb(data);
+                            cb(data);
                             app.hide_loading();
-                        } else {
-                            cb(data.msg);
-                            app.hide_loading();
-                        }
                     },
                 error: function (xhr, status) {
                     cb('Error:  [' + xhr.status + '] ' + xhr.statusText, null);

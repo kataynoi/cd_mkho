@@ -67,10 +67,13 @@
                 url: "<?php echo site_url(); ?>/excel_import/import_r7",
                 method: "POST",
                 data: new FormData(this),
+                beforeSend: function() {
+                app.show_loading();},
                 contentType: false,
                 cache: false,
                 processData: false,
                 success: function (data) {
+                    app.hide_loading();
                     $('#file_r7').val('');
                     //load_data();
                     swal('นำเข้าข้อมูลทั้งหมด ' + data + ' รายการ');
@@ -85,10 +88,14 @@
                 url: "<?php echo site_url(); ?>/excel_import/import_thaiqm",
                 method: "POST",
                 data: new FormData(this),
+                beforeSend: function() {
+                    app.show_loading();
+                },
                 contentType: false,
                 cache: false,
                 processData: false,
                 success: function (data) {
+                    app.hide_loading();
                     $('#file_thaiqm').val('');
                     //load_data();
                     swal('นำเข้าข้อมูลทั้งหมด ' + data + ' รายการ');

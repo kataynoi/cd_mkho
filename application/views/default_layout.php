@@ -52,7 +52,14 @@
 <!-- Custom Fonts -->
 
 <!-- jQuery -->
-
+<script>
+    $('#left_menu').hide();
+</script>
+<style>
+    #page-wrapper {
+        margin-left: 0px;
+    }
+</style>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo base_url()?>assets/vendor/js/bootstrap.min.js"></script>

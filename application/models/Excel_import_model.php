@@ -24,4 +24,13 @@ class Excel_import_model extends CI_Model
 		$this->db->trans_complete();
 		return $n;
 	}
+
+	public function check_person_cid($cid)
+	{
+		$rs = $this->db
+			->from("person_survey")
+			->where('cid', $cid)
+			->count_all_results();
+		return $rs;
+	}
 }
