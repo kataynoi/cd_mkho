@@ -25,9 +25,9 @@ $(document).ready(function () {
             },
         ],
     });
-    $('#frm_vehicle').hide();
-});
 
+});
+$('#frm_vehicle').hide();
 
 $('#frmModal').on('shown.bs.modal', function () {
     $('#cid').focus();
@@ -303,10 +303,14 @@ $(document).on('click', 'button[data-btn="add_data"]', function (e) {
     $('#cid').focus();
     $('#frmModal').modal('show')
 });
+
 $(document).on('click', 'input[name=driver][value="1"]', function (e) {
+
     $('#frm_vehicle').show();
 });
+
 $(document).on('click', 'input[name=driver][value="0"]', function (e) {
+
     $('#frm_vehicle').hide();
 });
 
