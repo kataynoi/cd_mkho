@@ -10,7 +10,7 @@
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js" charset="utf-8"></script>
 <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 <script>
     $('#left_menu').hide();
@@ -66,7 +66,8 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">เพิ่มประชาชนที่ เดินทางเข้า มหาสารคามผ่านจุดตรวจ</h4>
+                <h4 class="modal-title">เพิ่มประชาชนที่ เดินทางเข้า มหาสารคามผ่านจุดตรวจ <span id="check_point2"></span>
+                </h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -76,10 +77,12 @@
                 <input type="hidden" class="form-control" id="row_id" placeholder="ROWID" value="">
 
                 <div class="form-row">
-                        <input type="hidden" class="form-control" id="id" placeholder="ID" value="">
+                    <input type="hidden" class="form-control" id="id" placeholder="ID" value="">
+
                     <div class="form-group col-md-3">
                         <label for="cid">เลขบัตรประชาชน</label>
-                        <input type="text" class="form-control" id="cid" placeholder="เลขบัตรประชาชน" value="" script="$('#cid').focus();">
+                        <input type="text" class="form-control" id="cid" placeholder="เลขบัตรประชาชน" value=""
+                               script="$('#cid').focus();">
                     </div>
                 </div>
 
@@ -143,36 +146,36 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="datestamp">โทร</label>
-                        <input type="text" class="form-control" id="tel" placeholder="เบอร์โทร" value="">
-                    </div>
 
                     <div class="form-group col-md-3">
                         <label for="from_province">มาจากจังหวัด</label>
                         <select class="form-control" id="form" style="width: 100%">
                             <?php
                             foreach ($cchangwat as $r) {
-                                echo "<option value='".$r->changwatname."' > ".$r->changwatname ."</option>";
+                                echo "<option value='" . $r->changwatname . "' > " . $r->changwatname . "</option>";
                             } ?>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="temp_check">เดินทางไป</label>
-                        <select class="form-control" id="to" style="width: 100%">
+                        <select class="form-control" id="to" style="width: 90%">
                             <?php
                             foreach ($cchangwat as $r) {
-                                echo "<option value='".$r->changwatname."' > ".$r->changwatname ."</option>";
+                                echo "<option value='" . $r->changwatname . "' > " . $r->changwatname . "</option>";
                             } ?>
                         </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="datestamp">โทร</label>
+                        <input type="text" class="form-control" id="tel" placeholder="เบอร์โทร" value="">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-3">
-                        <label for="temp_check">อุณหภูมิปกติ</label>
+                        <label for="temp_check"  >อุณหภูมิปกติ</label>
                         <select class="form-control" id="temp_check">
-                            <option value="ปกติ" > ปกติ</option>
+                            <option value="ปกติ"> ปกติ</option>
                             <option value="ไม่ปกติ"> ไม่ปกติ</option>
                         </select>
                     </div>
@@ -184,27 +187,46 @@
                     <div class="form-group col-md-3">
                         <label for="temp_result">อาการทั่วไป</label>
                         <select class="form-control" id="symtom1">
-                            <option value="ปกติ" > ปกติ</option>
+                            <option value="ปกติ"> ปกติ</option>
                             <option value="ไม่ปกติ"> ไม่ปกติ</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-3">
-                        <label for="check_point">จุดตรวจ</label>
-                        <input type="hidden" class="form-control" id="check_point" placeholder="จุดตรวจ" value="">
-                    <input type="text" class="form-control" id="check_point2" placeholder="จุดตรวจ" value="" disabled ></div>
                 </div>
-
-                <div class="form-row col-md-12 text-center">
-                    <div class="form-group">
-                        <button type="button" class="btn btn-success btn-lg" id="btn_save">Save</button>
-                        <button type="button" class="btn btn-danger btn-lg" id="btn_close" data-dismiss="modal">Close</button>
+                <div class="panel panel-success">
+                    <div class="panel-body">
+                        <div class="form-group col-md-3">
+                            <div class="radio">
+                                <label><input type="radio" name="driver" checked value="0">ผู้โดยสาร </label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="driver" value="1"> คนขับ </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4" id="frm_vehicle">
+                            <label for="temp_check">ประเภทยานพาหนะ</label>
+                            <select class="form-control" id="vehicle" style="width: 90%">
+                                <option value="1">รถกระบะ</option>
+                                <option value="2">รถเก๋ง</option>
+                                <option value="3">รถมอร์เตอร์ไซด์</option>
+                                <option value="4">รถยนต์โดยสารประจำทาง</option>
+                                <option value="5">รถตู้โดยสาร</option>
+                                <option value="6">รถบรรทุก</option>
+                                <option value="7">อื่นๆ</option>
+                            </select>
+                        </div>
                     </div>
-
                 </div>
+
             </div>
             <!-- Modal footer -->
 
-            <div class="modal-footer">
+            <div class="modal-footer ">
+                <div class="form-group text-center">
+                    <input type="hidden" class="form-control" id="check_point" placeholder="จุดตรวจ" value="">
+                    <button type="button" class="btn btn-success btn-lg" id="btn_save"> บันทึก</button>
+                    <button type="button" class="btn btn-danger btn-lg" id="btn_close" data-dismiss="modal"> ปิด
+                    </button>
+                </div>
             </div>
 
         </div>

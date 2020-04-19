@@ -4,15 +4,8 @@ dash.get_nation_today();
 });
 var dash = {};
 dash.ajax = {
-    get_nation_today: function ( cb) {
-        var url = 'https://covid19.th-stat.com/api/open/today',
-            params = {};
-
-        app.ajax_cross(url, params, function (err, data) {
-            err ? cb(err) : cb(data);
-        });
-    },get_nation_today: function ( cb) {
-        var url = 'https://covid19.th-stat.com/api/open/today',
+   get_nation_today: function ( cb) {
+        var url = 'https://covid19.th-stat.com/api/open/cases/sum',
             params = {};
 
         app.ajax_cross(url, params, function (err, data) {
@@ -29,7 +22,4 @@ dash.get_nation_today = function () {
         $('#hospitalized').html(data.Hospitalized);
         $('#deaths').html(data.Deaths+' (+'+data.NewDeaths+')');
     });
-
 }
-
-

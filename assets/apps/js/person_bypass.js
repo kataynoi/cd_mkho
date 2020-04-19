@@ -20,22 +20,26 @@ $(document).ready(function () {
         },
         "columnDefs": [
             {
-                "targets": [0,1,2,3,4,5,6,7,8,9,10],
+                "targets": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 "orderable": false,
             },
         ],
     });
-
+    $('#frm_vehicle').hide();
 });
+
+
 $('#frmModal').on('shown.bs.modal', function () {
     $('#cid').focus();
     $('#form').select2();
     $('#to').select2();
 });
-$('#frmModal').on('hidden.bs.modal', function() {
+
+$('#frmModal').on('hidden.bs.modal', function () {
     $('#form').select2('destroy');
     $('#to').select2('destroy');
 });
+
 var crud = {};
 
 crud.ajax = {
@@ -90,11 +94,6 @@ crud.save = function (items, row_id) {
             swal(err);
         }
         else {
-            if (items.action == 'insert') {
-                crud.set_after_insert(items, data.id);
-            } else if (items.action == 'update') {
-                crud.set_after_update(items, row_id);
-            }
             $('#frmModal').modal('toggle');
             swal('บันทึกข้อมูลเรียบร้อยแล้ว ');
             location.reload();
@@ -208,6 +207,8 @@ $('#btn_save').on('click', function (e) {
     items.temp_check = $("#temp_check").val();
     items.temp_result = $("#temp_result").val();
     items.symtom1 = $("#symtom1").val();
+    items.vehicle = $("#vehicle").val();
+    items.driver = $('input[name=driver]:checked').val()
     items.check_point = $("#check_point").val();
 
     if (validate(items)) {
@@ -224,7 +225,7 @@ $('#add_data').on('click', function (e) {
     $("#frmModal .btn").prop('disabled', false);
     app.clear_form();
     $('#check_point').val(user_id);
-    $('#check_point2').val(user_name);
+    $('#check_point2').html(user_name);
     $('#cid').focus();
 });
 
@@ -285,7 +286,7 @@ $(document).on('click', 'button[data-btn="btn_view"]', function (e) {
 
 function validate(items) {
 
-     if (!items.tname) {
+    if (!items.tname) {
         swal("กรุณาระบุชื่อ");
         $("#tname").focus();
     } else if (!items.tlast) {
@@ -302,3 +303,11 @@ $(document).on('click', 'button[data-btn="add_data"]', function (e) {
     $('#cid').focus();
     $('#frmModal').modal('show')
 });
+$(document).on('click', 'input[name=driver][value="1"]', function (e) {
+    $('#frm_vehicle').show();
+});
+$(document).on('click', 'input[name=driver][value="0"]', function (e) {
+    $('#frm_vehicle').hide();
+});
+
+

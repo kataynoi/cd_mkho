@@ -474,6 +474,7 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
      */
     public function loadIntoExisting($pFilename, PHPExcel $objPHPExcel)
     {
+
         // Open file to validate
         $this->openFile($pFilename);
         if (!$this->isValidFormat()) {
@@ -492,6 +493,7 @@ class PHPExcel_Reader_HTML extends PHPExcel_Reader_Abstract implements PHPExcel_
         //    Create a new DOM object
         $dom = new domDocument;
         //    Reload the HTML file into the DOM object
+        libxml_use_internal_errors(true);
         $loaded = $dom->loadHTML(mb_convert_encoding($this->securityScanFile($pFilename), 'HTML-ENTITIES', 'UTF-8'));
         if ($loaded === false) {
             throw new PHPExcel_Reader_Exception('Failed to load ' . $pFilename . ' as a DOM Document');
