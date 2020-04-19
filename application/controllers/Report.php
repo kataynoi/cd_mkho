@@ -28,6 +28,15 @@ class Report extends CI_Controller
         $data['report']= $this->crud->person_survey();
         $this->layout->view('reports/person_survey', $data);
     }
+    public function  summary_checkpoint()
+    {
+        $date_now='';
+        $ampcode=$this->session->userdata('id');
+        IF($date_now==''){$date_now=DATE("Y-m-d");};
+        $data['report']= $this->crud->person_bypass_inday($ampcode,$date_now);
+        $data['car']= $this->crud->car_inday($ampcode,$date_now);
+        $this->layout->view('reports/summary_checkpoint', $data);
+    }
 
 
 }

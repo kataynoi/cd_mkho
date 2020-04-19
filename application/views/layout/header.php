@@ -40,10 +40,15 @@
                     <div>  <i class="fa fa-save fa-fw"></i> จำนวนผู้ผ่านด่านตรวจ </div>
                 </a>
             </li>
-            <li class="divider"></li>
             <li>
                 <a href="<?php echo site_url('report/person_survey')?>">
                     <div>  <i class="fa fa-save fa-fw"> </i> จำนวนประชาชนเดินทางกลับภูมิลำเนา จ.มหาสารคาม</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="<?php echo site_url('report/summary_checkpoint')?>">
+                    <div>  <i class="fa fa-save fa-fw"> </i> สรุปจำนวนประชาชนผ่านด่าน รายวัน</div>
                 </a>
             </li>
         </ul>
