@@ -29,10 +29,12 @@ class Report extends CI_Controller
         $this->layout->view('reports/person_survey', $data);
     }
     public function  summary_checkpoint()
-    {
-        $date_now='';
+    {   //$date_now='';
+        $date_now = to_mysql_date($this->input->post('date_report'));
+        //echo $date_now;
         $ampcode=$this->session->userdata('id');
         IF($date_now==''){$date_now=DATE("Y-m-d");};
+        $data['date_report']=to_thai_date($date_now);
         $data['report']= $this->crud->person_bypass_inday($ampcode,$date_now);
         $data['car']= $this->crud->car_inday($ampcode,$date_now);
         $this->layout->view('reports/summary_checkpoint', $data);

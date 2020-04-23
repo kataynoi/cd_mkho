@@ -11,7 +11,16 @@
 </style>
 <div class="panel panel-info">
     <div class="panel-heading">
-        จำนวนประชาชนที่เดินทาง  วันที่ <?php echo to_thai_date(date('Y-m-d'));?>
+
+
+        <form class="form-inline" action="<?php echo site_url('/report/summary_checkpoint')?>" method="post">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="inputPassword2" class=""> จำนวนประชาชนที่เดินทาง วันที่</label>
+                <input type="text" class="form-control" name="date_report" id="date_report" data-type="date" class="form-control"
+                       placeholder="" title="ระบุวันที่" data-rel="tooltip" value="<?php echo $date_report?>">
+            </div>
+            <button type="submit" id="show_report" class="btn btn-primary mb-2">แสดงรายงาน</button>
+        </form>
     </div>
     <div class="panel-body">
 
@@ -32,23 +41,20 @@
             <tr>
                 <td></td>
                 <td>ชาย</td>
-                <td><?php echo $report->male; ?></td>
+                <td><?php echo round($report->male+(($report->total - ($report->male + $report->female))/2),0,PHP_ROUND_HALF_UP); ?></td>
             </tr>
             <tr>
                 <td></td>
                 <td>หญิง</td>
-                <td><?php echo $report->female; ?></td>
+                <td><?php echo round($report->female+(($report->total - ($report->male + $report->female))/2),0,PHP_ROUND_HALF_DOWN); ?></td>
             </tr>
-            <tr>
-                <td></td>
-                <td>ข้อมูลเพศไม่ครบถ้วน</td>
-                <td><?php echo $report->total-($report->female+$report->female); ?></td>
-            </tr>
+
             <tr>
                 <td>2</td>
                 <td>เข้ามาพักในจังหวัดมหาสารคาม</td>
                 <td><?php echo $report->in_mk; ?></td>
-            </tr>            <tr>
+            </tr>
+            <tr>
                 <td>3</td>
                 <td>ผลการตรวจอุฦณหภูมิ</td>
                 <td><?php echo $report->total; ?></td>
@@ -78,7 +84,8 @@
                 <td class='text-center'>จำนวน</td>
             </tr>
             <?php
-            $stotal = 0;$n=1;
+            $stotal = 0;
+            $n = 1;
             foreach ($car as $r) {
                 echo "<tr>";
                 echo "<td>$n</td>
