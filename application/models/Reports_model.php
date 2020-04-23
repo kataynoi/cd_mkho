@@ -69,8 +69,8 @@ class Reports_model extends CI_Model
         $sql = "SELECT count(*) as total
                 ,SUM(IF(a.sex='ชาย' OR a.trpre in('นาย','ด.ช.'),1,0)) as male
                 ,SUM(IF(a.sex='หญิง' OR a.trpre in('นาง','น.ส.','นางสาว','ด.ญ.'),1,0)) as female
-                ,SUM(IF((a.form NOT in ('ขอนแก่น' ,'มหาสารคาม','ร้อยเอ็ด', 'กาฬสินธุ์') AND a.to ='มหาสารคาม'),1,0)) as in_mk ,SUM(IF(a.temp_check <=37.5,1,0)) as temp_normal
-                ,SUM(IF(a.temp_check >37.5,1,0)) as temp_abnormal
+                ,SUM(IF((a.form NOT in ('ขอนแก่น' ,'มหาสารคาม','ร้อยเอ็ด', 'กาฬสินธุ์') AND a.to ='มหาสารคาม'),1,0)) as in_mk ,SUM(IF(a.temp_result <=37.5,1,0)) as temp_normal
+                ,SUM(IF(a.temp_result >37.5,1,0)) as temp_abnormal
                 FROM person_bypass a
                 WHERE DATE_FORMAT(a.d_update,'%Y-%m-%d') ='".$date_now."'
                   AND a.check_point ".$ampcode;
