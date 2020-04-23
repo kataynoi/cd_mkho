@@ -65,6 +65,7 @@ class Reports_model extends CI_Model
     }
     public function person_bypass_inday($ampcode,$date_now)
     {
+        if($ampcode==''){$ampcode='<>""';}else{$ampcode="='$ampcode'";}
         $sql = "SELECT count(*) as total
                 ,SUM(IF(a.sex='ชาย' OR a.trpre in('นาย','ด.ช.'),1,0)) as male
                 ,SUM(IF(a.sex='หญิง' OR a.trpre in('นาง','น.ส.','นางสาว','ด.ญ.'),1,0)) as female
@@ -72,7 +73,7 @@ class Reports_model extends CI_Model
                 ,SUM(IF(a.temp_check >37.5,1,0)) as temp_abnormal
                 FROM person_bypass a
                 WHERE DATE_FORMAT(a.d_update,'%Y-%m-%d') ='".$date_now."'
-                  AND a.check_point ='".$ampcode."'";
+                  AND a.check_point ".$ampcode;
         $rs = $this->db->query($sql)->row();
 
         return $rs;

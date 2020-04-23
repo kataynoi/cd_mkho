@@ -13,11 +13,17 @@
     <div class="panel-heading">
 
 
-        <form class="form-inline" action="<?php echo site_url('/report/summary_checkpoint')?>" method="post">
+        <form class="form-inline" action="<?php echo site_url('/report/summary_checkpoint') ?>" method="post">
             <div class="form-group mx-sm-3 mb-2">
-                <label for="inputPassword2" class=""> จำนวนประชาชนที่เดินทาง วันที่</label>
-                <input type="text" class="form-control" name="date_report" id="date_report" data-type="date" class="form-control"
-                       placeholder="" title="ระบุวันที่" data-rel="tooltip" value="<?php echo $date_report?>">
+                <label for="inputPassword2" class="">
+                    จำนวนประชาชนที่เดินทาง <?php if (!$this->session->userdata('name')) {
+                        echo ' จังหวัดมหาสารคาม';
+                    } else {
+                        echo $this->session->userdata('name');
+                    } ?> วันที่</label>
+                <input type="text" class="form-control" name="date_report" id="date_report" data-type="date"
+                       class="form-control"
+                       placeholder="" title="ระบุวันที่" data-rel="tooltip" value="<?php echo $date_report ?>">
             </div>
             <button type="submit" id="show_report" class="btn btn-primary mb-2">แสดงรายงาน</button>
         </form>
@@ -36,38 +42,38 @@
             <tr>
                 <td>1</td>
                 <td>จำนวนผู้เข้าด่านตรวจทั้งหมด</td>
-                <td><?php echo $report->total; ?></td>
+                <td><?php echo number_format($report->total); ?></td>
             </tr>
             <tr>
                 <td></td>
                 <td>ชาย</td>
-                <td><?php echo round($report->male+(($report->total - ($report->male + $report->female))/2),0,PHP_ROUND_HALF_UP); ?></td>
+                <td><?php echo number_format(round($report->male + (($report->total - ($report->male + $report->female)) / 2), 0, PHP_ROUND_HALF_UP)); ?></td>
             </tr>
             <tr>
                 <td></td>
                 <td>หญิง</td>
-                <td><?php echo round($report->female+(($report->total - ($report->male + $report->female))/2),0,PHP_ROUND_HALF_DOWN); ?></td>
+                <td><?php echo number_format(round($report->female + (($report->total - ($report->male + $report->female)) / 2), 0, PHP_ROUND_HALF_DOWN)); ?></td>
             </tr>
 
             <tr>
                 <td>2</td>
                 <td>เข้ามาพักในจังหวัดมหาสารคาม</td>
-                <td><?php echo $report->in_mk; ?></td>
+                <td><?php echo number_format($report->in_mk); ?></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>ผลการตรวจอุฦณหภูมิ</td>
-                <td><?php echo $report->total; ?></td>
+                <td><?php echo number_format($report->total); ?></td>
             </tr>
             <tr>
                 <td></td>
                 <td>ปกติ</td>
-                <td><?php echo $report->temp_normal; ?></td>
+                <td><?php echo number_format($report->temp_normal); ?></td>
             </tr>
             <tr>
                 <td></td>
                 <td>ผิดปกติ</td>
-                <td><?php echo $report->temp_abnormal; ?></td>
+                <td><?php echo number_format($report->temp_abnormal); ?></td>
             </tr>
 
             </tbody>
