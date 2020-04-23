@@ -14,7 +14,10 @@ class Excel_export extends CI_Controller
     function person_survey_excel()
     {
         $ampcode= $this->session->userdata('ampurcode');
+        $id= $this->session->userdata('id');
         $this->load->model("excel_export_model");
+        $this->load->model('log_model');
+        $this->log_model->save_log($id,'export excel จำนวนคนเข้าพื้นที่');
         $data['person_survey'] = $this->excel_export_model->fetch_data($ampcode);
         $this->load->view("person_survey/excel_export_view", $data);
 
