@@ -81,13 +81,13 @@ class Reports_model extends CI_Model
     }
 
     public function car_inday($ampcode,$date_now)
-    {
+    {   $operation='';
         $date_now = "'".$date_now."'";
-
+        if($ampcode==''){$ampcode='""';$operation='!=';}else{$ampcode="'$ampcode'";$operation='=';}
         $rs = $this->db
             ->select('a.vehicle,b.name,count(*) as total', false)
             ->where('DATE_FORMAT(a.d_update,"%Y-%m-%d")',$date_now,false)
-            ->where('a.check_point',$ampcode)
+            ->where('a.check_point '.$operation,$ampcode,false)
             ->group_by('a.vehicle')
             ->join('cvehicle b','a.vehicle = b.id')
             ->get('person_bypass a')
