@@ -102,7 +102,7 @@ class Person_survey_self extends CI_Controller
         render_json($json);
     }
 
-    public function  save_person_survey()
+    public function  save_person_survey_self()
     {
         $data = $this->input->post('items');
         if ($data['action'] == 'insert') {

@@ -171,11 +171,17 @@ class Person_survey_self_model extends CI_Model
         if(!isset($data["risk2"])){$data["risk2"]=0;}
         if(!isset($data["risk3"])){$data["risk3"]=0;}
         if(!isset($data["risk4"])){$data["risk4"]=0;}
+        if(!isset($data["risk5"])){$data["risk5"]=0;}
+        if(!isset($data["risk6"])){$data["risk6"]=0;}
+        if(!isset($data["risk7"])){$data["risk7"]=0;}
+        if(!isset($data["risk8"])){$data["risk8"]=0;}
+        if(!isset($data["risk9"])){$data["risk9"]=0;}
         $rs = $this->db
             ->set("id", $data["id"])
             ->set("d_update", date("Y-m-d H:i:s"))
             ->set("cid", $data["cid"])
             ->set("name", $data["name"])
+            ->set("age", $data["age"])
             ->set("tel", $data["tel"])
             ->set("from_conutry", $data["from_conutry"])
             ->set("from_province", $data["from_province"])
@@ -190,8 +196,13 @@ class Person_survey_self_model extends CI_Model
             ->set("risk2", $data["risk2"])
             ->set("risk3", $data["risk3"])
             ->set("risk4", $data["risk4"])
-            ->set("reporter", $data["reporter"])
-            ->insert('person_survey');
+            ->set("risk5", $data["risk5"])
+            ->set("risk6", $data["risk6"])
+            ->set("risk7", $data["risk7"])
+            ->set("risk8", $data["risk8"])
+            ->set("risk9", $data["risk9"])
+            ->set("comment", $data["comment"])
+            ->insert('person_survey_self');
 
         return $this->db->insert_id();
 

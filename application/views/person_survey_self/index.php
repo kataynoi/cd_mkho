@@ -79,13 +79,22 @@
                                     <label for="tel">โทร</label>
                                     <input type="text" class="form-control" id="tel" placeholder="โทร" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                 </div>
+                                <div class="col-md-3">
+                                    <label for="tel">อายุ</label>
+                                    <input type="text" class="form-control" id="age" placeholder="อายุ" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                </div>
                                 <div class="form-group col-md-3">
                                     <label for="from_conutry">มาจากประเทศ</label>
                                     <select class="form-control" id="from_conutry" placeholder="มาจากประเทศ" value="" style="width: 100%">
                                         <option>-------</option>
                                         <?php
                                         foreach ($cnation as $r) {
-                                            echo "<option value=$r->id > $r->name </option>";
+                                            if($r->id =='099'){
+                                                echo "<option value=$r->id selected > $r->name </option>";
+                                            }else{
+                                               echo "<option value=$r->id > $r->name </option>"; 
+                                            }
+                                            
                                         } ?>
                                     </select>
                                 </div>
@@ -152,37 +161,74 @@
                                 <div class="form-check " style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk1" name="risk1" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                        เคยไปสถานที่เสี่ยง ที่มีคนแออัดเบียดเสียด เช่น สนามมวย สถานบันเทิง สนามกีฬา
+                                        สบายดี ไม่มีอาการ
                                     </label>
                                 </div>
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk2" name="risk2" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                        เคยไปร่วมกิจกรรมมีคนร่วมกันจำนวนมากๆ
+                                    มีไข้ตั้งแต่ 37.3 องศาเซนเซียสขึ้นไป
                                     </label>
                                 </div>
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk3" name="risk3" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                        ใกล้ชิดกับผู้ป่วยติดเชื้อ หรือไปร่วมอยู่ในสถานที่ที่มีผู้ป่วยติดเชื้อไวรัสโคโรน่า 2019
+                                    มีอาการไอ
                                     </label>
                                 </div>
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk4" name="risk4" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                        ไข้ + URI + มีประวัติสนามมวย / สถานบันเทิง ในพื้นที่กรุงเทพและปริมณฑล
+                                    มีน้ำมูก
+                                    </label>
+                                </div>
+                                <div class="form-check" style="padding-left: 20px;">
+                                    <input class="form-check-input" type="checkbox" id="risk5" name="risk5" value="1">
+                                    <label class="form-check-label" for="gridCheck1">
+                                    มีอาการเจ็บคอ
+                                    </label>
+                                </div>
+                                <div class="form-check" style="padding-left: 20px;">
+                                    <input class="form-check-input" type="checkbox" id="risk6" name="risk6" value="1">
+                                    <label class="form-check-label" for="gridCheck1">
+                                    ไม่ได้กลิ่น
+                                    </label>
+                                </div>
+                                <div class="form-check" style="padding-left: 20px;">
+                                    <input class="form-check-input" type="checkbox" id="risk7" name="risk7" value="1">
+                                    <label class="form-check-label" for="gridCheck1">
+                                    หายใจเร็ว
+                                    </label>
+                                </div>
+                                <div class="form-check" style="padding-left: 20px;">
+                                    <input class="form-check-input" type="checkbox" id="risk8" name="risk8" value="1">
+                                    <label class="form-check-label" for="gridCheck1">
+                                    หอบเหนื่อยหรือหายใจลำบาก
+                                    </label>
+                                </div>
+                                <div class="form-check" style="padding-left: 20px;">
+                                    <input class="form-check-input" type="checkbox" id="risk9" name="risk9" value="1">
+                                    <label class="form-check-label" for="gridCheck1">
+                                    อาการอื่นๆ
                                     </label>
                                 </div>
                             </div>
 
+                            <div class="form-group ">
+                                    <input type="hidden" class="form-control" id="province" placeholder="จังหวัด" value="44">
+                                </div>
+                                <div class=" form-group col-md-6">
+                                    <label for="in_family">ข้อเสนอแนะ</label>
+                                    <textarea class="form-control" id="comment" placeholder="ข้อเสนอแนะ" value=""></textarea>
+                                </div>
 
                             <div class="form-row">
                                 <div class="form-group">
                                     <input type="hidden" class="form-control" id="reporter" placeholder="ผู้รายงาน" value="<?php echo $this->session->userdata('id'); ?>">
                                 </div>
                                 <div class="form-group text-center">
-                                    <button type="button" class="btn btn-success" id="btn_save">Save</button>
-                                    <button type="button" class="btn btn-danger" id="btn_close" data-dismiss="modal">Close
+                                    <button type="button" class="btn btn-success" id="btn_save">บันทึกข้อมูล</button>
+                            
                                     </button>
                                 </div>
                             </div>

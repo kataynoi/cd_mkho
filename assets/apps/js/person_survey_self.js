@@ -1,38 +1,6 @@
 $(document).ready(function () {
-    var dataTable = $('#table_data').DataTable({
-        'createdRow': function (row, data, dataIndex) {
-            $(row).attr('name', 'row' + dataIndex);
-        },
-        "processing": true,
-        "serverSide": true,
-        "order": [],
-
-        "pageLength": 50,
-        "ajax": {
-            url: site_url + '/person_survey/fetch_person_survey',
-            data: {
-                'csrf_token': csrf_token
-            },
-            type: "POST"
-        },
-        "columnDefs": [
-            {
-                "targets": [1, 2],
-                "orderable": false,
-            },
-        ],
-    });
-
-    $('#frmModal').on('show.bs.modal', function () {
-        $('#from_conutry').select2();
-        $('#from_province').select2();
-    })
-
-    $('#frmModal').on('hidden.bs.modal', function () {
-        $('#from_conutry').select2('destroy');
-        $('#from_province').select2('destroy');
-    })
-
+   
+    $('#from_province').select2();
 });
 
 var crud = {};
@@ -48,7 +16,7 @@ crud.ajax = {
             err ? cb(err) : cb(null, data);
         });
     }, save: function (items, cb) {
-        var url = '/person_survey/save_person_survey',
+        var url = '/person_survey_self/save_person_survey_self',
             params = {
                 items: items
             }
@@ -115,12 +83,12 @@ crud.save = function (items, row_id) {
     crud.ajax.save(items, function (err, data) {
         if (err) {
             //app.alert(err);
-            swal(err);
+            swal('');
         }
         else {
 
             $('#frmModal').modal('toggle');
-            swal('บันทึกข้อมูลเรียบร้อยแล้ว ');
+            swal('บันทึกข้อมูลเรียบร้อยแล้วค่ะ อย่าลืมเว้นระยะห่าง สวมหน้ากากอนามัย ล้ามมือบ่อยๆนะคะ');
             location.reload();
         }
     });
@@ -144,64 +112,6 @@ crud.get_update = function (id, row_id) {
 }
 
 
-crud.set_after_update = function (items, row_id) {
-
-    var row_id = $('tr[name="' + row_id + '"]');
-    row_id.find("td:eq(0)").html(items.id);
-    row_id.find("td:eq(1)").html(items.d_update);
-    row_id.find("td:eq(2)").html(items.cid);
-    row_id.find("td:eq(3)").html(items.name);
-    row_id.find("td:eq(4)").html(items.tel);
-    row_id.find("td:eq(5)").html(items.from_conutry);
-    row_id.find("td:eq(6)").html(items.from_province);
-    row_id.find("td:eq(7)").html(items.date_in);
-    row_id.find("td:eq(8)").html(items.no);
-    row_id.find("td:eq(9)").html(items.moo);
-    row_id.find("td:eq(10)").html(items.tambon);
-    row_id.find("td:eq(11)").html(items.ampur);
-    row_id.find("td:eq(12)").html(items.province);
-    row_id.find("td:eq(13)").html(items.in_family);
-    row_id.find("td:eq(14)").html(items.risk1);
-    row_id.find("td:eq(15)").html(items.risk2);
-    row_id.find("td:eq(16)").html(items.risk3);
-    row_id.find("td:eq(17)").html(items.risk4);
-    row_id.find("td:eq(18)").html(items.reporter);
-
-}
-crud.set_after_insert = function (items, id) {
-
-    $('<tr name="row' + (id + 1) + '"><td>' + id + '</td>' +
-        '<td>' + items.id + '</td>' + '<td>' + items.d_update + '</td>' + '<td>' + items.cid + '</td>' + '<td>' + items.name + '</td>' + '<td>' + items.tel + '</td>' + '<td>' + items.from_conutry + '</td>' + '<td>' + items.from_province + '</td>' + '<td>' + items.date_in + '</td>' + '<td>' + items.no + '</td>' + '<td>' + items.moo + '</td>' + '<td>' + items.tambon + '</td>' + '<td>' + items.ampur + '</td>' + '<td>' + items.province + '</td>' + '<td>' + items.in_family + '</td>' + '<td>' + items.risk1 + '</td>' + '<td>' + items.risk2 + '</td>' + '<td>' + items.risk3 + '</td>' + '<td>' + items.risk4 + '</td>' + '<td>' + items.reporter + '</td>' +
-        '<td><div class="btn-group pull-right" role="group">' +
-        '<button class="btn btn-outline btn-success" data-btn="btn_view" data-id="' + id + '"><i class="fa fa-eye"></i></button>' +
-        '<button class="btn btn-outline btn-warning" data-btn="btn_edit" data-id="' + id + '"><i class="fa fa-edit"></i></button>' +
-        '<button class="btn btn-outline btn-danger" data-btn="btn_del" data-id="' + id + '"><i class="fa fa-trash"></i></button>' +
-        '</td></div>' +
-        '</tr>').insertBefore('table > tbody > tr:first');
-}
-
-crud.set_update = function (data, row_id) {
-    $("#row_id").val(row_id);
-    $("#id").val(data.rows["id"]);
-    $("#d_update").val(data.rows["d_update"]);
-    $("#cid").val(data.rows["cid"]);
-    $("#name").val(data.rows["name"]);
-    $("#tel").val(data.rows["tel"]);
-    $("#from_conutry").val(data.rows["from_conutry"]);
-    $("#from_province").val(data.rows["from_province"]);
-    $("#date_in").val(data.rows["date_in"]);
-    $("#no").val(data.rows["no"]);
-    $("#moo").val(data.rows["moo"]);
-    $("#tambon").val(data.rows["tambon"]);
-    $("#ampur").val(data.rows["ampur"]);
-    $("#province").val(data.rows["province"]);
-    $("#in_family").val(data.rows["in_family"]);
-    $("#risk1").val(data.rows["risk1"]);
-    $("#risk2").val(data.rows["risk2"]);
-    $("#risk3").val(data.rows["risk3"]);
-    $("#risk4").val(data.rows["risk4"]);
-    $("#reporter").val(data.rows["reporter"]);
-}
 
 $('#btn_save').on('click', function (e) {
     e.preventDefault();
@@ -214,6 +124,7 @@ $('#btn_save').on('click', function (e) {
     items.d_update = $("#d_update").val();
     items.cid = $("#cid").val();
     items.name = $("#name").val();
+    items.age = $("#age").val();
     items.tel = $("#tel").val();
     items.from_conutry = $("#from_conutry").val();
     items.from_province = $("#from_province").val();
@@ -224,12 +135,18 @@ $('#btn_save').on('click', function (e) {
     items.ampur = $("#ampur").val();
     items.province = $("#province").val();
     items.in_family = $("#in_family").val();
+    items.comment = $("#comment").val();
     items.risk1 = $("input[name='risk1']:checked").val();
     items.risk2 = $("input[name='risk2']:checked").val();
     items.risk3 = $("input[name='risk3']:checked").val();
     items.risk4 = $("input[name='risk4']:checked").val();
+    items.risk5 = $("input[name='risk5']:checked").val();
+    items.risk6 = $("input[name='risk6']:checked").val();
+    items.risk7 = $("input[name='risk7']:checked").val();
+    items.risk8 = $("input[name='risk8']:checked").val();
+    items.risk9 = $("input[name='risk9']:checked").val();
 
-    items.reporter = $("#reporter").val();
+
 
     if (validate(items)) {
         crud.save(items, row_id);
@@ -246,66 +163,10 @@ $('#add_data').on('click', function (e) {
     app.clear_form();
 });
 
-$(document).on('click', 'button[data-btn="btn_del"]', function (e) {
-    e.preventDefault();
-    var id = $(this).data('id');
-    var td = $(this).parent().parent().parent();
-
-    swal({
-        title: "คำเตือน?",
-        text: "คุณต้องการลบข้อมูล ",
-        icon: "warning",
-        buttons: [
-            'cancel !',
-            'Yes !'
-        ],
-        dangerMode: true,
-    }).then(function (isConfirm) {
-        if (isConfirm) {
-            crud.del_data(id);
-            td.hide();
-        }
-    });
-});
-
-$(document).on('click', 'button[data-btn="btn_edit"]', function (e) {
-    e.preventDefault();
-    var id = $(this).data('id');
-    $('#action').val('update');
-    $('#id').val(id);
-    var row_id = $(this).parent().parent().parent().attr('name');
-    $("#frmModal input").prop('disabled', false);
-    $("#frmModal select").prop('disabled', false);
-    $("#frmModal textarea").prop('disabled', false);
-    $("#frmModal .btn").prop('disabled', false);
-
-    crud.get_update(id, row_id);
-    $('#frmModal').modal('show');
-
-});
-
-$(document).on('click', 'button[data-btn="btn_view"]', function (e) {
-    e.preventDefault();
-    var id = $(this).data('id');
-    $('#action').val('update');
-    $('#id').val(id);
-    var row_id = $(this).parent().parent().parent().attr('name');
-    crud.get_update(id, row_id);
-    $("#frmModal input").prop('disabled', true);
-    $("#frmModalselect").prop('disabled', true);
-    $("#frmModaltextarea").prop('disabled', true);
-    $("#frmModal .btn").prop('disabled', true);
-    $("#btn_close").prop('disabled', false);
-    $('#frmModal').modal('show');
-
-});
 
 function validate(items) {
 
-    if (!items.cid) {
-        swal("กรุณาระบุเลขบัตรประชาชน");
-        $("#cid").focus();
-    } else if (!items.name) {
+     if (!items.name) {
         swal("กรุณาระบุชื่อ สกุล");
         $("#name").focus();
     }
@@ -388,6 +249,7 @@ crud.get_person_by_cid = function (cid) {
                 $("#cid").val(data.rows["CID"]);
                 $("#name").val(data.rows["NAME"]+' '+data.rows["LNAME"]);
                 $("#no").val(data.rows["addr"]);
+                $("#age").val(data.rows["age_y"]);
                 $("#ampur").val(data.rows["vhid"].substring(0,4));
                 if(crud.get_tambon_list(data.rows["vhid"].substring(0,4))){
                     $("#tambon").val(data.rows["vhid"].substring(0,6));
