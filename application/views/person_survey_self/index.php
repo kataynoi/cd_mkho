@@ -35,94 +35,78 @@
             }
         });
     </script>
-    <script>
-        $('#left_menu').hide();
-    </script>
-    <style>
-        #page-wrapper {
-            margin-left: 0px;
-        }
-    </style>
+
     <br>
 
-
-    <div class="panel panel-info ">
-        <div class="panel-heading w3-theme">
+<div class="panel panel-info " style="width: 95%;">
+    <div class="panel-heading w3-theme">
             <i class="fa fa-user fa-2x "></i> ชาวมหาสารคาม ร่วมใจลงทะเบียนสู้ภัยโควิด-19
-        </div>
+    </div>
+
+<form>
+    <input type="hidden" id="action" value="insert">
+    <input type="hidden" class="form-control" id="row_id" placeholder="ROWID" value="">
+    <input type="hidden" class="form-control" id="id" placeholder="ID" value="">
+
+    <div class="alert">
+       ชาวมหาสารคาม ยินดีต้อนรับท่าน เพื่อความปลอดภัยของท่าน ครอบครัว รวมทั้งคนที่ท่านรัก เมื่อท่านเดินทางมาจากจังหวัดอื่นเข้าสู่มหาสารคาม หรือกลับสู่ภูมิลำเนามหาสารคาม ขอความร่วมมือลงทะเบียนด้วยข้อมูลที่แท้จริงค่ะ
+       <br>
+        **ข้อมูลของท่านจะถูกเก็บไว้เป็นความลับและใช้ติดต่อสื่อสารกับท่านเท่านั้น **
+        <br>
+        หากมีข้อสงสัยให้สอบถามที่ สายด่วนโควิด-19 จังหวัดมหาสารคาม โทร 095-1807712
+    </div>
         <div class="panel-body">
+        <div class="form-group col-lg-3">
+            <label for="cid">เลขบัตรประชาชน</label>
+            <input type="text" class="form-control" id="cid" placeholder="เลขบัตรประชาชน" value="" min="13" max="13" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        </div>
+        <div class="form-group col-lg-3">
+            <label for="name">ชื่อ สกุล</label>
+            <input type="text" class="form-control" id="name" placeholder="ชื่อ สกุล" value="">
+        </div>
+        <div class="form-group col-lg-3">
+            <label for="tel">โทร</label>
+            <input type="text" class="form-control" id="tel" placeholder="โทร" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        </div>
+        <div class="form-group col-lg-3">
+            <label for="tel">อายุ</label>
+            <input type="text" class="form-control" id="age" placeholder="อายุ" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        </div>
 
+        <div class="form-group col-lg-3">
+            <label for="from_conutry">มาจากประเทศ</label>
+            <select class="form-control" id="from_conutry" placeholder="มาจากประเทศ" value="" style="width: 100%">
+                <option>-------</option>
+                    <?php
+                        foreach ($cnation as $r) {
+                            if ($r->id == '099') {
+                                 echo "<option value=$r->id selected > $r->name </option>";
+                                } else {
+                                echo "<option value=$r->id > $r->name </option>";
+                                }
+                                } ?>
+            </select>
+        </div>
 
-
-            <div>
-                <div>
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-
-                        <div class="modal-body">
-                            <input type="hidden" id="action" value="insert">
-                            <input type="hidden" class="form-control" id="row_id" placeholder="ROWID" value="">
-
-                            <div class="form-group">
-                                <input type="hidden" class="form-control" id="id" placeholder="ID" value=""></div>
-                            <div class="form-row">
-                                <div class="col-md-3">
-                                    <label for="cid">เลขบัตรประชาชน</label>
-                                    <input type="text" class="form-control" id="cid" placeholder="เลขบัตรประชาชน" value="" min="13" max="13" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="name">ชื่อ สกุล</label>
-                                    <input type="text" class="form-control" id="name" placeholder="ชื่อ สกุล" value="">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="tel">โทร</label>
-                                    <input type="text" class="form-control" id="tel" placeholder="โทร" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="tel">อายุ</label>
-                                    <input type="text" class="form-control" id="age" placeholder="อายุ" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="from_conutry">มาจากประเทศ</label>
-                                    <select class="form-control" id="from_conutry" placeholder="มาจากประเทศ" value="" style="width: 100%">
-                                        <option>-------</option>
-                                        <?php
-                                        foreach ($cnation as $r) {
-                                            if($r->id =='099'){
-                                                echo "<option value=$r->id selected > $r->name </option>";
-                                            }else{
-                                               echo "<option value=$r->id > $r->name </option>"; 
-                                            }
-                                            
-                                        } ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-
-                                <div class="form-group col-md-3">
-                                    <label for="from_province">มาจากจังหวัด</label>
-                                    <select class="form-control" id="from_province" placeholder="มาจากจังหวัด" value="" style="width:100%">
-                                        <option>-------</option>
-                                        <?php
+        <div class="form-group col-lg-3">
+            <label for="from_province">มาจากจังหวัด</label>
+                <select class="form-control" id="from_province" placeholder="มาจากจังหวัด" value="" style="width:100%">
+                    <option>-------</option>
+                        <?php
                                         foreach ($cchangwat as $r) {
                                             echo "<option value=$r->changwatcode > $r->changwatname </option>";
-                                        } ?>
-                                    </select>
-                                </div>
-                                <div class="form_group col-md-3">
+                        } ?>
+                </select>
+        </div>
+        <div class="form_group col-lg-3">
                                     <label for="date_in">วันเดินทางเข้า</label>
                                     <input type="text" class="form-control" id="date_in" data-type="date" class="form-control" placeholder="01/04/2563" title="ระบุวันที่" data-rel="tooltip">
-
-                                    <!--<input type="text"  id="date_in"  class="form-control datepicker"data-provide="datepicker" data-date-language="th">
-                   -->
-                                </div>
-                                <div class="form-group col-md-3">
+-                               </div>
+                                <div class="form-group col-lg-3">
                                     <label for="no">บ้านเลขที่</label>
-                                    <input type="text" class="form-control" id="no" placeholder="บ้านเลขที่" value=""></div>
-                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" id="no" placeholder="บ้านเลขที่" value="">
+                                </div>
+                                <div class="form-group col-lg-3">
                                     <label for="ampur">อำเภอ</label>
                                     <select class="form-control" id="ampur" placeholder="อำเภอ" value="">
                                         <option>-------</option>
@@ -131,16 +115,14 @@
                                             echo "<option value=$r->ampurcodefull > $r->ampurname </option>";
                                         } ?>
                                     </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-3">
+            </div>
+            <div class="form-group col-lg-3">
                                     <label for="tambon">ตำบล</label>
                                     <select class="form-control" id="tambon" placeholder="ตำบล" value="">
                                         <option>-------</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-lg-3">
                                     <label for="moo">หมู่บ้าน</label>
                                     <select class="form-control" id="moo" placeholder="หมู่บ้าน" value="">
                                         <option>-------</option>
@@ -150,14 +132,21 @@
                                 <div class="form-group ">
                                     <input type="hidden" class="form-control" id="province" placeholder="จังหวัด" value="44">
                                 </div>
-                                <div class=" form-group col-md-6">
+                                <div class=" form-group col-lg-3">
                                     <label for="in_family">คนในครอบครัว</label>
                                     <input type="text" class="form-control" id="in_family" placeholder="คนในครอบครัว" value="">
                                 </div>
-                            </div>
 
+        </div>
+    </form>
+</div>
 
-                            <div class="form-group form-inline">
+<div class="panel panel-success" style="width: 95%;">
+    <div class="panel-heading">
+          อาการเจ็บป่วย                              
+    </div>
+    <div class="panel-body">
+    <div class="form-group ">
                                 <div class="form-check " style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk1" name="risk1" value="1">
                                     <label class="form-check-label" for="gridCheck1">
@@ -167,60 +156,66 @@
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk2" name="risk2" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                    มีไข้ตั้งแต่ 37.3 องศาเซนเซียสขึ้นไป
+                                        มีไข้ตั้งแต่ 37.3 องศาเซนเซียสขึ้นไป
                                     </label>
                                 </div>
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk3" name="risk3" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                    มีอาการไอ
+                                        มีอาการไอ
                                     </label>
                                 </div>
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk4" name="risk4" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                    มีน้ำมูก
+                                        มีน้ำมูก
                                     </label>
                                 </div>
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk5" name="risk5" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                    มีอาการเจ็บคอ
+                                        มีอาการเจ็บคอ
                                     </label>
                                 </div>
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk6" name="risk6" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                    ไม่ได้กลิ่น
+                                        ไม่ได้กลิ่น
                                     </label>
                                 </div>
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk7" name="risk7" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                    หายใจเร็ว
+                                        หายใจเร็ว
                                     </label>
                                 </div>
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk8" name="risk8" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                    หอบเหนื่อยหรือหายใจลำบาก
+                                        หอบเหนื่อยหรือหายใจลำบาก
                                     </label>
                                 </div>
                                 <div class="form-check" style="padding-left: 20px;">
                                     <input class="form-check-input" type="checkbox" id="risk9" name="risk9" value="1">
                                     <label class="form-check-label" for="gridCheck1">
-                                    อาการอื่นๆ
+                                        อาการอื่นๆ
                                     </label>
                                 </div>
                             </div>
 
                             <div class="form-group ">
-                                    <input type="hidden" class="form-control" id="province" placeholder="จังหวัด" value="44">
-                                </div>
-                                <div class=" form-group col-md-6">
-                                    <label for="in_family">ข้อเสนอแนะ</label>
-                                    <textarea class="form-control" id="comment" placeholder="ข้อเสนอแนะ" value=""></textarea>
-                                </div>
+                                <input type="hidden" class="form-control" id="province" placeholder="จังหวัด" value="44">
+                            </div>
+                            <div class=" form-group col-md-6">
+                                <label for="in_family">ข้อเสนอแนะ</label>
+                                <textarea class="form-control" id="comment" placeholder="ข้อเสนอแนะ" value=""></textarea>
+                            </div>
+
+    </div>
+</div>
+
+
+                            
 
                             <div class="form-row">
                                 <div class="form-group">
@@ -228,15 +223,12 @@
                                 </div>
                                 <div class="form-group text-center">
                                     <button type="button" class="btn btn-success" id="btn_save">บันทึกข้อมูล</button>
-                            
+
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                  
+                            
 
     </div>
 </body>
