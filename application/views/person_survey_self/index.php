@@ -38,7 +38,7 @@
 
     <br>
 
-<div class="panel panel-info " style="width: 95%;">
+<div class="panel panel-info " >
     <div class="panel-heading w3-theme">
             <i class="fa fa-user fa-2x "></i> ชาวมหาสารคาม ร่วมใจลงทะเบียนสู้ภัยโควิด-19
     </div>
@@ -56,24 +56,24 @@
         หากมีข้อสงสัยให้สอบถามที่ สายด่วนโควิด-19 จังหวัดมหาสารคาม โทร 095-1807712
     </div>
         <div class="panel-body">
-        <div class="form-group col-lg-3">
+        <div class="form-group col-md-3">
             <label for="cid">เลขบัตรประชาชน</label>
             <input type="text" class="form-control" id="cid" placeholder="เลขบัตรประชาชน" value="" min="13" max="13" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
         </div>
-        <div class="form-group col-lg-3">
+        <div class="form-group col-md-3">
             <label for="name">ชื่อ สกุล</label>
             <input type="text" class="form-control" id="name" placeholder="ชื่อ สกุล" value="">
         </div>
-        <div class="form-group col-lg-3">
+        <div class="form-group col-md-3">
             <label for="tel">โทร</label>
             <input type="text" class="form-control" id="tel" placeholder="โทร" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
         </div>
-        <div class="form-group col-lg-3">
+        <div class="form-group col-md-3">
             <label for="tel">อายุ</label>
             <input type="text" class="form-control" id="age" placeholder="อายุ" value="" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
         </div>
 
-        <div class="form-group col-lg-3">
+        <div class="form-group col-md-3">
             <label for="from_conutry">มาจากประเทศ</label>
             <select class="form-control" id="from_conutry" placeholder="มาจากประเทศ" value="" style="width: 100%">
                 <option>-------</option>
@@ -88,7 +88,7 @@
             </select>
         </div>
 
-        <div class="form-group col-lg-3">
+        <div class="form-group col-md-3">
             <label for="from_province">มาจากจังหวัด</label>
                 <select class="form-control" id="from_province" placeholder="มาจากจังหวัด" value="" style="width:100%">
                     <option>-------</option>
@@ -98,15 +98,15 @@
                         } ?>
                 </select>
         </div>
-        <div class="form_group col-lg-3">
+        <div class="form_group col-md-3">
                                     <label for="date_in">วันเดินทางเข้า</label>
                                     <input type="text" class="form-control" id="date_in" data-type="date" class="form-control" placeholder="01/04/2563" title="ระบุวันที่" data-rel="tooltip">
--                               </div>
-                                <div class="form-group col-lg-3">
+                           </div>
+                                <div class="form-group col-md-3">
                                     <label for="no">บ้านเลขที่</label>
                                     <input type="text" class="form-control" id="no" placeholder="บ้านเลขที่" value="">
                                 </div>
-                                <div class="form-group col-lg-3">
+                                <div class="form-group col-md-3">
                                     <label for="ampur">อำเภอ</label>
                                     <select class="form-control" id="ampur" placeholder="อำเภอ" value="">
                                         <option>-------</option>
@@ -116,13 +116,13 @@
                                         } ?>
                                     </select>
             </div>
-            <div class="form-group col-lg-3">
+            <div class="form-group col-md-3">
                                     <label for="tambon">ตำบล</label>
                                     <select class="form-control" id="tambon" placeholder="ตำบล" value="">
                                         <option>-------</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-lg-3">
+                                <div class="form-group col-md-3">
                                     <label for="moo">หมู่บ้าน</label>
                                     <select class="form-control" id="moo" placeholder="หมู่บ้าน" value="">
                                         <option>-------</option>
@@ -132,7 +132,7 @@
                                 <div class="form-group ">
                                     <input type="hidden" class="form-control" id="province" placeholder="จังหวัด" value="44">
                                 </div>
-                                <div class=" form-group col-lg-3">
+                                <div class=" form-group col-md-3">
                                     <label for="in_family">คนในครอบครัว</label>
                                     <input type="text" class="form-control" id="in_family" placeholder="คนในครอบครัว" value="">
                                 </div>
@@ -141,7 +141,7 @@
     </form>
 </div>
 
-<div class="panel panel-success" style="width: 95%;">
+<div class="panel panel-success">
     <div class="panel-heading">
           อาการเจ็บป่วย                              
     </div>
