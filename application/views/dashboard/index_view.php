@@ -4,7 +4,6 @@
 </div>
 <div class="col col-lg-6" style="padding-top: 16px;">
     <iframe width="100%" height="400px" src="https://covid19.th-stat.com/th/share/dashboard" frameBorder="0"></iframe>
-
 </div>
 
 
