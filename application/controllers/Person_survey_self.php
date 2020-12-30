@@ -9,7 +9,7 @@ class Person_survey_self extends CI_Controller
     {
         parent::__construct();
 
-
+        $this->layout->setLayout('print_layout');
         $this->load->model('Person_survey_self_model', 'crud');
         //$this->user_id = $this->session->userdata('id');
     }
