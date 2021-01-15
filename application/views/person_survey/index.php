@@ -185,30 +185,58 @@
                     <div class="form-check " style="padding-left: 20px;">
                         <input class="form-check-input" type="checkbox" id="risk1" name="risk1" value="1">
                         <label class="form-check-label" for="gridCheck1">
-                            เคยไปสถานที่เสี่ยง ที่มีคนแออัดเบียดเสียด เช่น สนามมวย สถานบันเทิง สนามกีฬา
+                        สบายดี ไม่มีอาการ
                         </label>
                     </div>
                     <div class="form-check" style="padding-left: 20px;">
                         <input class="form-check-input" type="checkbox" id="risk2" name="risk2" value="1">
                         <label class="form-check-label" for="gridCheck1">
-                            เคยไปร่วมกิจกรรมมีคนร่วมกันจำนวนมากๆ
+                        มีไข้ตั้งแต่ 37.3 องศาเซนเซียสขึ้นไป 
                         </label>
                     </div>
                     <div class="form-check" style="padding-left: 20px;">
                         <input class="form-check-input" type="checkbox" id="risk3" name="risk3" value="1">
                         <label class="form-check-label" for="gridCheck1">
-                            ใกล้ชิดกับผู้ป่วยติดเชื้อ หรือไปร่วมอยู่ในสถานที่ที่มีผู้ป่วยติดเชื้อไวรัสโคโรน่า 2019
+                        มีอาการไอ 
                         </label>
                     </div>
                     <div class="form-check" style="padding-left: 20px;">
                         <input class="form-check-input" type="checkbox" id="risk4" name="risk4" value="1">
                         <label class="form-check-label" for="gridCheck1">
-                            ไข้ + URI + มีประวัติสนามมวย / สถานบันเทิง ในพื้นที่กรุงเทพและปริมณฑล
+                        มีน้ำมูก
+                        </label>
+                    </div>
+                    <div class="form-check" style="padding-left: 20px;">
+                        <input class="form-check-input" type="checkbox" id="risk4" name="risk4" value="1">
+                        <label class="form-check-label" for="gridCheck1">
+                        ไม่ได้กลิ่น
+                        </label>
+                    </div>
+                    <div class="form-check" style="padding-left: 20px;">
+                        <input class="form-check-input" type="checkbox" id="risk4" name="risk4" value="1">
+                        <label class="form-check-label" for="gridCheck1">
+                        หายใจเร็ว
+                        </label>
+                    </div>
+                    <div class="form-check" style="padding-left: 20px;">
+                        <input class="form-check-input" type="checkbox" id="risk4" name="risk4" value="1">
+                        <label class="form-check-label" for="gridCheck1">
+                        หอบเหนื่อยหรือหายใจลำบาก
+                        </label>
+                    </div>
+                    <div class="form-check" style="padding-left: 20px;">
+                        <input class="form-check-input" type="checkbox" id="risk4" name="risk4" value="1">
+                        <label class="form-check-label" for="gridCheck1">
+                        มีน้ำมูก
+                        </label>
+                    </div>
+                    <div class="form-check" style="padding-left: 20px;">
+                        <input class="form-check-input" type="checkbox" id="risk4" name="risk4" value="1">
+                        <label class="form-check-label" for="gridCheck1">
+                        มีน้ำมูก
                         </label>
                     </div>
                 </div>
-
-
                 <div class="form-row">
                     <div class="form-group">
                         <input type="hidden" class="form-control" id="reporter" placeholder="ผู้รายงาน" value="<?php echo $this->session->userdata('id');?>">

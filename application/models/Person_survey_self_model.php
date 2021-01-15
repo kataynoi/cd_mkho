@@ -201,7 +201,7 @@ class Person_survey_self_model extends CI_Model
             ->set("risk7", $data["risk7"])
             ->set("risk8", $data["risk8"])
             ->set("risk9", $data["risk9"])
-            ->set("comment", $data["comment"])
+            ->set("comment", $data["date_in"])
             ->insert('person_survey_self');
 
         return $this->db->insert_id();
