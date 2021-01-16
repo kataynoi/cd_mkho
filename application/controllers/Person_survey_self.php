@@ -131,21 +131,47 @@ class Person_survey_self extends CI_Controller
         $json = '{"success": true, "rows": ' . $rows . '}';
         render_json($json);
     }
-    public function capture()
+    public function capture($id=0)
     {
-        $siteURL = 'https://www.siamfocus.com/';
-        if (filter_var($siteURL, FILTER_VALIDATE_URL)) {
-            //call Google PageSpeed Insights API
-            $googlePagespeedData = file_get_contents("https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=$siteURL&screenshot=true");
-            //decode json data
-            $googlePagespeedData = json_decode($googlePagespeedData, true);
-            //screenshot data
-            $screenshot = $googlePagespeedData['screenshot']['data'];
-            $screenshot = str_replace(array('_', '-'), array('/', '+'), $screenshot);
-            $filename = "siamfocus"; //ชื่อที่ต้องการบันทึก
-            $decoded = base64_decode($screenshot);
-            file_put_contents('img/' . $filename . '.jpg', $decoded); //แสดงรูปภาพที่บันทึกได้
-            echo "<img src='img/" . $filename . ".jpg' />";
+        // เร่มต้นการทดสอบคำนวณเวลาการทำงาน calculate time
+        $time_start = microtime(true);
+        // โค้ดไฟล์ dbconnect.php ดูได้ที่ http://niik.in/que_2398_5642
+        // require_once("../dbconnect.php"); // กำหนด path ให้ถูกต้อง
+
+        // กำหนด url เว็บไซต์ที่ต้องการ
+        //$webURL = site_url()."/person_survey_self/print/12";
+        $webURL ="https://www.ninenik.com";
+        $param = array(
+            "strategy" => "mobile", // comment ปิดส่วนนี้ หากต้องการผลแบบ desktop
+            "url" => $webURL
+        );
+        $qury_str = http_build_query($param);
+        // ใช้วิธี cURL
+        try {
+            $endpontURL = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?" . $qury_str;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $endpontURL);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $result = curl_exec($ch);
+            $screen_shot_result = json_decode($result, true);
+            $screen_shot = $screen_shot_result['lighthouseResult']['audits']['final-screenshot']['details']['data'];
+        } finally {
+            curl_close($ch);
         }
+
+        if (isset($screen_shot) && !empty($screen_shot)) {
+            echo "<img src='{$screen_shot}' />";
+        }
+
+        // ส่วนกำหนดเวลาจบการทำงาน สำหรับคำนวณ
+        $time_end = microtime(true);
+        // เวลาการทำงาน ในหน่วยวินาที และ นาที
+        $execution_time_second = $time_end - $time_start;
+        $execution_time_minute = floor((int)$execution_time_second / 60) + ((int)$execution_time_second % 60) * 0.01;
+
+        // เวลาในการทำงานปรมวลผลของคำสั่ง
+        echo '<br/><br/><b>Total Execution Time:</b> ' . $execution_time_second . ' Seconds';
+        echo '<br/><b>Total Execution Time:</b> ' . $execution_time_minute . ' Minutes';
     }
 }
