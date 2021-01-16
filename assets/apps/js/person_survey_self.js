@@ -146,8 +146,6 @@ $('#btn_save').on('click', function (e) {
     items.risk8 = $("input[name='risk8']:checked").val();
     items.risk9 = $("input[name='risk9']:checked").val();
 
-
-
     if (validate(items)) {
         crud.save(items, row_id);
     }
@@ -163,6 +161,7 @@ $('#add_data').on('click', function (e) {
     app.clear_form();
 });
 
+$("#date_in").val(n_date);
 
 function validate(items) {
 

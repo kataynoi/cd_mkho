@@ -90,6 +90,7 @@ class Person_survey_self_model extends CI_Model
     public function get_cchangwat()
     {
         $rs = $this->db
+            ->order_by('s_order','DESC')
             ->get("cchangwat")
             ->result();
         return $rs;

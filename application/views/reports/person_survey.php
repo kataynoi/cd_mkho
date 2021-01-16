@@ -3,6 +3,10 @@
 
 <script>
     $('#left_menu').hide();
+    $('[data-toggle="tooltip"]').tooltip();
+    $('#btn-28').on('click',function(){
+        alert('OK');
+    });
 </script>
 <style>
     #page-wrapper {
@@ -28,12 +32,12 @@
                 <th>อำเภอ</th>
                 <th class='text-center'>จำนวนท้งหมด</th>
                 <th class='text-center'>
-                    <?php echo '22 มี.ค. 2563 - ' . to_thai_date_short(date('Y-m-d', strtotime("-1 days"))); ?></th>
+                    <?php echo '01 ธ.ค 2563 - ' . to_thai_date_short(date('Y-m-d', strtotime("-1 days"))); ?></th>
                 <th class='text-center'>
                     <?php echo to_thai_date_short(date('Y-m-d')); ?>
                 </th>
-                <th class='text-center'>
-                    ผู้เดินทางจาก กรุงเทพ ปริมณฑลสะสม
+                <th class='text-center' data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                    ผู้เดินทางจาก 28 จังหวัด(พื้นที่เสี่ยงสูง,พื้นที่เสี่ยง)
                 </th>
             </tr>
             </thead>
