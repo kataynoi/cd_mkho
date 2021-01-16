@@ -3,38 +3,14 @@
 <link href="<?php echo base_url() ?>assets/vendor/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+<link href="<?php echo base_url()?>assets/vendor/css/bootstrap-datepicker.css" rel="stylesheet" />
+<script src="<?php echo base_url()?>assets/vendor/js/bootstrap-datepicker-custom.js"></script>
+<script src="<?php echo base_url()?>assets/vendor/js/bootstrap-datepicker.th.min.js" charset="UTF-8"></script>
 
 <html>
 
 <body>
 
-    <script>
-    //var permit_end_date = '<?php echo $outsite['permit_end_date'] ?>';
-
-
-    $(document).ready(function() {
-        var id = $('#id').val();
-        console.log(id);
-        if (!id) {
-            $('.datepicker').datepicker({
-                format: 'dd/mm/yyyy',
-                todayBtn: false,
-                language: 'th', //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย(ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
-                thaiyear: true, //Set เป็นปี พ.ศ.
-                autoclose: true
-            }).datepicker("setDate", "0");
-
-        } else {
-            $('.datepicker').datepicker({
-                format: 'dd/mm/yyyy',
-                todayBtn: false,
-                language: 'th', //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย(ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
-                thaiyear: true, //Set เป็นปี พ.ศ.
-                autoclose: true
-            });
-        }
-    });
-    </script>
 
     <br>
 
@@ -107,8 +83,8 @@
                 </div>
                 <div class="form_group col-md-3">
                     <label for="date_in">วันเดินทางเข้า</label>
-                    <input type="text" class="form-control" id="date_in" data-type="date" class="form-control"
-                        placeholder="01/04/2563" title="ระบุวันที่" data-rel="tooltip">
+                    <input type="text"  id="date_in" data-type="date" class="form-control datepicker"
+                    data-date-language="th" placeholder="01/04/2563" title="ระบุวันที่" data-rel="tooltip">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="no">บ้านเลขที่</label>

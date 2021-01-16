@@ -92,6 +92,7 @@
     var n_date    ='<?php echo date('d/m/');?>'+year;
     var csrf_token = '<?php echo $this->security->get_csrf_hash(); ?>';
     console.log(n_date);
+  
 </script>
 <body >
 
