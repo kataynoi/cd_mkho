@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Person_survey_self extends CI_Controller
 {
@@ -16,7 +16,7 @@ class Person_survey_self extends CI_Controller
 
     public function index()
     {
-       
+
         $data[] = '';
         $data["cnation"] = $this->crud->get_cnation();
         $data["campur"] = $this->crud->get_campur();
@@ -38,17 +38,16 @@ class Person_survey_self extends CI_Controller
     public function get_person_by_cid()
     {
         $cid = $this->input->post('cid');
-        if($this->crud->check_person_cid($cid) >=1){
+        if ($this->crud->check_person_cid($cid) >= 1) {
             $json = '{"success": true,"check":true}';
-        }else{
+        } else {
             $rs = $this->crud->get_person_cid($cid);
-            if($rs){
+            if ($rs) {
                 $rows = json_encode($rs);
                 $json = '{"success": true, "rows": ' . $rows . '}';
-            }else{
+            } else {
                 $json = '{"success": true, "check": false}';
             }
-
         }
 
         render_json($json);
@@ -131,5 +130,22 @@ class Person_survey_self extends CI_Controller
         $rows = json_encode($rs);
         $json = '{"success": true, "rows": ' . $rows . '}';
         render_json($json);
+    }
+    public function capture()
+    {
+        $siteURL = 'https://www.siamfocus.com/';
+        if (filter_var($siteURL, FILTER_VALIDATE_URL)) {
+            //call Google PageSpeed Insights API
+            $googlePagespeedData = file_get_contents("https://www.googleapis.com/pagespeedonline/v2/runPagespeed?url=$siteURL&screenshot=true");
+            //decode json data
+            $googlePagespeedData = json_decode($googlePagespeedData, true);
+            //screenshot data
+            $screenshot = $googlePagespeedData['screenshot']['data'];
+            $screenshot = str_replace(array('_', '-'), array('/', '+'), $screenshot);
+            $filename = "siamfocus"; //ชื่อที่ต้องการบันทึก
+            $decoded = base64_decode($screenshot);
+            file_put_contents('img/' . $filename . '.jpg', $decoded); //แสดงรูปภาพที่บันทึกได้
+            echo "<img src='img/" . $filename . ".jpg' />";
+        }
     }
 }

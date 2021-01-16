@@ -71,13 +71,16 @@
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="from_province">มาจากจังหวัด</label>
+                    <label for="from_province">เดินทางมาจากจังหวัด</label>
                     <select class="form-control" id="from_province" placeholder="มาจากจังหวัด" value=""
                         style="width:100%">
                         <option></option>
                         <?php
                                         foreach ($cchangwat as $r) {
-                                            echo "<option value=$r->changwatcode > $r->changwatname </option>";
+                                            if($r->changwatcode!='44'){
+                                                echo "<option value=$r->changwatcode > $r->changwatname </option>";
+                                            }
+                                            
                         } ?>
                     </select>
                 </div>
