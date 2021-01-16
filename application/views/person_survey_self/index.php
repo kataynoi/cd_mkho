@@ -74,7 +74,7 @@
                     <label for="from_province">มาจากจังหวัด</label>
                     <select class="form-control" id="from_province" placeholder="มาจากจังหวัด" value=""
                         style="width:100%">
-                        <option>-------</option>
+                        <option></option>
                         <?php
                                         foreach ($cchangwat as $r) {
                                             echo "<option value=$r->changwatcode > $r->changwatname </option>";
@@ -87,13 +87,13 @@
                     data-date-language="th" placeholder="01/04/2563" title="ระบุวันที่" data-rel="tooltip">
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="no">บ้านเลขที่</label>
+                    <label for="no">เข้าพักที่ บ้านเลขที่</label>
                     <input type="text" class="form-control" id="no" placeholder="บ้านเลขที่" value="">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="ampur">อำเภอ</label>
                     <select class="form-control" id="ampur" placeholder="อำเภอ" value="">
-                        <option>-------</option>
+                        <option></option>
                         <?php
                             foreach ($campur as $r) {
                             echo "<option value=$r->ampurcodefull > $r->ampurname </option>";
@@ -103,13 +103,13 @@
                 <div class="form-group col-md-3">
                     <label for="tambon">ตำบล</label>
                     <select class="form-control" id="tambon" placeholder="ตำบล" value="">
-                        <option>-------</option>
+                        <option></option>
                     </select>
                 </div>
                 <div class="form-group col-md-3">
                     <label for="moo">หมู่บ้าน</label>
                     <select class="form-control" id="moo" placeholder="หมู่บ้าน" value="">
-                        <option>-------</option>
+                        <option></option>
                     </select>
                 </div>
 

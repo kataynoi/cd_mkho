@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
 /**
@@ -11,22 +11,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Person_survey_model extends CI_Model
 {
     var $table = "person_survey a ";
-    var $order_column = Array('id', 'd_update', 'cid', 'name', 'tel', 'from_conutry', 'from_province', 'date_in', 'no', 'moo', 'tambon', 'ampur', 'province', 'in_family', 'risk1', 'risk2', 'risk3', 'reporter', 'risk4',);
+    var $order_column = array('id', 'd_update', 'cid', 'name', 'tel', 'from_conutry', 'from_province', 'date_in', 'no', 'moo', 'tambon', 'ampur', 'province', 'in_family', 'risk1', 'risk2', 'risk3', 'reporter', 'risk4',);
 
     function make_query($userid)
     {
         $this->db
             ->select('a.id,a.d_update, a.cid, a.name, a.tel, a.from_conutry, a.from_province, a.date_in, a.no, a.moo, c.tambonname as tambon, b.ampurname as ampur, a.province, a.in_family, a.risk1, a.risk2, a.risk3, a.reporter, a.risk4')
-            ->where('reporter',$userid)
-            ->join('campur b','a.ampur = b.ampurcodefull')
-            ->join('(select * from ctambon where changwatcode="44") c','a.tambon = c.tamboncodefull',false)
+            ->where('reporter', $userid)
+            ->join('campur b', 'a.ampur = b.ampurcodefull')
+            ->join('(select * from ctambon where changwatcode="44") c', 'a.tambon = c.tamboncodefull', false)
             ->from($this->table);
         if (isset($_POST["search"]["value"])) {
             $this->db->group_start();
             $this->db->like("cid", $_POST["search"]["value"]);
             $this->db->or_like("name", $_POST["search"]["value"]);
             $this->db->group_end();
-
         }
 
         if (isset($_POST["order"])) {
@@ -167,10 +166,18 @@ class Person_survey_model extends CI_Model
 
     public function save_person_survey($data)
     {
-        if(!isset($data["risk1"])){$data["risk1"]=0;}
-        if(!isset($data["risk2"])){$data["risk2"]=0;}
-        if(!isset($data["risk3"])){$data["risk3"]=0;}
-        if(!isset($data["risk4"])){$data["risk4"]=0;}
+        if (!isset($data["risk1"])) {
+            $data["risk1"] = 0;
+        }
+        if (!isset($data["risk2"])) {
+            $data["risk2"] = 0;
+        }
+        if (!isset($data["risk3"])) {
+            $data["risk3"] = 0;
+        }
+        if (!isset($data["risk4"])) {
+            $data["risk4"] = 0;
+        }
         $rs = $this->db
             ->set("id", $data["id"])
             ->set("d_update", date("Y-m-d H:i:s"))
@@ -194,7 +201,6 @@ class Person_survey_model extends CI_Model
             ->insert('person_survey');
 
         return $this->db->insert_id();
-
     }
 
     public function update_person_survey($data)
@@ -204,7 +210,6 @@ class Person_survey_model extends CI_Model
             ->update('person_survey');
 
         return $rs;
-
     }
 
     public function get_person_survey($id)
@@ -218,11 +223,15 @@ class Person_survey_model extends CI_Model
 
     public function check_person_cid($cid)
     {
-        $rs = $this->db
-            ->from("person_survey")
-            ->where('cid', $cid)
-            ->count_all_results();
-        return $rs;
+        if ($cid == "") {
+            return 0;
+        } else {
+            $rs = $this->db
+                ->from("person_survey_self")
+                ->where('cid', $cid)
+                ->count_all_results();
+            return $rs;
+        }
     }
     public function get_person_cid($cid)
     {

@@ -94,7 +94,6 @@ crud.save = function (items, row_id) {
             swal('');
         }
         else {
-
             $('#frmModal').modal('toggle');
             swal('บันทึกข้อมูลเรียบร้อยแล้วค่ะ อย่าลืมเว้นระยะห่าง สวมหน้ากากอนามัย ล้ามมือบ่อยๆนะคะ');
             location.reload();
@@ -171,28 +170,26 @@ $('#add_data').on('click', function (e) {
 
 function validate(items) {
 
-     if (!items.name) {
+    //console.log(items);
+     if (items.name=="") {
         swal("กรุณาระบุชื่อ สกุล");
         $("#name").focus();
-    }
-    if (!items.from_province) {
+    } else if (items.from_province=="") {
         swal("กรุณาระบุมาจากจังหวัด");
         $("#from_province").focus();
-    } else if (!items.date_in) {
+    } else if (items.date_in=="") {
         swal("กรุณาระบุวันเดินทางเข้า");
         $("#date_in").focus();
-    }
-    if (!items.moo) {
-        swal("กรุณาระบุหมู่บ้าน");
-        $("#moo").focus();
-    } else if (!items.tambon) {
-        swal("กรุณาระบุตำบล");
-        $("#tambon").focus();
-    } else if (!items.ampur) {
+    } else if (items.ampur=="") {
         swal("กรุณาระบุอำเภอ");
         $("#ampur").focus();
-    }
-    if (!items.in_family) {
+    } else if (items.tambon=="") {
+        swal("กรุณาระบุตำบล");
+        $("#tambon").focus();
+    }else if (items.moo=="") {
+        swal("กรุณาระบุหมู่บ้าน");
+        $("#moo").focus();
+    }  else if (!items.in_family) {
         swal("กรุณาระบุคนในครอบครัว");
         $("#in_family").focus();
     } else {
@@ -248,7 +245,7 @@ crud.get_person_by_cid = function (cid) {
     crud.ajax.get_person_by_cid(cid, function (err, data) {
         if (!err) {
             if(data.check){
-                swal('มีบุคคลนี้ในระบบแล้ว');
+                swal('บุคคลนี้บันทึกข้อมูลในระบบแล้ว');
                 app.clear_form();
             }else if(data.rows){
                 $("#cid").val(data.rows["CID"]);

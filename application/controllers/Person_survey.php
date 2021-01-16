@@ -53,6 +53,7 @@ class Person_survey extends CI_Controller
         }else{
             $rs = $this->crud->get_person_cid($cid);
             if($rs){
+                
                 $rows = json_encode($rs);
                 $json = '{"success": true, "rows": ' . $rows . '}';
             }else{
