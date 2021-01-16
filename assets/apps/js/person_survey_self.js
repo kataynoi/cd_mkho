@@ -160,9 +160,11 @@ $('#add_data').on('click', function (e) {
     $("#frmModal .btn").prop('disabled', false);
     app.clear_form();
 });
-
 $("#date_in").val(n_date);
-
+$('#date_in').on('click', function (e) {
+    e.preventDefault();
+    $("#date_in").val(n_date);
+});
 function validate(items) {
 
      if (!items.name) {
