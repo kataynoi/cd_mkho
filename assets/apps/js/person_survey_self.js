@@ -96,6 +96,8 @@ crud.save = function (items, row_id) {
         else {
             $('#frmModal').modal('toggle');
             swal('บันทึกข้อมูลเรียบร้อยแล้วค่ะ อย่าลืมเว้นระยะห่าง สวมหน้ากากอนามัย ล้ามมือบ่อยๆนะคะ');
+            location.reload(); 
+
             //window.location.href = site_url+"/person_survey_self/capture";
         }
     });
@@ -122,6 +124,7 @@ crud.get_update = function (id, row_id) {
 
 $('#btn_save').on('click', function (e) {
     e.preventDefault();
+    $("#btn_save").attr("disabled", true);
     var action;
     var items = {};
     var row_id = $("#row_id").val();
