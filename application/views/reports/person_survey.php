@@ -15,7 +15,7 @@
 </style>
 <div class="panel panel-info">
     <div class="panel-heading">
-        จำนวนประชาชนที่เดินทางกลับภูมิลำเนา ของจังหวัดมหาสารคาม โดยการรวมรายงานทั้ง 3 ระบบ *
+        จำนวนประชาชนที่เดินทางกลับภูมิลำเนา ของจังหวัดมหาสารคาม 
 
     </div>
     <div class="panel-body">
@@ -30,12 +30,10 @@
             <tr>
                 <th>#</th>
                 <th>อำเภอ</th>
-                <th class='text-center'>จำนวนท้งหมด</th>
+        
                 <th class='text-center'>
                     <?php echo '01 ธ.ค 2563 - ' . to_thai_date_short(date('Y-m-d', strtotime("-1 days"))); ?></th>
-                <th class='text-center'>
-                    <?php echo to_thai_date_short(date('Y-m-d')); ?>
-                </th>
+            
                 <th class='text-center' data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                     ผู้เดินทางจาก 28 จังหวัด(พื้นที่เสี่ยงสูง,พื้นที่เสี่ยง)
                 </th>
@@ -52,9 +50,7 @@
                 echo "<tr>";
                 echo "<td>$n</td>
             <td>$r->ampurname </td>
-            <td class='text-center'>" . number_format($r->total) . "</td>
             <td class='text-center'>" . number_format($r->daynow1) . " </td>
-            <td class='text-center'>" . number_format($r->daynow) . "</td>
             <td class='text-center'>" . number_format($r->bkk) . "</td>";
                 echo "</tr>";
                 $n++;
@@ -65,9 +61,8 @@
             }
             echo "<tr>
                   <td colspan='2'> รวม</td>
-                    <td class='text-center'>" . number_format($stotal) . "</button></td>
+                    
                     <td class='text-center'>" . number_format($sdaynow1) . "</td>
-                    <td class='text-center'>" . number_format($sdaynow) . "</td>
                     <td class='text-center'>" . number_format($sbkk) . "</td>
                 </tr>"
             ?>
@@ -75,9 +70,6 @@
 
         </table>
         <hr class="hr">
-        ระบบเก็บข้อมูลทั้ง 3 ระบบ <br>
-        1. ระบบบันทึกข้อมูล สสจ.มหาสารคาม (ระบบเดิมคือ GoogleForm ปัจจุบันเป็นเว็บ)<br>
-        2. ระบบบันทึกข้อมูลผ่าน Line เขตสุขภาพที่ 7 <br>
-        3. ระบบบันทึกข้อมูลมหาดไทย ThaiQM โดยให้อำเภอส่งข้อมูลเพื่อนำเข้าก่อน 10.00 ทุกวัน <br>
+    
     </div>
 </div>
