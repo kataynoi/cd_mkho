@@ -189,6 +189,7 @@ class Person_survey_self_model extends CI_Model
             ->set("date_in", to_mysql_date($data["date_in"]))
             ->set("no", $data["no"])
             ->set("moo", $data["moo"])
+            ->set("villagecodefull", $data["villagecode"])
             ->set("tambon", $data["tambon"])
             ->set("ampur", $data["ampur"])
             ->set("province", $data["province"])
@@ -202,11 +203,23 @@ class Person_survey_self_model extends CI_Model
             ->set("risk7", $data["risk7"])
             ->set("risk8", $data["risk8"])
             ->set("risk9", $data["risk9"])
-            ->set("comment", $data["date_in"])
+            ->set("comment", $data["comment"])
             ->insert('person_survey_self');
 
         return $this->db->insert_id();
 
+    }
+    public function update_hospcode ($data,$id){
+        $hospcode = $this->get_hospcode($data["villagecode"]);
+        if(!empty($hospcode)){
+            $rs = $this->db
+            ->set("hospcode", $hospcode)
+            ->where("id",$id)
+            ->update('person_survey_self');
+        return $rs;
+        }else{
+            return false;
+        }
     }
 
     public function update_person_survey($data)
@@ -244,5 +257,13 @@ class Person_survey_self_model extends CI_Model
             ->get("t_person_cid")
             ->row();
         return $rs;
+    }
+    public function get_hospcode ($villagecodefull){
+        $rs = $this->db
+            ->where('VID',$villagecodefull)
+            ->limit(1)
+            ->get('village')
+            ->row();
+            return $rs ? $rs->HOSPCODE : null;
     }
 }

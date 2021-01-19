@@ -30,6 +30,7 @@ header("Cache-Control: private",false);
         <table id="table_data" class="table table-responsive">
             <thead>
             <tr>
+                <th>หน่วยบริการ</th>
                 <th>วันที่บันทึกข้อมูล</th>
                 <th>เลขบัตรประชาชน</th>
                 <th>ชื่อ สกุล</th>
@@ -51,6 +52,7 @@ header("Cache-Control: private",false);
             <?php
             foreach ($person_survey as $r) {
                 echo "<tr>";
+                echo "<td>".$r->hosname."</td>";
                 echo "<td>".$r->d_update."</td>";
                 echo "<td>".$r->cid."</td>";
                 echo "<td>".$r->name."</td>";

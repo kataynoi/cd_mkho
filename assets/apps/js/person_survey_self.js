@@ -96,6 +96,7 @@ crud.save = function (items, row_id) {
         else {
             $('#frmModal').modal('toggle');
             swal('บันทึกข้อมูลเรียบร้อยแล้วค่ะ อย่าลืมเว้นระยะห่าง สวมหน้ากากอนามัย ล้ามมือบ่อยๆนะคะ');
+            //console.log(data);
             location.reload(); 
 
             //window.location.href = site_url+"/person_survey_self/capture";
@@ -141,6 +142,7 @@ $('#btn_save').on('click', function (e) {
     items.date_in = $("#date_in").val();
     items.no = $("#no").val();
     items.moo = $("#moo").val();
+    items.villagecode = $("#villagecode").val();
     items.tambon = $("#tambon").val();
     items.ampur = $("#ampur").val();
     items.province = $("#province").val();
@@ -157,6 +159,7 @@ $('#btn_save').on('click', function (e) {
     items.risk9 = $("input[name='risk9']:checked").val();
 
     if (validate(items)) {
+        //console.log(items);
         crud.save(items, row_id);
     }
 
@@ -177,24 +180,31 @@ function validate(items) {
      if (items.name=="") {
         swal("กรุณาระบุชื่อ สกุล");
         $("#name").focus();
+        $("#btn_save").attr("disabled", false);
     } else if (items.from_province=="") {
         swal("กรุณาระบุมาจากจังหวัด");
         $("#from_province").focus();
+        $("#btn_save").attr("disabled", false);
     } else if (items.date_in=="") {
         swal("กรุณาระบุวันเดินทางเข้า");
         $("#date_in").focus();
+        $("#btn_save").attr("disabled", false);
     } else if (items.ampur=="") {
         swal("กรุณาระบุอำเภอ");
         $("#ampur").focus();
+        $("#btn_save").attr("disabled", false);
     } else if (items.tambon=="") {
         swal("กรุณาระบุตำบล");
         $("#tambon").focus();
+        $("#btn_save").attr("disabled", false);
     }else if (items.moo=="") {
         swal("กรุณาระบุหมู่บ้าน");
         $("#moo").focus();
+        $("#btn_save").attr("disabled", false);
     }  else if (!items.in_family) {
         swal("กรุณาระบุคนในครอบครัว");
         $("#in_family").focus();
+        $("#btn_save").attr("disabled", false);
     } else {
         return true;
     }
@@ -205,6 +215,14 @@ $('#ampur').on('change', function () {
     crud.get_tambon_list(amp);
 
 });
+
+$('#moo').on('change', function () {
+    var villagecode = $(this).find(':selected').data('villagecode')
+    console.log(villagecode);
+    $('#villagecode').val(villagecode);
+
+});
+
 
 crud.get_tambon_list = function (ampcode) {
 
@@ -236,7 +254,7 @@ crud.get_moo_list = function (code) {
         if (!err) {
             $('#moo').append('<option value="">-*-</option>');
             _.each(data.rows, function (v) {
-                $('#moo').append('<option value="' + v.villagename + '">' + v.villagename + '</option>');
+                $('#moo').append('<option value="' + v.villagename + '" data-villagecode="'+v.villagecodefull+'">' + v.villagecode+':'+v.villagename + '</option>');
             });
         }
     });

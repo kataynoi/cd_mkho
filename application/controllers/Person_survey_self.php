@@ -106,6 +106,7 @@ class Person_survey_self extends CI_Controller
         $data = $this->input->post('items');
         if ($data['action'] == 'insert') {
             $rs = $this->crud->save_person_survey($data);
+            $rs_pcu = $this->crud->update_hospcode($data,$rs);
             if ($rs) {
                 $json = '{"success": true,"id":' . $rs . '}';
             } else {
