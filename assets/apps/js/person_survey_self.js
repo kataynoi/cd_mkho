@@ -241,8 +241,7 @@ crud.get_moo_list = function (code) {
         }
     });
 
-};
-
+}
 crud.get_person_by_cid = function (cid) {
 
     crud.ajax.get_person_by_cid(cid, function (err, data) {

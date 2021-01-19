@@ -110,9 +110,10 @@
                     </select>
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="moo">หมู่บ้าน</label>
+                    <label for="moo">หมูที่->หมู่บ้าน</label>
                     <select class="form-control" id="moo" placeholder="หมู่บ้าน" value="">
                         <option></option>
+                    
                     </select>
                 </div>
 

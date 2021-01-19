@@ -16,7 +16,6 @@
 <div class="panel panel-info">
     <div class="panel-heading">
         จำนวนประชาชนที่เดินทางกลับภูมิลำเนา ของจังหวัดมหาสารคาม 
-
     </div>
     <div class="panel-body">
 
@@ -30,10 +29,8 @@
             <tr>
                 <th>#</th>
                 <th>อำเภอ</th>
-        
                 <th class='text-center'>
                     <?php echo '01 ธ.ค 2563 - ' . to_thai_date_short(date('Y-m-d', strtotime("-1 days"))); ?></th>
-            
                 <th class='text-center' data-toggle="tooltip" data-placement="top" title="Tooltip on top">
                     ผู้เดินทางจาก 28 จังหวัด(พื้นที่เสี่ยงสูง,พื้นที่เสี่ยง)
                 </th>
