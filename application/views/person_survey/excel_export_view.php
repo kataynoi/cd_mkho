@@ -39,6 +39,7 @@ header("Cache-Control: private",false);
                 <th>มาจากจังหวัด</th>
                 <th>วันเดินทางเข้า</th>
                 <th>มาจาก</th>
+                <th>หมู่ที่</th>
                 <th>หมู่บ้าน</th>
                 <th>ตำบล</th>
                 <th>อำเภอ</th>
@@ -61,6 +62,7 @@ header("Cache-Control: private",false);
                 echo "<td>".$r->from_province."</td>";
                 echo "<td>".$r->date_in."</td>";
                 echo "<td>".$r->no."</td>";
+                echo "<td>".$r->villagecode."</td>";
                 echo "<td>".$r->moo."</td>";
                 echo "<td>".$r->tambonname."</td>";
                 echo "<td>".$r->ampurname."</td>";
