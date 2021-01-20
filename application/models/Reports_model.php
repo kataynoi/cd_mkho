@@ -39,7 +39,7 @@ class Reports_model extends CI_Model
         $startdate = '2020-03-01';
         $daynow = date("Y-m-d");
         $sql = "SELECT a.ampur,b.ampurname,COUNT(*) as total
-              ,SUM(IF(DATE_FORMAT(a.d_update,'%Y-%m-%d') BETWEEN '$startdate' AND ('$daynow' - INTERVAL 1 DAY),1,0)) as daynow1
+              ,SUM(IF(DATE_FORMAT(a.d_update,'%Y-%m-%d') BETWEEN '$startdate' AND '$daynow',1,0)) as daynow1
               ,SUM(IF(DATE_FORMAT(a.d_update,'%Y-%m-%d') = '$daynow',1,0)) as daynow
               ,SUM(IF(a.from_province in(10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,63,70,71,72,73,74,75,76,77,85,86),1,0)) as  bkk
               FROM person_survey_self a
