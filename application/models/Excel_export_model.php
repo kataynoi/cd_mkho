@@ -4,7 +4,7 @@ class Excel_export_model extends CI_Model
     function fetch_data($ampurcode)
     {
 
-        $day_now = date("Y-m-d");
+        $day_now = '2021-04-01';
         $sql = "SELECT d.hosname,RIGHT(a.villagecodefull,2) as villagecode,a.d_update,a.cid,a.`name`,a.tel,f.`name` as from_conutry,e.changwatname as from_province  , a.date_in,a.`no` ,a.moo,c.tambonname,b.ampurname,a.in_family,g.`name` as reporter
                 FROM person_survey_self a
                 LEFT JOIN (SELECT * FROM campur WHERE changwatcode='44') b ON a.ampur = b.ampurcodefull
@@ -13,11 +13,10 @@ class Excel_export_model extends CI_Model
                 LEFT JOIN cchangwat e ON a.from_province = e.changwatcode
                 LEFT JOIN cnation f ON a.from_conutry = f.id
                 LEFT JOIN users g ON a.reporter = g.id
-                WHERE a.ampur ='$ampurcode'";
+                WHERE a.ampur ='$ampurcode' and a.date_in >= DATE_FORMAT('2021-04-01','%Y-%m-%d')";
                
         $rs = $this->db->query($sql)->result();
-        //echo $this->db->last_query();
-
+        echo $this->db->last_query();
         return $rs;
 /*
 

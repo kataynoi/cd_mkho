@@ -177,6 +177,7 @@ class Person_survey_self_model extends CI_Model
         if(!isset($data["risk7"])){$data["risk7"]=0;}
         if(!isset($data["risk8"])){$data["risk8"]=0;}
         if(!isset($data["risk9"])){$data["risk9"]=0;}
+        if(!isset($data["risk10"])){$data["risk10"]=0;}
         $rs = $this->db
             ->set("id", $data["id"])
             ->set("d_update", date("Y-m-d H:i:s"))
@@ -203,6 +204,7 @@ class Person_survey_self_model extends CI_Model
             ->set("risk7", $data["risk7"])
             ->set("risk8", $data["risk8"])
             ->set("risk9", $data["risk9"])
+            ->set("risk10", $data["risk10"])
             ->set("comment", $data["comment"])
             ->insert('person_survey_self');
 

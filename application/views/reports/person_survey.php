@@ -2,42 +2,42 @@
 <br>
 
 <script>
-    $('#left_menu').hide();
-    $('[data-toggle="tooltip"]').tooltip();
-    $('#btn-28').on('click',function(){
-        alert('OK');
-    });
+$('#left_menu').hide();
+$('[data-toggle="tooltip"]').tooltip();
+$('#btn-28').on('click', function() {
+    alert('OK');
+});
 </script>
 <style>
-    #page-wrapper {
-        margin-left: 0px;
-    }
+#page-wrapper {
+    margin-left: 0px;
+}
 </style>
 <div class="panel panel-info">
     <div class="panel-heading">
-        จำนวนประชาชนที่เดินทางกลับภูมิลำเนา ของจังหวัดมหาสารคาม 
+        จำนวนประชาชนที่เดินทางกลับภูมิลำเนา ของจังหวัดมหาสารคาม
     </div>
     <div class="panel-body">
 
         <span class="pull-right">
-                <a href="<?php echo site_url('excel_export/person_survey_excel/'); ?>"
-                   class="btn btn-outline btn-success"> ส่งออกรายชื่อ Excel (เฉพาะอำเภอของท่าน) </a>
+            <a href="<?php echo site_url('excel_export/person_survey_excel/'); ?>" class="btn btn-outline btn-success">
+                ส่งออกรายชื่อ Excel (เฉพาะอำเภอของท่าน) </a>
 
         </span>
         <table class="table table-striped">
             <thead>
-            <tr>
-                <th>#</th>
-                <th>อำเภอ</th>
-                <th class='text-center'>
-                    <?php echo '01 ธ.ค 2563 - ' . to_thai_date_short(date('Y-m-d')); ?></th>
-                <th class='text-center' data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                    ผู้เดินทางจาก 28 จังหวัด(พื้นที่เสี่ยงสูง,พื้นที่เสี่ยง)
-                </th>
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th>อำเภอ</th>
+                    <th class='text-center'>
+                        <?php echo '01 เม.ย. 2564 - ' . to_thai_date_short(date('Y-m-d')); ?></th>
+                    <th class='text-center' data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                        ผู้เดินทางจาก 8 จังหวัด(พื้นที่เสี่ยงสูง,พื้นที่เสี่ยง)
+                    </th>
+                </tr>
             </thead>
             <tbody>
-            <?php
+                <?php
             $n = 1;
             $sdaynow = 0;
             $sdaynow1 = 0;
@@ -67,6 +67,6 @@
 
         </table>
         <hr class="hr">
-    
+
     </div>
 </div>

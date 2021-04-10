@@ -86,8 +86,8 @@
                 </div>
                 <div class="form_group col-md-3">
                     <label for="date_in">วันเดินทางเข้า</label>
-                    <input type="text"  id="date_in" data-type="date" class="form-control datepicker"
-                    data-date-language="th" placeholder="01/04/2563" title="ระบุวันที่" data-rel="tooltip">
+                    <input type="text" id="date_in" data-type="date" class="form-control datepicker"
+                        data-date-language="th" placeholder="01/04/2563" title="ระบุวันที่" data-rel="tooltip">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="no">เข้าพักที่ บ้านเลขที่</label>
@@ -113,7 +113,7 @@
                     <label for="moo">หมูที่->หมู่บ้าน</label>
                     <select class="form-control" id="moo" placeholder="หมู่บ้าน" value="">
                         <option></option>
-                    
+
                     </select>
                     <input type="hidden" id="villagecode">
                 </div>
@@ -132,7 +132,7 @@
 
     <div class="panel panel-success">
         <div class="panel-heading">
-            อาการเจ็บป่วย
+            อาการเจ็บป่วย เดินทางไปสถานที่เสี่ยง
         </div>
         <div class="panel-body">
             <div class="form-group ">
@@ -190,6 +190,13 @@
                         อาการอื่นๆ
                     </label>
                 </div>
+                <div class="form-check" style="padding-left: 20px;">
+                    <input class="form-check-input" type="checkbox" id="risk10" name="risk9" value="1">
+                    <label class="form-check-label" for="gridCheck1">
+                        ไปสถานที่เสี่ยง เช่น ผับ บาร์ ร้านคาราโอเกะ อาบอบนวด
+                    </label>
+                </div>
+
             </div>
 
             <div class="form-group ">
