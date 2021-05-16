@@ -43,6 +43,16 @@ class User extends CI_Controller
         }
 
     }
+    public function login_org()
+    {
+        if ($this->session->userdata('online')) {
+            redirect(site_url("whitelist_organization"), 'refresh');
+        } else {
+            $this->load->view('user/login_org');
+            console_log($this->session->userdata('fullname'));
+        }
+
+    }
 
     public function register()
     {
@@ -101,7 +111,11 @@ class User extends CI_Controller
         $this->session->sess_destroy();
         redirect(site_url('user/login'), 'refresh');
     }
-
+    public function logout_org()
+    {
+        $this->session->sess_destroy();
+        redirect(site_url('user/login_org'), 'refresh');
+    }
     public function do_auth()
     {
         $username = $this->input->post('username');
@@ -116,6 +130,29 @@ class User extends CI_Controller
             $rs['checkpoint'] = $rs['checkpoint'];
             $this->session->set_userdata($rs);
             $json = '{"success": true, "msg":"" }';
+        } else {
+            $json = '{"success": false, "msg": "Username หรือ Password ไม่ถูกต้อง"}';
+        }
+
+        render_json($json);
+
+    }
+    public function do_auth_org()
+    {
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $rs = $this->user->do_auth_org($username, $password);
+        //echo $rs['id'];
+        $org = "false";
+        if ($rs['id']) {
+            $rs['login'] = true;
+            $rs['fullname'] = $rs['org_name'];
+            if($rs['org_name']!="" &&  $rs['org_name']!=NULL){
+                 $org = "true";
+            };
+            $rs['user_type'] = "4";
+            $this->session->set_userdata($rs);
+            $json = '{"success": true, "msg": "", "org": '.$org.' }';
         } else {
             $json = '{"success": false, "msg": "Username หรือ Password ไม่ถูกต้อง"}';
         }

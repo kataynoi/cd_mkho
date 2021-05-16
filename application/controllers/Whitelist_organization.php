@@ -8,10 +8,10 @@ class Whitelist_organization extends CI_Controller
     {
         parent::__construct();
 
-                /*if($this->session->userdata("user_type") != 1)
-                    redirect(site_url("user/login"));*/
-                $this->layout->setLeft("layout/left_admin");
-                $this->layout->setLayout("admin_layout");
+                if($this->session->userdata("user_type") != 4)
+                    redirect(site_url("user/login_org"));
+                
+                $this->layout->setLayout('print_layout');
         $this->load->model('Whitelist_organization_model', 'crud');
     }
 
@@ -21,17 +21,35 @@ class Whitelist_organization extends CI_Controller
         
         $this->layout->view('whitelist_organization/index', $data);
     }
-
+    public function set_org()
+    {
+        $data["campur"] = $this->crud->get_campur();
+        
+        $this->layout->view('whitelist_organization/set_org',$data);
+    }
 
     function fetch_whitelist_organization()
     {
         $fetch_data = $this->crud->make_datatables();
         $data = array();
         foreach ($fetch_data as $row) {
-
-
+            $vaccine="";
+            if($row->vaccine==1){
+                $vaccine="<span><i class='fa fa-check-circle' style='color:green;'></i><span>";
+            }else{
+                $vaccine="<span><i class='fa fa-times-circle' style='color:red;'></i><span>";
+            }
             $sub_array = array();
-                $sub_array[] = $row->id;$sub_array[] = $row->organization;$sub_array[] = $row->target_type;$sub_array[] = $row->prov;$sub_array[] = $row->amp;$sub_array[] = $row->tambon;$sub_array[] = $row->moo;$sub_array[] = $row->hospname;$sub_array[] = $row->hospcode;$sub_array[] = $row->cid;$sub_array[] = $row->prename;$sub_array[] = $row->name;$sub_array[] = $row->lname;$sub_array[] = $row->sex;$sub_array[] = $row->birth;$sub_array[] = $row->tel;$sub_array[] = $row->vaccine;
+                $sub_array[] =$vaccine;
+                $sub_array[] = $row->organization;
+                $sub_array[] = $row->cid;
+                $sub_array[] = $row->prename;
+                $sub_array[] = $row->name;
+                $sub_array[] = $row->lname;
+                $sub_array[] = $row->sex;
+                $sub_array[] = $row->birth;
+                $sub_array[] = $row->tel;
+               
                 $sub_array[] = '<div class="btn-group pull-right" role="group" >
                 <button class="btn btn-outline btn-success" data-btn="btn_view" data-id="' . $row->id . '"><i class="fa fa-eye"></i></button>
                 <button class="btn btn-outline btn-warning" data-btn="btn_edit" data-id="' . $row->id . '"><i class="fa fa-edit"></i></button>
@@ -65,6 +83,7 @@ class Whitelist_organization extends CI_Controller
             $data = $this->input->post('items');
             if($data['action']=='insert'){
                 $rs=$this->crud->save_whitelist_organization($data);
+                
                 if($rs){
                     $json = '{"success": true,"id":'.$rs.'}';
                   }else{
@@ -81,7 +100,21 @@ class Whitelist_organization extends CI_Controller
 
             render_json($json);
         }
-
+        public function  save_org()
+        {
+                $data = $this->input->post('items');
+                
+                    $rs=$this->crud->update_org($data);
+                        if($rs){
+                            $this->session->set_userdata("fullname",$data['org_name']);
+                            $json = '{"success": true}';
+                        }else{
+                            $json = '{"success": false}';
+                        }
+                
+    
+                render_json($json);
+            }
     public function  get_whitelist_organization()
     {
                 $id = $this->input->post('id');
