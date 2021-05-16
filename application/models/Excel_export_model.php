@@ -18,13 +18,36 @@ class Excel_export_model extends CI_Model
         $rs = $this->db->query($sql)->result();
         echo $this->db->last_query();
         return $rs;
-/*
+    }
+    function fetch_whitelist_org($id)
+    {
 
-        $this->db->order_by("id", "DESC");
-        $query = $this->db
-            ->where('ampur',$ampurcode)
-            ->get("person_survey");
-        return $query->result();*/
+        $sql = "SELECT 
+        '5-ประชาชนทั่วไป' as target_type
+        ,'501-อายุ 18 ปีขึ้นไป' as sub_target_type
+        ,CONCAT(a.prov,'-',b.changwatname) as prov
+        ,CONCAT(RIGHT(a.amp,2),'-',c.ampurname) as amp
+        ,CONCAT(RIGHT(a.tambon,2),'-',d.tambonname) as tambon
+        ,RIGHT(a.moo,2) as moo
+        ,NULL as hospname
+        ,NULL as hospcode
+        ,a.prename
+        ,a.name
+        ,a.lname
+        ,IF(a.sex=1,'ชาย',IF(a.sex=2,'หญิง','')) sex
+        ,CONCAT( DATE_FORMAT(  a.birth , '%d' ),'/',DATE_FORMAT(  a.birth, '%m' ) , '/',DATE_FORMAT( a.birth , '%Y' ) +543  ) AS birth
+        ,a.cid
+        ,CONCAT(LEFT(a.tel,3),'-',RIGHT(a.tel,7)) as tel
+        ,IF(a.vaccine=1,'1-รับ','0-ไม่รับ') as vaccine
+         FROM whitelist_organization a
+        LEFT JOIN cchangwat b ON a.prov = b.changwatcode
+        LEFT JOIN campur c ON a.amp = c.ampurcodefull
+        LEFT JOIN ctambon d ON a.tambon = d.tamboncodefull
+        WHERE a.organization=".$id."; ";
+               
+        $rs = $this->db->query($sql)->result();
+        echo $this->db->last_query();
+        return $rs;
     }
 
 

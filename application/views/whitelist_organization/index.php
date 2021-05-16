@@ -20,6 +20,12 @@
                     href="<?php echo site_url('whitelist_organization/add_whitelist')?>" id=""><i
                         class="fa fa-plus-circle"></i> ลงทะเบียนฉีดวัคซีน</a>
 
+                <span class="pull-right">
+                    <a href="<?php echo site_url('excel_export/whitelist_org/'); ?>" class="btn  btn-success">
+                        <i class="fa fa-file-excel-o"></i> ส่งออกรายชื่อ Excel </a>
+
+                </span>
+
             </div>
             <div class="panel-body">
 

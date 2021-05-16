@@ -20,9 +20,16 @@ class Excel_export extends CI_Controller
         $this->log_model->save_log($id,'export excel จำนวนคนเข้าพื้นที่');
         $data['person_survey'] = $this->excel_export_model->fetch_data($ampcode);
         $this->load->view("person_survey/excel_export_view", $data);
-
-
     }
+
+    function whitelist_org()
+    {
+        $id= $this->session->userdata('id');
+        $this->load->model("excel_export_model");
+        $data['whitelist_org'] = $this->excel_export_model->fetch_whitelist_org($id);
+        $this->load->view("whitelist_organization/excel_export_view", $data);
+    }
+
 
     function action()
     {
