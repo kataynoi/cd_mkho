@@ -207,7 +207,6 @@ function validate(items) {
 }
 $("#ampur").on("change", function () {
   var amp = $(this).val();
-
   crud.get_tambon_list(amp);
 });
 
@@ -235,12 +234,6 @@ crud.get_tambon_list = function (ampcode) {
     }
   });
 };
-
-$("#tambon").on("change", function () {
-  var code = $(this).val();
-
-  crud.get_moo_list(code);
-});
 
 crud.get_moo_list = function (code) {
   $("#moo").empty();

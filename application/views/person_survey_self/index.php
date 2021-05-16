@@ -223,5 +223,4 @@
 </body>
 
 </html>
-<script src="<?php echo base_url() ?>assets/apps/js/person_survey_self
-.js" charset="utf-8"></script>
+<script src="<?php echo base_url() ?>assets/apps/js/person_survey_self.js" charset="utf-8"></script>

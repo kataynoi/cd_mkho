@@ -14,7 +14,9 @@ class Whitelist_organization_model extends CI_Model
 
     function make_query()
     {
-        $this->db->from($this->table);
+        $this->db
+        ->where('organization',$this->session->userdata('id'))
+        ->from($this->table);
         if (isset($_POST["search"]["value"])) {
             $this->db->group_start();
             $this->db->like("cid", $_POST["search"]["value"]);
@@ -67,9 +69,24 @@ class Whitelist_organization_model extends CI_Model
 
     public function save_whitelist_organization($data)
     {
-
+        if(!isset($data["vaccine"])){$data["vaccine"]=0;}
+        $birth= to_mysql_date($data["birth"]);
         $rs = $this->db
-            ->set("id", $data["id"])->set("organization", $data["organization"])->set("target_type", $data["target_type"])->set("prov", $data["prov"])->set("amp", $data["amp"])->set("tambon", $data["tambon"])->set("moo", $data["moo"])->set("hospname", $data["hospname"])->set("hospcode", $data["hospcode"])->set("cid", $data["cid"])->set("prename", $data["prename"])->set("name", $data["name"])->set("lname", $data["lname"])->set("sex", $data["sex"])->set("birth", $data["birth"])->set("tel", $data["tel"])->set("vaccine", $data["vaccine"])
+            ->set("id", $data["id"])
+            ->set("organization", $data["organization"])
+            ->set("target_type",'5')
+            ->set("prov", $data["prov"])
+            ->set("amp", $data["ampur"])
+            ->set("tambon", $data["tambon"])
+            ->set("moo", $data["moo"])
+            ->set("cid", $data["cid"])
+            ->set("prename", $data["prename"])
+            ->set("name", $data["name"])
+            ->set("lname", $data["lname"])
+            ->set("sex", $data["sex"])
+            ->set("birth", $birth)
+            ->set("tel", $data["tel"])
+            ->set("vaccine", $data["vaccine"])
             ->insert('whitelist_organization');
 
         return $this->db->insert_id();
@@ -107,6 +124,31 @@ class Whitelist_organization_model extends CI_Model
             ->where('changwatcode', '44')
             ->get("campur")
             ->result();
+        return $rs;
+    }
+    public function get_cchangwat()
+    {
+        $rs = $this->db
+            ->order_by('s_order','DESC')
+            ->get("cchangwat")
+            ->result();
+        return $rs;
+    }
+    public function check_person_cid($cid)
+    {
+        $rs = $this->db
+            ->from("whitelist_organization")
+            ->where('cid', $cid)
+            ->count_all_results();
+        return $rs;
+    }
+    public function get_person_cid($cid)
+    {
+        $rs = $this->db
+            ->where('cid', $cid)
+            ->limit(1)
+            ->get("t_person_cid")
+            ->row();
         return $rs;
     }
 }

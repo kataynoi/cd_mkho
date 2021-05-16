@@ -10,15 +10,15 @@
 
     </div>
     <br>
-    <div <div class="row">
+    <div class="row">
         <div class="panel panel-info ">
             <div class="panel-heading w3-theme">
                 <i class="fa fa-user fa-2x "></i>
                 <span class=""> หน่วยงาน:<?php echo $this->session->userdata('fullname');?>:
                     รายชื่อผู้ลงทะเบียนรับวัคซีน</span>
-                <button class="btn btn-success pull-right" id="add_data" data-toggle="modal" data-target="#frmModal"><i
-                        class="fa fa-plus-circle"></i> Add</button>
-                </span>
+                <a class="btn btn-success pull-right"
+                    href="<?php echo site_url('whitelist_organization/add_whitelist')?>" id=""><i
+                        class="fa fa-plus-circle"></i> ลงทะเบียนฉีดวัคซีน</a>
 
             </div>
             <div class="panel-body">

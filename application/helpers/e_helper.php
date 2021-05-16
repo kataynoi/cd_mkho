@@ -903,5 +903,32 @@ if ( ! function_exists('get_conutry_id'))
 
     }
 }
+if(!function_exists('get_ampur_name'))
+{
+
+    function get_ampur_name($addr_code)
+    {
+        $ci =& get_instance();
+        $ci->load->model('Basic_model', 'basic');
+        $chw = substr($addr_code, 0, 2);
+        $amp = substr($addr_code, 2, 2);
+        $amp_name = $ci->basic->get_ampur_name($chw, $amp);
+
+        return $amp_name;
+    }
+}
+
+if(!function_exists('get_org_name'))
+{
+
+    function get_org_name($code)
+    {
+        $ci =& get_instance();
+        $ci->load->model('Basic_model', 'basic');
+        $org_name = $ci->basic->get_org_name($code);
+
+        return $org_name;
+    }
+}
 /* End of file epidem_helper.php */
 /* Location: ./application/helpers/epidem_helper.php */

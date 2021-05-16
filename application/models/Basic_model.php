@@ -118,6 +118,25 @@ class Basic_model extends CI_Model
 
         return count($rs) > 0 ? $rs->tambonname : '-';
     }
+    public function get_org_name($code)
+    {
+        $rs = $this->db
+            ->where('id', $code)
+            ->get('user_org')
+            ->row();
+
+        return count($rs) > 0 ? $rs->org_name : '-';
+    }
+
+
+    public function get_ampur_list($prov)
+    {
+        $rs = $this->db
+            ->where('changwatcode', $prov)
+            ->get('campur')
+            ->result();
+        return $rs;
+    }
 
     public function get_tambon_list($amp)
     {

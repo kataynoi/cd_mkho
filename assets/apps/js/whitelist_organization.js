@@ -22,6 +22,17 @@ $(document).ready(function () {
       },
     ],
   });
+  //$("#prov").select2();
+  $(".datepicker")
+    .datepicker({
+      format: "dd/mm/yyyy",
+      todayBtn: false,
+      language: "th", //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
+      thaiyear: true, //Set เป็นปี พ.ศ.
+      autoclose: true,
+    })
+    .datepicker("setDate", "0");
+  $("#date_in").datepicker();
 });
 
 var crud = {};
@@ -67,7 +78,48 @@ crud.ajax = {
       err ? cb(err) : cb(null, data);
     });
   },
+  get_person_by_cid: function (cid, cb) {
+    var url = "/whitelist_organization/get_person_by_cid",
+      params = {
+        cid: cid,
+      };
+
+    app.ajax(url, params, function (err, data) {
+      err ? cb(err) : cb(null, data);
+    });
+  },
+  get_ampur_list: function (provcode, cb) {
+    var url = "/basic/get_ampur_list",
+      params = {
+        provcode: provcode,
+      };
+
+    app.ajax(url, params, function (err, data) {
+      err ? cb(err) : cb(null, data);
+    });
+  },
+  get_tambon_list: function (amp, cb) {
+    var url = "/basic/get_tambon_list",
+      params = {
+        amp: amp,
+      };
+
+    app.ajax(url, params, function (err, data) {
+      err ? cb(err) : cb(null, data);
+    });
+  },
+  get_moo_list: function (code, cb) {
+    var url = "/basic/get_moo_list",
+      params = {
+        code: code,
+      };
+
+    app.ajax(url, params, function (err, data) {
+      err ? cb(err) : cb(null, data);
+    });
+  },
 };
+
 crud.del_data = function (id) {
   crud.ajax.del_data(id, function (err, data) {
     if (err) {
@@ -92,6 +144,8 @@ crud.save = function (items, row_id) {
       }
       $("#frmModal").modal("toggle");
       swal("บันทึกข้อมูลเรียบร้อยแล้ว ");
+      window.location = site_url + "/whitelist_organization";
+
     }
   });
 };
@@ -243,13 +297,10 @@ $("#btn_save").on("click", function (e) {
   // items.brand_name = $("#brand option:selected").text();
   items.id = $("#id").val();
   items.organization = $("#organization").val();
-  items.target_type = $("#target_type").val();
   items.prov = $("#prov").val();
-  items.amp = $("#amp").val();
+  items.ampur = $("#ampur").val();
   items.tambon = $("#tambon").val();
   items.moo = $("#moo").val();
-  items.hospname = $("#hospname").val();
-  items.hospcode = $("#hospcode").val();
   items.cid = $("#cid").val();
   items.prename = $("#prename").val();
   items.name = $("#name").val();
@@ -257,7 +308,7 @@ $("#btn_save").on("click", function (e) {
   items.sex = $("#sex").val();
   items.birth = $("#birth").val();
   items.tel = $("#tel").val();
-  items.vaccine = $("#vaccine").val();
+  items.vaccine = $("input[name='vaccine']:checked").val();
 
   if (validate(items)) {
     crud.save(items, row_id);
@@ -324,33 +375,9 @@ $(document).on("click", 'button[data-btn="btn_view"]', function (e) {
 });
 
 function validate(items) {
-  if (!items.id) {
-    swal("กรุณาระบุID");
-    $("#id").focus();
-  } else if (!items.organization) {
+  if (!items.organization) {
     swal("กรุณาระบุหน่วยงาน");
     $("#organization").focus();
-  } else if (!items.target_type) {
-    swal("กรุณาระบุกลุ่มเป้าหมาย");
-    $("#target_type").focus();
-  } else if (!items.prov) {
-    swal("กรุณาระบุจังหวัด");
-    $("#prov").focus();
-  } else if (!items.amp) {
-    swal("กรุณาระบุอำเภอ");
-    $("#amp").focus();
-  } else if (!items.tambon) {
-    swal("กรุณาระบุตำบล");
-    $("#tambon").focus();
-  } else if (!items.moo) {
-    swal("กรุณาระบุหมู่ที่");
-    $("#moo").focus();
-  } else if (!items.hospname) {
-    swal("กรุณาระบุสถานที่ฉีดวัคซีน");
-    $("#hospname").focus();
-  } else if (!items.hospcode) {
-    swal("กรุณาระบุรหัสหน่วยฉีดวัคซีน");
-    $("#hospcode").focus();
   } else if (!items.cid) {
     swal("กรุณาระบุเลขบัตรประชาชน");
     $("#cid").focus();
@@ -372,9 +399,18 @@ function validate(items) {
   } else if (!items.tel) {
     swal("กรุณาระบุเบอร์โทร");
     $("#tel").focus();
-  } else if (!items.vaccine) {
-    swal("กรุณาระบุรับวัคซีน");
-    $("#vaccine").focus();
+  } else if (!items.prov) {
+    swal("กรุณาระบุจังหวัด");
+    $("#prov").focus();
+  } else if (!items.ampur) {
+    swal("กรุณาระบุอำเภอ");
+    $("#amp").focus();
+  } else if (!items.tambon) {
+    swal("กรุณาระบุตำบล");
+    $("#tambon").focus();
+  } else if (!items.moo) {
+    swal("กรุณาระบุหมู่ที่");
+    $("#moo").focus();
   } else {
     return true;
   }
@@ -404,3 +440,115 @@ function validate_org(items) {
     return true;
   }
 }
+
+$("#cid").on("keyup", function () {
+  var cid = $("#cid").val();
+  if (cid.length == 13) {
+    // alert(cid);
+    crud.get_person_by_cid(cid);
+  }
+
+  //
+});
+crud.get_person_by_cid = function (cid) {
+  crud.ajax.get_person_by_cid(cid, function (err, data) {
+    if (!err) {
+      if (data.check) {
+        swal("บุคคลนี้บันทึกข้อมูลในระบบแล้ว");
+        app.clear_form();
+      } else if (data.rows) {
+        $("#cid").val(data.rows["CID"]);
+        $("#prename").val(data.rows["PRENAME"]);
+        $("#name").val(data.rows["NAME"]);
+        $("#lname").val(data.rows["LNAME"]);
+        $("#birth").val(data.rows["BIRTH"]);
+        $("#sex").val(data.rows["SEX"]);
+        $("#no").val(data.rows["addr"]);
+        //$("#age").val(data.rows["age_y"]);
+        $provcode = data.rows["vhid"].substring(0, 2);
+        $amp = data.rows["vhid"].substring(0, 4);
+        $tambon = data.rows["vhid"].substring(0, 6);
+        $moo = data.rows["vhid"];
+        crud.get_ampur_list($provcode);
+        crud.get_tambon_list($amp);
+        crud.get_moo_list($tambon);
+        $(document).ajaxStop(function () {
+          $("#prov").val($provcode);
+          $("#ampur").val($amp);
+          $("#tambon").val($tambon);
+          $("#moo").val($moo);
+        });
+      } else {
+        $("#name").focus();
+      }
+    }
+  });
+};
+crud.get_ampur_list = function (provcode) {
+  $("#ampur").empty();
+
+  crud.ajax.get_ampur_list(provcode, function (err, data) {
+    if (!err) {
+      $("#ampur").append('<option value="">-*-</option>');
+      _.each(data.rows, function (v) {
+        $("#ampur").append(
+          '<option value="' + v.ampurcodefull + '">' + v.ampurname + "</option>"
+        );
+      });
+    }
+  });
+};
+crud.get_tambon_list = function (ampcode) {
+  $("#tambon").empty();
+
+  crud.ajax.get_tambon_list(ampcode, function (err, data) {
+    if (!err) {
+      $("#tambon").append('<option value="">-*-</option>');
+      _.each(data.rows, function (v) {
+        $("#tambon").append(
+          '<option value="' +
+            v.tamboncodefull +
+            '">' +
+            v.tambonname +
+            "</option>"
+        );
+      });
+    }
+  });
+};
+
+crud.get_moo_list = function (code) {
+  $("#moo").empty();
+
+  crud.ajax.get_moo_list(code, function (err, data) {
+    if (!err) {
+      $("#moo").append('<option value="">-*-</option>');
+      _.each(data.rows, function (v) {
+        $("#moo").append(
+          '<option value="' +
+            v.villagecodefull +
+            '" data-villagecode="' +
+            v.villagecodefull +
+            '">' +
+            v.villagecode +
+            ":" +
+            v.villagename +
+            "</option>"
+        );
+      });
+    }
+  });
+};
+
+$("#prov").on("change", function () {
+  var prov = $(this).val();
+  crud.get_ampur_list(prov);
+});
+$("#ampur").on("change", function () {
+  var amp = $(this).val();
+  crud.get_tambon_list(amp);
+});
+$("#tambon").on("change", function () {
+  var tambon = $(this).val();
+  crud.get_moo_list(tambon);
+});

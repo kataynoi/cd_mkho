@@ -13,6 +13,7 @@ class Whitelist_organization extends CI_Controller
                 
                 $this->layout->setLayout('print_layout');
         $this->load->model('Whitelist_organization_model', 'crud');
+        $this->load->model('basic_model', 'basic');
     }
 
     public function index()
@@ -26,6 +27,12 @@ class Whitelist_organization extends CI_Controller
         $data["campur"] = $this->crud->get_campur();
         
         $this->layout->view('whitelist_organization/set_org',$data);
+    }
+    public function add_whitelist()
+    {
+        //$data["campur"] = $this->crud->get_campur();
+        $data["cchangwat"] = $this->crud->get_cchangwat();
+        $this->layout->view('whitelist_organization/add_whitelist',$data);
     }
 
     function fetch_whitelist_organization()
@@ -41,8 +48,8 @@ class Whitelist_organization extends CI_Controller
             }
             $sub_array = array();
                 $sub_array[] =$vaccine;
-                $sub_array[] = $row->organization;
-                $sub_array[] = $row->cid;
+                $sub_array[] = get_org_name($row->organization);
+                $sub_array[] = substr($row->cid,0,10)."xxx";
                 $sub_array[] = $row->prename;
                 $sub_array[] = $row->name;
                 $sub_array[] = $row->lname;
@@ -50,8 +57,6 @@ class Whitelist_organization extends CI_Controller
                 $sub_array[] = $row->tel;
                
                 $sub_array[] = '<div class="btn-group pull-right" role="group" >
-                <button class="btn btn-outline btn-success" data-btn="btn_view" data-id="' . $row->id . '"><i class="fa fa-eye"></i></button>
-                <button class="btn btn-outline btn-warning" data-btn="btn_edit" data-id="' . $row->id . '"><i class="fa fa-edit"></i></button>
                 <button class="btn btn-outline btn-danger" data-btn="btn_del" data-id="' . $row->id . '"><i class="fa fa-trash"></i></button></div>';
                 $data[] = $sub_array;
         }
@@ -121,5 +126,25 @@ class Whitelist_organization extends CI_Controller
                 $rows = json_encode($rs);
                 $json = '{"success": true, "rows": ' . $rows . '}';
                 render_json($json);
+    }
+    public function get_person_by_cid()
+    {
+        $cid = $this->input->post('cid');
+        if ($this->crud->check_person_cid($cid) >= 1) {
+            $json = '{"success": true,"check":true}';
+        } else {
+            $rs = $this->crud->get_person_cid($cid);
+            $rs->PRENAME = get_prename($rs->PRENAME);
+            $rs->BIRTH = to_thai_date($rs->BIRTH);
+            $rs->AMPNAME = get_ampur_name($rs->vhid);
+            if ($rs) {
+                $rows = json_encode($rs);
+                $json = '{"success": true, "rows": ' . $rows . '}';
+            } else {
+                $json = '{"success": true, "check": false}';
+            }
+        }
+
+        render_json($json);
     }
 }
