@@ -47,7 +47,6 @@ class Whitelist_organization extends CI_Controller
                 $sub_array[] = $row->name;
                 $sub_array[] = $row->lname;
                 $sub_array[] = $row->sex;
-                $sub_array[] = $row->birth;
                 $sub_array[] = $row->tel;
                
                 $sub_array[] = '<div class="btn-group pull-right" role="group" >
