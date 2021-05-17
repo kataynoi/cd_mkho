@@ -45,7 +45,7 @@ class User extends CI_Controller
     }
     public function login_org()
     {
-        if ($this->session->userdata('online')) {
+        if ($this->session->userdata('login')) {
             redirect(site_url("whitelist_organization"), 'refresh');
         } else {
             $this->load->view('user/login_org');
