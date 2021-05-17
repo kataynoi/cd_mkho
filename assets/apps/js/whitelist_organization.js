@@ -145,7 +145,6 @@ crud.save = function (items, row_id) {
       $("#frmModal").modal("toggle");
       swal("บันทึกข้อมูลเรียบร้อยแล้ว ");
       window.location = site_url + "/whitelist_organization";
-
     }
   });
 };
@@ -452,6 +451,7 @@ $("#cid").on("keyup", function () {
 });
 crud.get_person_by_cid = function (cid) {
   crud.ajax.get_person_by_cid(cid, function (err, data) {
+    $("#provchange").val("0");
     if (!err) {
       if (data.check) {
         swal("บุคคลนี้บันทึกข้อมูลในระบบแล้ว");
@@ -473,10 +473,13 @@ crud.get_person_by_cid = function (cid) {
         crud.get_tambon_list($amp);
         crud.get_moo_list($tambon);
         $(document).ajaxStop(function () {
-          $("#prov").val($provcode);
-          $("#ampur").val($amp);
-          $("#tambon").val($tambon);
-          $("#moo").val($moo);
+          $check_provchange = $("#provchange").val();
+          if ($check_provchange == 0) {
+            $("#prov").val($provcode);
+            $("#ampur").val($amp);
+            $("#tambon").val($tambon);
+            $("#moo").val($moo);
+          }
         });
       } else {
         $("#name").focus();
@@ -542,13 +545,16 @@ crud.get_moo_list = function (code) {
 
 $("#prov").on("change", function () {
   var prov = $(this).val();
+  $("#provchange").val("1");
   crud.get_ampur_list(prov);
 });
 $("#ampur").on("change", function () {
   var amp = $(this).val();
+  $("#provchange").val("1");
   crud.get_tambon_list(amp);
 });
 $("#tambon").on("change", function () {
   var tambon = $(this).val();
+  $("#provchange").val("1");
   crud.get_moo_list(tambon);
 });

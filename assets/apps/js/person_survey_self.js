@@ -209,7 +209,10 @@ $("#ampur").on("change", function () {
   var amp = $(this).val();
   crud.get_tambon_list(amp);
 });
-
+$("#tambon").on("change", function () {
+  var tambon = $(this).val();
+  crud.get_moo_list(tambon);
+});
 $("#moo").on("change", function () {
   var villagecode = $(this).find(":selected").data("villagecode");
   console.log(villagecode);
