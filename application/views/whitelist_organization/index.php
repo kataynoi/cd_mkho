@@ -6,6 +6,7 @@
 
 <body>
     <div class="row">
+
         <a class="btn btn-warning pull-right" href="<?php echo site_url('user/logout_org');?>">ออกจากระบบ</a>
 
     </div>
@@ -16,14 +17,18 @@
                 <i class="fa fa-user fa-2x "></i>
                 <span class=""> หน่วยงาน:<?php echo $this->session->userdata('fullname');?>:
                     รายชื่อผู้ลงทะเบียนรับวัคซีน</span>
-                <a class="btn btn-success pull-right"
-                    href="<?php echo site_url('whitelist_organization/add_whitelist')?>" id=""><i
-                        class="fa fa-plus-circle"></i> ลงทะเบียนฉีดวัคซีน</a>
 
+                <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                    <a class="btn btn-success" type="button" target="_blank"
+                        href="<?php echo site_url('org_vaccine');?>"><i class="fa fa-file"></i> Report</a>
+                    <a class="btn btn-success" type="button"
+                        href="<?php echo site_url('whitelist_organization/add_whitelist')?>" id=""><i
+                            class="fa fa-plus-circle"></i> ลงทะเบียนฉีดวัคซีน</a>
+                    <a href="<?php echo site_url('excel_export/whitelist_org/'); ?>" class="btn  btn-success"
+                        type="button">
+                        <i class="fa fa-file-excel-o"></i> ส่งออก Excel </a>
+                </div>
                 <span class="pull-right">
-                    <a href="<?php echo site_url('excel_export/whitelist_org/'); ?>" class="btn  btn-success">
-                        <i class="fa fa-file-excel-o"></i> ส่งออกรายชื่อ Excel </a>
-
                 </span>
 
             </div>
