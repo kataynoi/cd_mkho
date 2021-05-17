@@ -22,7 +22,8 @@ header("Cache-Control: private",false);
 
     <div class="panel panel-info ">
         <div class="panel-heading w3-theme">
-            <i class="fa fa-user fa-2x "></i> จำนวนผู้เดินทางเข้าภายในจังหวัดมหาสารคาม
+            <i class="fa fa-user fa-2x "></i> รายชื่อผู้ลงทะเบียนรับวัคซีน
+            <?php echo $this->session->userdata('fullname');?>
 
         </div>
         <div class="panel-body">
