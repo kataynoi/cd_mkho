@@ -25,6 +25,7 @@ class Whitelist_organization extends CI_Controller
     public function set_org()
     {
         $data["campur"] = $this->crud->get_campur();
+        $data["org"] = $this->crud->get_org($this->session->userdata('id'));
         
         $this->layout->view('whitelist_organization/set_org',$data);
     }

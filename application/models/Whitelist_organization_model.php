@@ -151,4 +151,12 @@ class Whitelist_organization_model extends CI_Model
             ->row();
         return $rs;
     }
+    public function get_org($id)
+    {
+        $rs = $this->db
+            ->where('id', $id)
+            ->get("user_org")
+            ->row();
+        return $rs;
+    }
 }

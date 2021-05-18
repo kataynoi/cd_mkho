@@ -15,7 +15,10 @@
         <div class="panel panel-info ">
             <div class="panel-heading w3-theme">
                 <i class="fa fa-user fa-2x "></i>
-                <span class=""> หน่วยงาน:<?php echo $this->session->userdata('fullname');?>:
+                <span class=""> หน่วยงาน:<?php echo $this->session->userdata('fullname');?>
+                    <a href="<?php echo site_url('whitelist_organization/set_org');?>"><i class="fa fa-edit"
+                            alt="แก้ไขข้อมูลหน่วยงาน"></i></a>
+
                     รายชื่อผู้ลงทะเบียนรับวัคซีน</span>
 
                 <div class="btn-group pull-right" role="group" aria-label="Basic example">
