@@ -1,10 +1,10 @@
 $(document).ready(function () {
-      let param1="";
-    CalldataTable(param1);
+  let param1 = "";
+  CalldataTable(param1);
 });
 
 CalldataTable = function (param1 = null) {
- var table = $("#table_data").DataTable({
+  var table = $("#table_data").DataTable({
     createdRow: function (row, data, dataIndex) {
       $(row).attr("name", "row" + dataIndex);
     },
@@ -12,14 +12,14 @@ CalldataTable = function (param1 = null) {
       var api = this.api(),
         data;
       total = api
-        .column(1)
+        .column(2)
         .data()
         .reduce(function (a, b) {
           return app.intVal(a) + app.intVal(b);
         }, 0);
 
       // Update footer
-      $(api.column(1).footer()).html(total);
+      $(api.column(2).footer()).html(total);
     },
     processing: true,
     serverSide: true,
@@ -38,8 +38,8 @@ CalldataTable = function (param1 = null) {
     paging: false,
     searching: false,
     stateSave: true,
-    "bDestroy": true,
-   /*     "initComplete": function(settings, json) {
+    bDestroy: true,
+    /*     "initComplete": function(settings, json) {
       data = table.rows().data()
       console.log(data);
       var categories = []; //creating array for storing browser type in array.
@@ -55,23 +55,23 @@ CalldataTable = function (param1 = null) {
 };
 
 function plotChart(categories, series_data) {
-  Highcharts.chart('container', {
+  Highcharts.chart("container", {
     chart: {
-      type: 'column'
+      type: "column",
     },
     xAxis: {
-      categories: categories
+      categories: categories,
     },
     yAxis: {
-
       title: {
-        text: 'Count'
-      }
+        text: "Count",
+      },
     },
-    series: [{
-      name: 'person',
-      data: series_data
-    }]
-
+    series: [
+      {
+        name: "person",
+        data: series_data,
+      },
+    ],
   });
 }

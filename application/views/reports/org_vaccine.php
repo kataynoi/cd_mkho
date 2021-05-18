@@ -18,15 +18,14 @@
             <table id="table_data" class="table table-responsive">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>ชื่อหน่วยงาน</th>
                         <th>จำนวนผู้รับวัคซีน</th>
                     </tr>
                 </thead>
-                <tbody>
-                </tbody>
                 <tfoot>
                     <tr>
-                        <th colspan="1" style="text-align:right">Total:</th>
+                        <th colspan="2" style="text-align:right">Total:</th>
                         <th></th>
                     </tr>
                 </tfoot>

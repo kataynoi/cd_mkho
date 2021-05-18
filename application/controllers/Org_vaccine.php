@@ -24,10 +24,12 @@ class Org_vaccine extends CI_Controller
         $id = $this->input->post('param1');
         $fetch_data = $this->crud->make_datatables($id);
         $data = array();
+        $no=0;
         foreach ($fetch_data as $row) {
 
-
+            $no++;
             $sub_array = array();
+                $sub_array[] = $no;
                 $sub_array[] = $row->org_name;
                 $sub_array[] = $row->vaccine;
                 $data[] = $sub_array;
