@@ -45,8 +45,9 @@ class User extends CI_Controller
     }
     public function login_org()
     {
-        if ($this->session->userdata('online')) {
+        if ($this->session->userdata('org_login')==1) {
             redirect(site_url("whitelist_organization"), 'refresh');
+           console_log('login'.$this->session->userdata('org_login'));
         } else {
             $this->load->view('user/login_org');
             console_log($this->session->userdata('fullname'));
@@ -145,7 +146,7 @@ class User extends CI_Controller
         //echo $rs['id'];
         $org = "false";
         if ($rs['id']) {
-            $rs['login'] = true;
+            $rs['org_login'] = true;
             $rs['fullname'] = $rs['org_name'];
             if($rs['org_name']!="" &&  $rs['org_name']!=NULL){
                  $org = "true";

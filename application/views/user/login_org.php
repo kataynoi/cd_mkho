@@ -3,7 +3,7 @@
 <link href="<?php echo base_url()?>assets/vendor/css/bootstrap.css" rel="stylesheet">
 <link href="<?php echo base_url()?>assets/vendor/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 <!------ Include the above in your HEAD tag ---------->
 <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
 <script type="text/javascript" charset="utf-8">
@@ -133,8 +133,12 @@ form[role=login]>div {
                     <div class="panel w3-theme">
                         <div class="panel-heading">
                             <i class="fa fa-bullhorn fa-2x"></i> ประกาศ
+
                         </div>
                         <div class="panel-body">
+                            1.ระบบบักทึกข้อมูล วัคซีนสำหรับหน่วยงาน
+                            <br>
+
                         </div>
                     </div>
             </div>
