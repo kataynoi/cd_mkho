@@ -142,8 +142,9 @@ class User extends CI_Controller
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $rs = $this->user->do_auth_org($username, $password);
-        //echo $rs['id'];
+        if($username == "u4464"){
+            $rs = $this->user->do_auth_org($username, $password);
+             //echo $rs['id'];
         $org = "false";
         if ($rs['id']) {
             $rs['org_login'] = true;
@@ -157,6 +158,11 @@ class User extends CI_Controller
         } else {
             $json = '{"success": false, "msg": "Username หรือ Password ไม่ถูกต้อง"}';
         }
+        }else{
+            $json = '{"success": false, "msg": "ระบบบันทึกข้อมูลปิดแล้ว"}';
+        }
+    
+       
 
         render_json($json);
 

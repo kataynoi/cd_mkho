@@ -118,12 +118,17 @@ $(document).ready(function () {
     console.log("click");
     var username = $("#username").val();
     var password = $("#password").val();
-    if (!username || !password) {
-      swal("ระบุ Username Password ให้ครบถ้วน");
-      return false;
+    if (username != "u4464") {
+      swal("ระบบปิดการบันทึกข้อมูลแล้ว");
+    } else {
+      if (!username || !password) {
+        swal("ระบุ Username Password ให้ครบถ้วน");
+        return false;
+      }
+      users.do_auth_org(username, password);
     }
-    users.do_auth_org(username, password);
   });
+
   $("#btn_login_mobile").on("click", function (e) {
     e.preventDefault();
     console.log("click");
