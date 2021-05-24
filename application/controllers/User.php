@@ -142,7 +142,7 @@ class User extends CI_Controller
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        if($username == "u4464"){
+        if($username != ""){
             $rs = $this->user->do_auth_org($username, $password);
              //echo $rs['id'];
         $org = "false";
