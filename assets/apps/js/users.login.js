@@ -118,7 +118,7 @@ $(document).ready(function () {
     console.log("click");
     var username = $("#username").val();
     var password = $("#password").val();
-    if (username != "u4464") {
+    if (username == "") {
       swal("ระบบปิดการบันทึกข้อมูลแล้ว");
     } else {
       if (!username || !password) {
