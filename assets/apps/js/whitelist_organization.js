@@ -377,7 +377,7 @@ function validate(items) {
   if (!items.organization) {
     swal("กรุณาระบุหน่วยงาน");
     $("#organization").focus();
-  } else if (!items.cid) {
+  } else if (!items.cid || items.cid.length != 13) {
     swal("กรุณาระบุเลขบัตรประชาชน");
     $("#cid").focus();
   } else if (!items.prename) {
