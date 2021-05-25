@@ -30,6 +30,7 @@ class Org_vaccine extends CI_Controller
             $no++;
             $sub_array = array();
                 $sub_array[] = $no;
+                $sub_array[] = $row->username;
                 $sub_array[] = $row->org_name;
                 $sub_array[] = $row->vaccine;
                 $data[] = $sub_array;

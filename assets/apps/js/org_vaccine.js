@@ -12,14 +12,14 @@ CalldataTable = function (param1 = null) {
       var api = this.api(),
         data;
       total = api
-        .column(2)
+        .column(3)
         .data()
         .reduce(function (a, b) {
           return app.intVal(a) + app.intVal(b);
         }, 0);
 
       // Update footer
-      $(api.column(2).footer()).html(total);
+      $(api.column(3).footer()).html(total);
     },
     processing: true,
     serverSide: true,

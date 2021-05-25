@@ -19,13 +19,14 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Username</th>
                         <th>ชื่อหน่วยงาน</th>
                         <th>จำนวนผู้รับวัคซีน</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th colspan="2" style="text-align:right">Total:</th>
+                        <th colspan="3" style="text-align:right">Total:</th>
                         <th></th>
                     </tr>
                 </tfoot>
