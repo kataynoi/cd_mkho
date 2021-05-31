@@ -146,7 +146,7 @@
         <div class=" col colalert alert-success justify-content-lg-center" role="alert">
             <h1 class="text-center">ลงทะเบียนสำเร็จ</h1>
             <h2 class="text-center">หน่วยที่ลงทะเบียน :<span id='hos_regis'></span></h2>
-            <h2 class="text-center">ลำดับคิวที่ <span id='q'></span></h2>
+
             <button class="btn btn-info" id='new_regis'>ลงทะเบียนเพิ่ม</button>
             <p class="text-center">
                 หมายเหตุ : วัคซีนสำหรับประชาชนทั่วไป
