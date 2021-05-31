@@ -155,5 +155,14 @@ class Basic_model extends CI_Model
             ->result();
         return $rs;
     }
+    public function get_hospmain($code)
+    {
+        $rs = $this->db
+            ->where('hsub', $code)
+            ->get('cmastercup')
+            ->row();
+
+        return count($rs) > 0 ? $rs->hmain : '-';
+    }
 
 }

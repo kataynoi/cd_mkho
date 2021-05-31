@@ -145,7 +145,7 @@ class User extends CI_Controller
         if($username == "admin" && $password="admin@mk" ){
             //$rs = $this->user->do_auth_org($username, $password);
              //echo $rs['id'];
-             $rs['id']='00';
+             $rs['id']='55';
              $rs['org_name']='Admin';
         $org = "false";
         if ($rs['id']) {

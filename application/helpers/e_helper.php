@@ -930,5 +930,18 @@ if(!function_exists('get_org_name'))
         return $org_name;
     }
 }
+
+if(!function_exists('get_hospmain'))
+{
+
+    function get_hospmain($code)
+    {
+        $ci =& get_instance();
+        $ci->load->model('Basic_model', 'basic');
+        $hospmain = $ci->basic->get_hospmain($code);
+
+        return $hospmain;
+    }
+}
 /* End of file epidem_helper.php */
 /* Location: ./application/helpers/epidem_helper.php */
