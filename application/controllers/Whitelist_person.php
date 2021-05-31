@@ -11,7 +11,8 @@ class Whitelist_person extends CI_Controller
                 if($this->session->userdata("user_type") != 4)
                     redirect(site_url("user/login_org"));
            */     
-                $this->layout->setLayout('print_layout');
+        $this->layout->setLayout('print_layout');
+        $vaccine = $this->load->database('vaccine', TRUE);
         $this->load->model('Whitelist_person_model', 'crud');
         $this->load->model('basic_model', 'basic');
     }
@@ -131,7 +132,9 @@ class Whitelist_person extends CI_Controller
     public function get_person_by_cid()
     {
         $cid = $this->input->post('cid');
-        if ($this->crud->check_person_cid($cid) >= 1) {
+        if ($this->crud->check_vaccine($cid) >= 1) {
+            $json = '{"success": true,"check_vaccine":true}';
+        }else if ($this->crud->check_person_cid($cid) >= 1) {
             $json = '{"success": true,"check":true}';
         } else {
             $rs = $this->crud->get_person_cid($cid);

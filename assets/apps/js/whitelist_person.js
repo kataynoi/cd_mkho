@@ -456,7 +456,10 @@ crud.get_person_by_cid = function (cid) {
   crud.ajax.get_person_by_cid(cid, function (err, data) {
     $("#provchange").val("0");
     if (!err) {
-      if (data.check) {
+      if (data.check_vaccine) {
+        swal("บุคคลนี้ได้รับการฉีดวัคซีนแล้ว");
+        app.clear_form();
+      } else if (data.check) {
         swal("บุคคลนี้บันทึกข้อมูลในระบบแล้ว");
         app.clear_form();
       } else if (data.rows) {

@@ -145,9 +145,14 @@
     <div class="container" id='alert' hidden>
         <div class=" col colalert alert-success justify-content-lg-center" role="alert">
             <h1 class="text-center">ลงทะเบียนสำเร็จ</h1>
-            <h2 id='hos_regis'></h2>
-            <h2>ลำดับคิวที่ <span id='q'></span></h2>
-            <button class="btn" id='new_regis'>ลงทะเบียนเพิ่ม</button>
+            <h2 class="text-center">หน่วยที่ลงทะเบียน :<span id='hos_regis'></span></h2>
+            <h2 class="text-center">ลำดับคิวที่ <span id='q'></span></h2>
+            <button class="btn btn-info" id='new_regis'>ลงทะเบียนเพิ่ม</button>
+            <p class="text-center">
+                หมายเหตุ : วัคซีนสำหรับประชาชนทั่วไป
+                โรงพยาบาลที่ท่านลงทะเบียนไว้ จะแจ้ง วัน เวลา เข้ารับวัคซีนให้ท่านทราบอีกครั้ง
+                ตามเบอร์โทรศัพย์ที่ท่านได้ให้ไว้
+            <p>
         </div>
     </div>
 

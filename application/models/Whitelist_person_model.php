@@ -178,4 +178,14 @@ class Whitelist_person_model extends CI_Model
             ->row();
         return $rs;
     }
+    public function check_vaccine($cid)
+    {
+        $vaccine = $this->load->database('vaccine', TRUE);
+        $sql = "SELECT COUNT(*) AS `numrows` FROM `person` 
+        WHERE (cid_hash = (SELECT CONCAT(UPPER(MD5('".$cid."')),':',substr('".$cid."',1,1),substr('".$cid."',13,1))) AND `vaccine_plan_1` = 'Y');";
+        $rs = $vaccine
+            ->query($sql)
+            ->row();
+        return $rs->numrows;
+    }
 }
