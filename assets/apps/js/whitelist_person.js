@@ -459,9 +459,15 @@ crud.get_person_by_cid = function (cid) {
       if (data.check_vaccine) {
         swal("บุคคลนี้ได้รับการฉีดวัคซีนแล้ว");
         app.clear_form();
+        return;
       } else if (data.check) {
         swal("บุคคลนี้บันทึกข้อมูลในระบบแล้ว");
         app.clear_form();
+        return;
+      } else if (data.rows["age_y"] < 18 || data.rows["age_y"] > 60) {
+        swal("บุคคลนี้ไม่อยู่ในช่วงอายุ 18-60 ปี");
+        app.clear_form();
+        return;
       } else if (data.rows) {
         $("#cid").val(data.rows["CID"]);
         $("#prename").val(data.rows["PRENAME"]);

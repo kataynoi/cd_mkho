@@ -167,7 +167,7 @@ class Whitelist_person_model extends CI_Model
             ->from("t_person_cid")
             ->where('cid', $cid)
             ->where('age_y <','18',false)
-            ->where('age_y <','60',false)
+            ->where('age_y >','60',false)
             ->count_all_results();
         return $rs;
     }

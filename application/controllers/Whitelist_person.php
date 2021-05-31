@@ -135,7 +135,7 @@ class Whitelist_person extends CI_Controller
         if ($this->crud->check_vaccine($cid) >= 1) {
             $json = '{"success": true,"check_vaccine":true}';
         } else if ($this->crud->check_person_cid($cid) >= 1) {
-            $json = '{"success": true,"check":true}';
+            $json = '{"success": true, "check":true}';
         } else {
             $rs = $this->crud->get_person_cid($cid);
             $rs->PRENAME = get_prename($rs->PRENAME);

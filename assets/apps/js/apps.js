@@ -181,8 +181,9 @@ var app = {
   },
   clear_form: function () {
     $("input[type=text],input[type=password], textarea").val("");
-    //$("option:first").attr('selected','selected');
-    $("select").val($("#target option:first").val());
+    $("option:first").attr("selected", "selected");
+    //$("select").val($("#target option:first").val());
+    //$("select").val($("#target option:first").val());
   },
   get_cookie: function (k) {
     $.cookie(k);
