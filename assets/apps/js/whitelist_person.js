@@ -459,9 +459,6 @@ crud.get_person_by_cid = function (cid) {
       if (data.check_vaccine) {
         swal("บุคคลนี้ได้รับการฉีดวัคซีนแล้ว");
         app.clear_form();
-      } else if (!data.check_age) {
-        swal("บุคคลนี้ไม่ได้อยู่ในกลุ่มเป้าหมาย 18 - 60 ปี");
-        app.clear_form();
       } else if (data.check) {
         swal("บุคคลนี้บันทึกข้อมูลในระบบแล้ว");
         app.clear_form();
