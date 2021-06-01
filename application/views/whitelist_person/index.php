@@ -7,7 +7,7 @@
 <body>
     <div class="row">
 
-        <a class="btn btn-warning pull-right" href="<?php echo site_url('user/logout_org');?>">ออกจากระบบ</a>
+        <a class="btn btn-warning pull-right" href="<?php echo site_url('user/logout_hospital');?>">ออกจากระบบ</a>
 
     </div>
     <br>
@@ -153,17 +153,4 @@
             </div>
         </div>
     </div>
-
-
     <script src="<?php echo base_url() ?>assets/apps/js/whitelist_person.js" charset="utf-8"></script>
-
-    <!--         foreach ($invit_type as $r) {
-                                if ($outsite["invit_type"] == $r->id) {
-                                    $s = "selected";
-                                } else {
-                                    $s = "";
-                                }
-                                echo "<option value=" $r->id" $s > $r->name </option>";
-
-}
--->

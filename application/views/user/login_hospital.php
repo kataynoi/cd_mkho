@@ -109,7 +109,7 @@ form[role=login]>div {
                     <form method="post" action="#" role="login" id="frm_login">
                         <img width="100px" src="<?php echo base_url('assets/img/logo.png')?>" class="img-responsive"
                             alt="" />
-                        <h4 class="text-center">สำหรับหน่วยงานราชการ</h4>
+                        <h4 class="text-center">สำหรับโรงพยาบาล</h4>
                         <input type="email" id="username" placeholder="Username" required class="form-control input-lg"
                             value="" />
 
@@ -118,7 +118,8 @@ form[role=login]>div {
                         <div class="pwstrength_viewport_progress"></div>
                         <input type="hidden" name="csrf_token" value="<?php echo $this->security->get_csrf_hash() ?>">
                     </form method="post">
-                    <button name="go" class=" btn btn-lg  btn-block w3-theme-d1" id="btn_login_org">เข้าสู่ระบบ</button>
+                    <button name="go" class=" btn btn-lg  btn-block w3-theme-d1"
+                        id="btn_login_hospital">เข้าสู่ระบบ</button>
                     <div>
                         <!--<a href="#">Create account</a> or <a href="#">reset password</a>-->
                     </div>
@@ -137,7 +138,9 @@ form[role=login]>div {
 
                         </div>
                         <div class="panel-body">
-                            1.ระบบบักทึกข้อมูล วัคซีนสำหรับหน่วยงาน
+                            1.ระบบบักทึกข้อมูล วัคซีนสำหรับประชาชนทั่วไป
+                            <br>
+                            2.ให้ทุก รพ. ตัดข้อมูล 06.00 น. ทุกวัน
                             <br>
 
                         </div>

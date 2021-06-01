@@ -23,6 +23,16 @@ $(document).ready(function () {
         err ? cb(err) : cb(null, data);
       });
     },
+    do_auth_hospital: function (username, password, cb) {
+      var url = "/user/do_auth_hospital",
+        params = {
+          username: username,
+          password: password,
+        };
+      app.ajax(url, params, function (err, data) {
+        err ? cb(err) : cb(null, data);
+      });
+    },
     do_auth_mobile: function (tel, cb) {
       var url = "/user/do_auth_mobile",
         params = {
@@ -68,6 +78,19 @@ $(document).ready(function () {
           } else {
             window.location = site_url + "/whitelist_organization/set_org";
           }
+        }
+      }
+    });
+  };
+
+  users.do_auth_hospital = function (username, password) {
+    users.ajax.do_auth_hospital(username, password, function (err, data) {
+      if (err) {
+        swal(err);
+      } else {
+        if (data.success) {
+          //swal('Login Success');
+          window.location = site_url + "/whitelist_person";
         }
       }
     });
@@ -124,17 +147,19 @@ $(document).ready(function () {
       return false;
     }
     users.do_auth_org(username, password);
+  });
 
-    /* if (username == "") {
-      swal("ระบบปิดการบันทึกข้อมูลแล้ว");
-    } else {
-      if (!username || !password) {
-        swal("ระบุ Username Password ให้ครบถ้วน");
-        return false;
-      }
-      users.do_auth_org(username, password);
+  $("#btn_login_hospital").on("click", function (e) {
+    e.preventDefault();
+    console.log("click");
+    var username = $("#username").val();
+    var password = $("#password").val();
+
+    if (!username || !password) {
+      swal("ระบุ Username Password ให้ครบถ้วน");
+      return false;
     }
-    */
+    users.do_auth_hospital(username, password);
   });
 
   $("#btn_login_mobile").on("click", function (e) {

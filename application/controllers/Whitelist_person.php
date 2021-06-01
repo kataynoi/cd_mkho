@@ -19,8 +19,10 @@ class Whitelist_person extends CI_Controller
 
     public function index()
     {
+        if(!$this->session->userdata("hospital_login"))
+        redirect(site_url("user/login_hospital"));
         $data[] = '';
-        
+       
         $this->layout->view('whitelist_person/index', $data);
     }
     public function set_org()
@@ -51,7 +53,7 @@ class Whitelist_person extends CI_Controller
             }
             $sub_array = array();
                 $sub_array[] =$vaccine;
-                $sub_array[] = get_org_name($row->organization);
+                $sub_array[] = $row->hospcode;
                 $sub_array[] = substr($row->cid,0,10)."xxx";
                 $sub_array[] = $row->prename;
                 $sub_array[] = $row->name;

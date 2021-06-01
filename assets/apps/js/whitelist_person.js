@@ -308,6 +308,7 @@ $("#btn_save").on("click", function (e) {
   items.sex = $("#sex").val();
   items.birth = $("#birth").val();
   items.tel = $("#tel").val();
+  items.hsub = $("#hsub").val();
   items.hospcode = $("#hospcode").val();
   items.hospname = $("#hospcode").find(":selected").html();
   items.vaccine = $("input[name='vaccine']:checked").val();
@@ -395,8 +396,8 @@ function validate(items) {
   } else if (!items.birth) {
     swal("กรุณาระบุวันเกิด");
     $("#birth").focus();
-  } else if (!items.tel) {
-    swal("กรุณาระบุเบอร์โทร");
+  } else if (!items.tel || items.tel.length != 10) {
+    swal("กรุณาระบุเบอร์โทรให้ถูกต้อง");
     $("#tel").focus();
   } else if (!items.prov) {
     swal("กรุณาระบุจังหวัด");
@@ -477,6 +478,7 @@ crud.get_person_by_cid = function (cid) {
         $("#sex").val(data.rows["SEX"]);
         $("#no").val(data.rows["addr"]);
         $("#hospcode").val(data.rows["HOSPMAIN"]);
+        $("#hsub").val(data.rows["HOSPCODE"]);
         //$("#age").val(data.rows["age_y"]);
         $provcode = data.rows["vhid"].substring(0, 2);
         $amp = data.rows["vhid"].substring(0, 4);

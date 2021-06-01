@@ -52,7 +52,7 @@ header("Cache-Control: private",false);
                 </thead>
                 <tbody>
                     <?php
-            foreach ($whitelist_org as $r) {
+            foreach ($whitelist_person as $r) {
                 echo "<tr>";
                 echo "<td>".$r->target_type."</td>";
                 echo "<td>".$r->sub_target_type."</td>";

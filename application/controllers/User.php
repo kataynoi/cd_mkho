@@ -55,6 +55,17 @@ class User extends CI_Controller
 
     }
 
+    public function login_hospital()
+    {
+        if ($this->session->userdata('hospital_login')==1) {
+            redirect(site_url("whitelist_person"), 'refresh');
+           console_log('login'.$this->session->userdata('hospital_login'));
+        } else {
+            $this->load->view('user/login_hospital');
+            console_log($this->session->userdata('fullname'));
+        }
+
+    }
     public function register()
     {
         //Register Users
@@ -117,6 +128,11 @@ class User extends CI_Controller
         $this->session->sess_destroy();
         redirect(site_url('user/login_org'), 'refresh');
     }
+    public function logout_hospital()
+    {
+        $this->session->sess_destroy();
+        redirect(site_url('user/login_hospital'), 'refresh');
+    }
     public function do_auth()
     {
         $username = $this->input->post('username');
@@ -163,13 +179,28 @@ class User extends CI_Controller
         }else{
             $json = '{"success": false, "msg": "ระบบบันทึกข้อมูลปิดแล้ว"}';
         }
-    
-       
+        render_json($json);
+    }
+    public function do_auth_hospital()
+    {
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        
+        $rs = $this->user->do_auth_hospital($username, $password);
+  
+        if ($rs['id']) {
+            $rs['id'] = $rs['hoscode'];
+            $rs['hospital_login'] = true;
+            $rs['fullname'] = $rs['hosname'];
+            $rs['user_level'] = $rs['user_level'];
+            $this->session->set_userdata($rs);
+            $json = '{"success": true, "msg": "" }';
+        } else {
+            $json = '{"success": false, "msg": "Username หรือ Password ไม่ถูกต้อง"}';
+        }
 
         render_json($json);
-
     }
-
     public function do_auth_mobile()
     {
         $tel = $this->input->post('tel');

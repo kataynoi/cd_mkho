@@ -29,7 +29,14 @@ class Excel_export extends CI_Controller
         $data['whitelist_org'] = $this->excel_export_model->fetch_whitelist_org($id);
         $this->load->view("whitelist_organization/excel_export_view", $data);
     }
-
+    function whitelist_person()
+    {
+        $id= $this->session->userdata('id');
+        $level= $this->session->userdata('user_level');
+        $this->load->model("excel_export_model");
+        $data['whitelist_person'] = $this->excel_export_model->fetch_whitelist_person($id,$level);
+        $this->load->view("whitelist_person/excel_export_view", $data);
+    }
 
     function action()
     {

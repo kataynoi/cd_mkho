@@ -130,6 +130,7 @@
                                     echo "<option value=$r->hoscode > $r->hosname </option>";        
                         } ?>
                     </select>
+                    <input type="hidden" class="form-control" id="hsub" placeholder="โทร" value="">
                 </div>
 
             </div>
@@ -147,11 +148,11 @@
             <h1 class="text-center">ลงทะเบียนสำเร็จ</h1>
             <h2 class="text-center">หน่วยที่ลงทะเบียน :<span id='hos_regis'></span></h2>
 
-            <button class="btn btn-info" id='new_regis'>ลงทะเบียนเพิ่ม</button>
+            <span class="text-center"> <button class="btn btn-info " id='new_regis'>ลงทะเบียนเพิ่ม</button></span>
             <p class="text-center">
                 หมายเหตุ : วัคซีนสำหรับประชาชนทั่วไป
                 โรงพยาบาลที่ท่านลงทะเบียนไว้ จะแจ้ง วัน เวลา เข้ารับวัคซีนให้ท่านทราบอีกครั้ง
-                ตามเบอร์โทรศัพย์ที่ท่านได้ให้ไว้
+                ตามเบอร์โทรศัพท์ที่ท่านได้ให้ไว้
             <p>
         </div>
     </div>

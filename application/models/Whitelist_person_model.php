@@ -10,13 +10,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Whitelist_person_model extends CI_Model
 {
     var $table = "whitelist_person";
-    var $order_column = array('id', 'organization', 'cid', 'prename', 'name', 'lname', 'sex', 'birth', 'tel',);
+    var $order_column = array('id', 'hospcode', 'cid', 'prename', 'name', 'lname', 'sex', 'birth', 'tel',);
 
     function make_query()
     {
-        $this->db
-        ->where('organization',$this->session->userdata('id'))
-        ->from($this->table);
+        switch ($this->session->userdata('user_level')) {
+            case 1:
+              break;
+            case 2:
+                $this->db->where('hospcode',$this->session->userdata('id'));
+              break;
+            case 3:
+                $this->db->where('hsub',$this->session->userdata('id'));
+              break;
+          } 
+        $this->db->from($this->table);
         if (isset($_POST["search"]["value"])) {
             $this->db->group_start();
             $this->db->like("cid", $_POST["search"]["value"]);
@@ -44,14 +52,14 @@ class Whitelist_person_model extends CI_Model
     function get_filtered_data()
     {
         $this->make_query();
-        $query = $this->db->get();
+        $query = $this->db->where('hospcode',$this->session->userdata('id'))->get();
         return $query->num_rows();
     }
 
     function get_all_data()
     {
         $this->db->select("*");
-        $this->db->from($this->table);
+        $this->db->where('hospcode',$this->session->userdata('id'))->from($this->table);
         return $this->db->count_all_results();
     }
 
@@ -71,7 +79,7 @@ class Whitelist_person_model extends CI_Model
     {
         if(!isset($data["vaccine"])){$data["vaccine"]=0;}
         $birth= to_mysql_date($data["birth"]);
-        $sql = "insert into whitelist_person( target_type, prov, amp, tambon, moo, hospname, hospcode, cid, prename, name, lname, sex, birth, tel, vaccine, q) 
+        $sql = "insert into whitelist_person( target_type, prov, amp, tambon, moo, hospname, hospcode, cid, prename, name, lname, sex, birth, tel, vaccine, hsub, date_input, q) 
 
             select 
             '5'
@@ -89,6 +97,8 @@ class Whitelist_person_model extends CI_Model
             ,'".$birth."'
             ,'".$data["tel"]."'
             ,'".$data["vaccine"]."'
+            ,'".$data["hsub"]."'
+            ,'".date('Y-m-d H:i:s')."'
             ,(coalesce(max(q), -1) + 1)
             from whitelist_person  where hospcode=".$data["hospcode"]."
             on duplicate key update
