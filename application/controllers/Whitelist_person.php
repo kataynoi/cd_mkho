@@ -6,11 +6,7 @@ class Whitelist_person extends CI_Controller
     public $user_id;
     public function __construct()
     {
-        parent::__construct();
-/*
-                if($this->session->userdata("user_type") != 4)
-                    redirect(site_url("user/login_org"));
-           */     
+        parent::__construct();    
         $this->layout->setLayout('print_layout');
         $vaccine = $this->load->database('vaccine', TRUE);
         $this->load->model('Whitelist_person_model', 'crud');

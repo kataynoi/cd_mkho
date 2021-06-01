@@ -8,14 +8,25 @@
 <script src="<?php echo base_url()?>assets/vendor/js/bootstrap-datepicker.th.min.js" charset="UTF-8"></script>
 
 <html>
+<title>มหาสารคาม พร้อม!!</title>
 
 <body>
     <div id="register">
+
         <div class="panel panel-info ">
             <div class="panel-heading w3-theme">
-                <i class="fa fa-user fa-2x "></i> ชาวมหาสารคาม ร่วมใจลงทะเบียนสู้ภัยโควิด-19
+                <i class="fa fa-user fa-2x "></i> ชาวมหาสารคาม ร่วมใจลงทะเบียนฉีดวัคซีนสู้ภัยโควิด-19
             </div>
-
+            <div class="alert alert-primary" role="alert">
+                <ul style="list-style-type: none">
+                    <li>1. ระบบนี้ลงทะเบียนสำหรับประชาชนทั่วไป 18-60 ปี </li>
+                    <li>2. ผู้ที่ลงทะเบียนหมอพร้อม |ลงทะเบียนในนามหน่วยวยงาน องค์กร | ลงทะเบียนที่โรงพยาบาล รพ.สต. อสม.
+                        แล้วไม่ต้องลงทะเบียนซ้ำ </li>
+                    <li>3. ระบบจะทำการตัดข้อมูลภายใน 1 สัปดาห์</li>
+                    <li>4. โรงพยาบาลที่ท่านลงทะเบียนจะทำการแจ้งนัดหมายภายใน 1 สัปดาห์</li>
+                    <li>5. ขอความร่วมมือไม่เปลี่ยนแปลงโรงพยาบาลที่ฉีดวัคซีน เมื่อ่ลงทะเบียนแล้ว</li>
+                </ul>
+            </div>
             <form>
                 <input type="hidden" id="action" value="insert">
                 <input type="hidden" class="form-control" id="row_id" placeholder="ROWID" value="">
@@ -23,9 +34,6 @@
                 <input type="hidden" class="form-control" id="provchange" placeholder="ID" value="0">
                 <input type="hidden" class="form-control" id="organization" placeholder="ID"
                     value="<?php echo $this->session->userdata('id')?>">
-
-                <div class="alert">
-                </div>
                 <div class="panel-body">
                     <div class="form-group col-md-3">
                         <label for="cid">เลขบัตรประชาชน</label>
