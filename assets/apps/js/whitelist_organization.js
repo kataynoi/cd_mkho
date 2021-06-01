@@ -558,3 +558,7 @@ $("#tambon").on("change", function () {
   $("#provchange").val("1");
   crud.get_moo_list(tambon);
 });
+$("#btn_org_vaccine_appoint").on("click", function (e) {
+  e.preventDefault();
+  swal("ขออภัยครับ อยู่ระหว่างการจัดสรรวัคซีน");
+});

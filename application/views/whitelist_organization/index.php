@@ -22,6 +22,9 @@
                     รายชื่อผู้ลงทะเบียนรับวัคซีน</span>
 
                 <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                    <a class="btn btn-warning" type="button" target="_blank" id="btn_org_vaccine_appoint"
+                        href="<?php echo site_url('org_vaccine_appoint');?>"><i class="fa fa-file"></i>
+                        ตรวจสอบวันนัดรับบริการวัคซีน</a>
                     <a class="btn btn-success" type="button" target="_blank"
                         href="<?php echo site_url('org_vaccine');?>"><i class="fa fa-file"></i> Report</a>
                     <a class="btn btn-success" type="button"
@@ -156,14 +159,3 @@
 
 
     <script src="<?php echo base_url() ?>assets/apps/js/whitelist_organization.js" charset="utf-8"></script>
-
-    <!--         foreach ($invit_type as $r) {
-                                if ($outsite["invit_type"] == $r->id) {
-                                    $s = "selected";
-                                } else {
-                                    $s = "";
-                                }
-                                echo "<option value=" $r->id" $s > $r->name </option>";
-
-}
--->
