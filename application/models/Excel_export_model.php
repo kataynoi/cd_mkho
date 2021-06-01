@@ -58,10 +58,10 @@ class Excel_export_model extends CI_Model
                 $level_text = "";
               break;
             case 2:
-                $level_text = "WHERE hospcode ='".$id;
+                $level_text = "WHERE hospcode ='".$id."'";
               break;
             case 3:
-                $level_text = "WHERE hsub ='".$id;
+                $level_text = "WHERE hsub ='".$id."'";
               break;
           } 
         $sql = "SELECT 
@@ -87,7 +87,7 @@ class Excel_export_model extends CI_Model
         LEFT JOIN cchangwat b ON a.prov = b.changwatcode
         LEFT JOIN campur c ON a.amp = c.ampurcodefull
         LEFT JOIN ctambon d ON a.tambon = d.tamboncodefull
-        ".$level_text."' ORDER BY q; ";
+        ".$level_text." ORDER BY q; ";
                
         $rs = $this->db->query($sql)->result();
         echo $this->db->last_query();

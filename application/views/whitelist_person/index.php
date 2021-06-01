@@ -23,7 +23,7 @@
 
                 <div class="btn-group pull-right" role="group" aria-label="Basic example">
                     <a class="btn btn-success" type="button" target="_blank"
-                        href="<?php echo site_url('org_vaccine');?>"><i class="fa fa-file"></i> Report</a>
+                        href="<?php echo site_url('person_vaccine');?>"><i class="fa fa-file"></i> Report</a>
                     <a class="btn btn-success" type="button"
                         href="<?php echo site_url('whitelist_person/add_whitelist')?>" id=""><i
                             class="fa fa-plus-circle"></i> ลงทะเบียนฉีดวัคซีน</a>
