@@ -95,7 +95,7 @@ class Whitelist_person_model extends CI_Model
             ,'".$data["lname"]."'
             ,'".$data["sex"]."'
             ,'".$birth."'
-            ,'".$data["tel"]."'
+            ,'".str_replace("-","",$data["tel"])."'
             ,'".$data["vaccine"]."'
             ,'".$data["hsub"]."'
             ,'".date('Y-m-d H:i:s')."'
