@@ -65,7 +65,9 @@ class Excel_export_model extends CI_Model
               break;
           } 
         $sql = "SELECT 
-        '5-ประชาชนทั่วไป' as target_type
+        date_input
+        ,a.q
+        ,'5-ประชาชนทั่วไป' as target_type
         ,'501-อายุ 18 ปีขึ้นไป' as sub_target_type
         ,CONCAT(a.prov,'-',b.changwatname) as prov
         ,CONCAT(RIGHT(a.amp,2),'-',c.ampurname) as amp

@@ -31,6 +31,8 @@ header("Cache-Control: private",false);
             <table id="table_data" class="table table-responsive">
                 <thead>
                     <tr>
+                        <th>วันเวลาที่ลงทะเบียน</th>
+                        <th>คิวในระบ</th>
                         <th>กลุ่มเป้าหมาย</th>
                         <th>ประเภทกลุ่มเป้าหมาย</th>
                         <th>จังหวัด</th>
@@ -54,6 +56,8 @@ header("Cache-Control: private",false);
                     <?php
             foreach ($whitelist_person as $r) {
                 echo "<tr>";
+                echo "<td>".$r->date_input."</td>";
+                echo "<td>".$r->q."</td>";
                 echo "<td>".$r->target_type."</td>";
                 echo "<td>".$r->sub_target_type."</td>";
                 echo "<td>".$r->prov."</td>";
