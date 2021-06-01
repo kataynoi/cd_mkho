@@ -87,7 +87,7 @@ class Excel_export_model extends CI_Model
         LEFT JOIN cchangwat b ON a.prov = b.changwatcode
         LEFT JOIN campur c ON a.amp = c.ampurcodefull
         LEFT JOIN ctambon d ON a.tambon = d.tamboncodefull
-        ".$level_text."'; ";
+        ".$level_text."' ORDER BY q; ";
                
         $rs = $this->db->query($sql)->result();
         echo $this->db->last_query();
